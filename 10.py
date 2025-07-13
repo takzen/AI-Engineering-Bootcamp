@@ -64,7 +64,7 @@ def dzielenie_liczb_ogolnie():
 
 # dzielenie_liczb_ogolnie()
 
-#
+
 # 3. Klauzule `else` i `finally`
 #
 # Blok `try...except` można rozszerzyć o dwie dodatkowe klauzule:
@@ -99,7 +99,7 @@ finally:
     else:
         print("Operacja zakończona (plik nie został otwarty lub już jest zamknięty).")
 
-#
+
 # 4. Świadome rzucanie wyjątków – `raise`
 #
 # Czasami chcemy sami wywołać błąd w naszym kodzie. Dzieje się tak, gdy dane wejściowe
@@ -124,7 +124,7 @@ try:
 except (TypeError, ValueError) as e:
     print(f"Nie udało się ustawić wieku. Powód: {e}")
 
-#
+
 # 5. Debugowanie – Sztuka znajdowania błędów
 #
 # Obsługa błędów to jedno, ale co, jeśli nasz program nie działa tak, jak oczekujemy,

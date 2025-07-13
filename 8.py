@@ -35,7 +35,7 @@ except FileNotFoundError:
     print("Celowo pokazujemy, że 'with' działa nawet przy błędach.")
     print("Plik nie istnieje, ale program nie zawiesił się na próbie jego zamknięcia.")
 
-#
+
 # 3. Tryby otwierania plików
 #
 # Drugi argument funkcji open() to tryb. Najważniejsze z nich to:
@@ -48,7 +48,7 @@ except FileNotFoundError:
 #     'a' (append) - dopisywanie: Jeśli plik nie istnieje, zostanie utworzony.
 #                                Jeśli plik istnieje, nowe dane zostaną dopisane na jego końcu.
 
-#
+
 # 4. Zapisywanie danych do pliku (`'w'` i `'a'`)
 #
 # Używamy metody .write() na zmiennej plikowej.
@@ -67,7 +67,7 @@ with open("lista_zakupow.txt", "a") as plik:
 
 print("Dopisano 'Masło' do pliku.")
 
-#
+
 # 5. Odczytywanie danych z pliku (`'r'`)
 #
 # Istnieje kilka sposobów, ale najprostszy i najbardziej wydajny to iteracja po pliku w pętli for.
@@ -143,7 +143,7 @@ for osoba in lista_osob:
     print(f"{osoba['imie']} ma {osoba['wiek']} lat i mieszka w mieście {osoba['miasto']}.")
 
 
-#
+
 # 7. Podsumowanie
 #
 # Gratulacje! Potrafisz teraz komunikować swoje programy ze światem zewnętrznym za pomocą plików.

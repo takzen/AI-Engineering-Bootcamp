@@ -51,7 +51,7 @@
 #              "W tym miejscu poczekaj na wynik wolnej operacji (np. zapytania do AI),
 #              ale w międzyczasie pozwól Pythonowi zająć się innymi zadaniami".
 
-#
+
 # 4. Przykład praktyczny: Synchronicznie vs Asynchronicznie
 #
 # Zobaczmy różnicę w działaniu. Zamiast prawdziwych zapytań do AI, zasymulujemy
@@ -118,7 +118,7 @@ if __name__ == "__main__":
     asyncio.run(main())
 
 
-#
+
 # 5. Podsumowanie i znaczenie dla AI
 #
 # Jak widać na przykładzie, wersja asynchroniczna wykonała się 3x szybciej!
