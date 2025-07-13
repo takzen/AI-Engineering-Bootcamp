@@ -1,0 +1,142 @@
+# Moduł 11, Lekcja 103: Planowanie projektu końcowego – wybór tematu
+
+"""
+Witaj w jednej z najważniejszych lekcji w całym kursie.
+To tutaj podejmiesz decyzję, która zdefiniuje Twoje najbliższe tygodnie nauki
+i zwieńczy Twoją pracę w postaci realnego, działającego projektu.
+
+Wybór tematu to nie formalność. To fundament, na którym zbudujesz swoje portfolio
+jako AI Engineer. Dobra decyzja napędzi Cię do działania. Zła – spowoduje frustrację.
+
+Celem tej lekcji jest przeprowadzenie Cię przez ustrukturyzowany proces,
+który pozwoli Ci wybrać projekt idealnie dopasowany do Ciebie i celów tego kursu.
+"""
+
+# ==============================================================================
+# 1. Dlaczego ten wybór jest kluczowy?
+# ==============================================================================
+
+"""
+Twój projekt końcowy to nie jest zwykła praca domowa. To Twój:
+
+*   Kamień milowy w portfolio: Najważniejszy projekt, który pokażesz rekruterom i przyszłym pracodawcom.
+*   Praktyczny sprawdzian: Test, czy potrafisz połączyć wszystkie technologie z kursu (FastAPI, LangChain, RAG) w działającą całość.
+*   Generator wartości: Szansa na rozwiązanie realnego problemu, co jest najcenniejszą umiejętnością na rynku pracy.
+
+Pamiętaj: w modułach 104-109 będziemy budować aplikację od zera. Twój temat musi się do tego nadawać!
+"""
+
+# ==============================================================================
+# 2. Cechy idealnego tematu projektu dla AI Engineera
+# ==============================================================================
+
+"""
+Zanim zaczniesz szukać pomysłów, poznaj 4 kryteria, które musi spełniać Twój projekt.
+Nazwijmy je modelem "WIDM". Twój projekt musi być:
+
+W - Wartościowy
+- Czy rozwiązuje konkretny, realny problem?
+- Czy ktoś (Ty, Twoja firma, potencjalny klient) odniesie z niego korzyść?
+- Unikaj projektów typu "chatbot do rozmów o pogodzie". Szukaj realnych zastosowań biznesowych.
+
+I - Interesujący
+- Czy ten temat Cię autentycznie ciekawi i motywuje?
+- Będziesz spędzać nad nim wiele godzin. Pasja pomoże Ci przetrwać trudne momenty.
+
+D - Demonstracyjny (Technicznie)
+- Czy projekt pozwoli Ci wykorzystać cały stack technologiczny z kursu?
+- Musi obejmować:
+    - Stworzenie aplikacji od podstaw (104)
+    - Integrację LangChain, RAG i FastAPI (105)
+    - Proces testowania i optymalizacji (106)
+- To najważniejsze kryterium z perspektywy celów kursu.
+
+M - Mierzalny i Wykonalny
+- Czy jesteś w stanie go zrealizować w ramach czasowych kursu?
+- Czy potrafisz jasno zdefiniować, co oznacza "ukończenie" projektu?
+- "Zrewolucjonizowanie branży X" jest niewykonalne. "Stworzenie chatbota odpowiadającego na pytania z dokumentacji Y" jest wykonalne.
+"""
+
+# ==============================================================================
+# 3. Skąd czerpać pomysły? Gotowe propozycje projektów
+# ==============================================================================
+
+"""
+Aby ułatwić Ci wybór, przygotowałem trzy sprawdzone propozycje, które idealnie pasują
+do zakresu tego kursu. Każda z nich jest ambitna, wartościowa i stanowi świetny materiał
+do portfolio. Wybierz tę, która najbardziej Cię inspiruje.
+"""
+
+# --- Propozycja 1: Specjalistyczny Doradca Prawny ---
+"""
+Opis: Zbuduj aplikację, która działa jak ekspert od konkretnego aktu prawnego, np. RODO (GDPR).
+Użytkownicy (np. właściciele małych firm, marketingowcy) mogą zadawać pytania w języku naturalnym
+("Czy muszę mieć zgodę na wysyłanie newslettera?") i otrzymywać precyzyjne odpowiedzi
+oparte wyłącznie na treści rozporządzenia.
+
+Problem do rozwiązania: Demokratyzacja dostępu do skomplikowanej wiedzy prawnej, redukcja ryzyka
+niezgodności z przepisami.
+
+Źródło danych: Publicznie dostępny plik PDF z pełnym, jednolitym tekstem RODO.
+"""
+
+# --- Propozycja 2: Mentor Finansowy oparty na Klasyce Inwestowania ---
+"""
+Opis: Stwórz aplikację, która pełni rolę wirtualnego mentora finansowego. "Naucz" ją treści
+klasycznej książki o inwestowaniu, która jest w domenie publicznej (np. "The Science of Getting Rich"
+Wallace'a D. Wattlesa lub "The Intelligent Investor" Benjamina Grahama, jeśli znajdziesz odpowiednie streszczenia/materiały).
+Aplikacja będzie odpowiadać na pytania dotyczące filozofii i zasad inwestowania zawartych w książce.
+
+Problem do rozwiązania: Ułatwienie zrozumienia ponadczasowych zasad finansowych,
+promowanie edukacji inwestycyjnej w przystępny sposób.
+
+Źródło danych: Plik PDF lub TXT z treścią wybranej książki z domeny publicznej.
+"""
+
+# --- Propozycja 3: Analityk Dokumentacji Technicznej ---
+"""
+Opis: Zbuduj narzędzie dla programistów. Stwórz eksperta od dokumentacji technicznej
+złożonej biblioteki open-source (np. LangChain, FastAPI, Pandas). Programiści będą mogli
+pytać: "Jak zaimplementować X w FastAPI?" lub "Pokaż mi przykład użycia funkcji Y w Pandas",
+a aplikacja znajdzie i zaprezentuje odpowiednie fragmenty kodu i wyjaśnienia z dokumentacji.
+
+Problem do rozwiązania: Przyspieszenie procesu wyszukiwania informacji w obszernej dokumentacji technicznej,
+redukcja czasu potrzebnego na rozwiązywanie problemów programistycznych.
+
+Źródło danych: Oficjalna dokumentacja wybranej technologii (można ją pobrać jako PDF lub zscrapować).
+"""
+
+# ==============================================================================
+# 4. Twoje zadanie: Wybierz i zdefiniuj swój projekt!
+# ==============================================================================
+
+"""
+Czas na Twoją decyzję.
+
+Krok 1: Analiza propozycji
+- Przeczytaj uważnie wszystkie trzy propozycje.
+- Zastanów się, który problem jest Ci najbliższy lub która dziedzina najbardziej Cię interesuje.
+
+Krok 2: Ostateczna decyzja i definicja
+- Wybierz jeden z powyższych projektów.
+- Sformułuj jego temat jako jedno, precyzyjne zdanie, korzystając z poniższego wzoru.
+To pomoże Ci utrzymać kurs w dalszych etapach pracy.
+
+
+WZÓR DOBREJ DEFINICJI PROJEKTU:
+"W ramach projektu końcowego stworzę [NAZWA PROJEKTU], aplikację, która będzie [GŁÓWNA FUNKCJA]
+na podstawie [ŹRÓDŁO DANYCH], wykorzystując architekturę RAG z LangChain, bazę wektorową
+ChromaDB, API w FastAPI oraz interfejs w Streamlit."
+
+
+Przykład wypełnionego wzoru (dla Propozycji 1):
+"W ramach projektu końcowego stworzę 'RODO Ekspert AI', aplikację, która będzie precyzyjnie
+odpowiadać na pytania dotyczące ochrony danych osobowych na podstawie pełnego tekstu RODO,
+wykorzystując architekturę RAG z LangChain, bazę wektorową ChromaDB, API w FastAPI oraz interfejs w Streamlit."
+
+
+Zapisz swoją ostateczną definicję projektu. Będzie ona Twoją "gwiazdą polarną" w kolejnych,
+intensywnych modułach praktycznych.
+
+Powodzenia! W następnej lekcji zaczynamy przygotowywać środowisko i pisać pierwszy kod.
+"""

@@ -1,0 +1,109 @@
+Moduł 1, Punkt 2: Jakie umiejętności są potrzebne w AI Engineering?
+
+1. Wprowadzenie – Inżynier AI jako „Full-Stack” Specjalista od AI
+
+    AI Engineer to nie jest rola skupiona na jednej, wąskiej dziedzinie. To specjalista, który musi posiadać szeroki wachlarz kompetencji, łącząc umiejętności programisty, analityka danych i inżyniera systemów (DevOps).
+
+    Można go postrzegać jako "Full-Stack Developer" świata sztucznej inteligencji – musi rozumieć cały proces, od surowych danych aż po działającą aplikację, z której korzysta użytkownik.
+
+    Zestaw umiejętności można podzielić na kilka kluczowych filarów: Fundamenty Programistyczne, Uczenie Maszynowe, Inżynieria Danych, Inżynieria Oprogramowania i MLOps, oraz Umiejętności Miękkie.
+
+2. Filar 1: Solidne Fundamenty Programistyczne
+
+    Python (Język Obowiązkowy):
+
+        To absolutna podstawa. AI Engineer musi znać Pythona nie tylko na poziomie podstawowym, ale zaawansowanym.
+
+        Kluczowe koncepcje: Programowanie obiektowe (OOP), struktury danych (listy, słowniki, zbiory) i algorytmy, obsługa wyjątków, modułowość, praca z plikami.
+
+        Dlaczego tak ważne? Cały ekosystem AI (biblioteki, frameworki) jest zbudowany na Pythonie. Musisz pisać czysty, wydajny i testowalny kod.
+
+    Znajomość Linii Komend (Terminal/Shell):
+
+        Większość narzędzi inżynierskich (Git, Docker, narzędzia chmurowe) jest obsługiwana z poziomu terminala. To podstawowe narzędzie pracy.
+
+    System Kontroli Wersji (Git):
+
+        Niezbędny do pracy zespołowej, zarządzania kodem i wdrażania zmian. Trzeba znać git commit, push, pull, merge, rebase i rozumieć przepływy pracy (jak GitFlow).
+
+3. Filar 2: Uczenie Maszynowe i Frameworki AI
+
+    Teoretyczne Podstawy ML:
+
+        AI Engineer nie musi być naukowcem, ale musi rozumieć, jak działają kluczowe modele.
+
+        Co trzeba wiedzieć? Regresja, klasyfikacja, clustering, różnice między uczeniem nadzorowanym i nienadzorowanym.
+
+        W kontekście LLM: Rozumienie architektury Transformer, mechanizmu uwagi (attention), czym jest fine-tuning, RAG (Retrieval-Augmented Generation).
+
+    Praktyczna Znajomość Frameworków ML:
+
+        PyTorch lub TensorFlow: To "silniki" do budowania i trenowania sieci neuronowych. Trzeba umieć wczytać model, przygotować dane, uruchomić pętlę treningową i proces ewaluacji.
+
+        Scikit-learn: Biblioteka do "klasycznego" uczenia maszynowego. Niezastąpiona do prostszych zadań, preprocessingu danych i ewaluacji modeli.
+
+        LangChain / LlamaIndex: Frameworki do orkiestracji i budowania aplikacji opartych na dużych modelach językowych (LLM). Umożliwiają łączenie modeli z zewnętrznymi źródłami danych i narzędziami.
+
+        Hugging Face Transformers: Biblioteka, która daje dostęp do tysięcy gotowych, wytrenowanych modeli i narzędzi do ich fine-tuningu.
+
+4. Filar 3: Inżynieria Danych (Data Engineering)
+
+    Przetwarzanie i Manipulacja Danych:
+
+        Pandas i NumPy: Absolutna podstawa do pracy z danymi tabelarycznymi i numerycznymi w Pythonie. Trzeba umieć sprawnie filtrować, grupować, łączyć i transformować dane.
+
+    Bazy Danych:
+
+        SQL: Język zapytań do relacyjnych baz danych jest niezbędny. Modele często są trenowane na danych z hurtowni danych.
+
+        NoSQL: Znajomość baz nierelacyjnych (np. MongoDB) i wektorowych (np. Pinecone, ChromaDB) jest kluczowa, zwłaszcza w kontekście RAG i systemów semantycznego wyszukiwania.
+
+    Narzędzia do ETL/ELT (Extract, Transform, Load):
+
+        Znajomość koncepcji i narzędzi do budowania potoków danych, np. Apache Airflow (do orkiestracji zadań).
+
+5. Filar 4: Inżynieria Oprogramowania i MLOps
+
+    Budowanie API:
+
+        FastAPI / Flask: Umiejętność "opakowania" modelu w API, aby można było go wywoływać przez sieć. FastAPI jest nowoczesnym standardem dzięki integracji z Pydantic i asynchroniczności.
+
+        Pydantic: Walidacja danych na wejściu i wyjściu z API. Gwarantuje, że do modelu trafiają poprawne dane.
+
+    Konteneryzacja (Docker):
+
+        Umiejętność "spakowania" całej aplikacji (kod, zależności, model) w przenośny kontener. To standard wdrażania aplikacji na dowolnym serwerze.
+
+    Chmura Obliczeniowa (Cloud Computing):
+
+        Praktyczna znajomość co najmniej jednego dostawcy: AWS, Google Cloud Platform (GCP) lub Microsoft Azure.
+
+        Kluczowe usługi: Obliczeniowe (EC2, Lambda), przechowywania danych (S3, GCS), bazy danych (RDS) oraz specyficzne dla ML (SageMaker, Vertex AI).
+
+    Podstawy MLOps:
+
+        CI/CD (Continuous Integration / Continuous Deployment): Znajomość narzędzi takich jak GitHub Actions do automatyzacji testowania i wdrażania kodu oraz modeli.
+
+        Narzędzia do wersjonowania i śledzenia eksperymentów: np. MLflow, DVC (Data Version Control).
+
+6. Filar 5: Umiejętności Miękkie
+
+    Rozwiązywanie Problemów (Problem Solving):
+
+        Najważniejsza umiejętność. AI Engineer nieustannie napotyka na problemy – od brudnych danych, przez błędy w kodzie, po problemy z wydajnością na produkcji. Musi być systematyczny i kreatywny w ich rozwiązywaniu.
+
+    Komunikacja:
+
+        Musi umieć rozmawiać zarówno z ludźmi technicznymi (inni programiści, devopsi), jak i z ludźmi biznesu (product managerowie, analitycy), aby zrozumieć wymagania i wytłumaczyć ograniczenia techniczne.
+
+    Ciągła Nauka:
+
+        Dziedzina AI zmienia się w błyskawicznym tempie. Nowe modele, narzędzia i techniki pojawiają się co tydzień. AI Engineer musi być gotów na nieustanną naukę, aby pozostać na bieżąco.
+
+Podsumowanie – Jak zdobywać te umiejętności?
+
+    Nie trzeba być ekspertem we wszystkim naraz. Warto zacząć od solidnych fundamentów w Pythonie.
+
+    Następnie budować kompetencje w jednym filarze, np. w uczeniu maszynowym, a potem stopniowo dodawać kolejne (dane, chmura, MLOps).
+
+    Najlepszą metodą nauki jest realizacja praktycznych projektów od A do Z – od zebrania danych, przez budowę API, aż po wdrożenie w chmurze. To jest esencja pracy AI Engineera.

@@ -1,0 +1,122 @@
+Moduł 4, lekcja 26: Różnice między OpenAI API a modelami lokalnymi
+
+Wiemy już, CZYM są i jak działają Wielkie Modele Językowe. Teraz pojawia się kluczowe, praktyczne pytanie: JAK możemy z nich korzystać w naszych projektach? Istnieją dwie główne ścieżki, a wybór między nimi zależy od naszych potrzeb, zasobów i priorytetów. Te dwie ścieżki to korzystanie z API oraz uruchamianie modeli lokalnie.
+
+1. Ścieżka 1: API (np. OpenAI API) – Model jako usługa
+
+Wyobraź sobie, że potrzebujesz supersamochodu. Zamiast go kupować, serwisować i budować dla niego garaż, po prostu zamawiasz go z kierowcą przez aplikację, kiedy tylko go potrzebujesz. Płacisz za przejazd i gotowe. Dokładnie tak działa API.
+
+Czym jest API (Application Programming Interface)?
+To "most" komunikacyjny, który pozwala Twojej aplikacji (np. skryptowi w Pythonie) wysyłać zlecenia do modelu językowego działającego na potężnych serwerach firmy (np. OpenAI) i odbierać od niego odpowiedzi.
+
+Jak to działa?
+
+    Rejestrujesz się na platformie (np. OpenAI).
+
+    Otrzymujesz unikalny klucz API (jak tajne hasło do usługi).
+
+    W swoim kodzie wysyłasz zapytanie (tzw. request) przez internet, zawierające Twój tekst (prompt) i klucz API.
+
+    Serwery OpenAI przetwarzają Twoje zapytanie na jednym ze swoich topowych modeli (np. GPT-4).
+
+    Otrzymujesz z powrotem gotową odpowiedź.
+
+Zalety:
+
+    Dostęp do najlepszych modeli: Otrzymujesz dostęp do najnowocześniejszych i najpotężniejszych modeli na rynku, których nie dałoby się uruchomić na domowym komputerze.
+
+    Łatwość rozpoczęcia: Wystarczy kilka linijek kodu i klucz API, aby zacząć. Nie martwisz się o sprzęt, instalację czy konfigurację.
+
+    Skalowalność: Twoja aplikacja może obsłużyć tysiące zapytań, ponieważ całą pracę wykonują serwery dostawcy usługi.
+
+    Brak wymagań sprzętowych: Nie potrzebujesz potężnej karty graficznej (GPU) ani dużej ilości pamięci RAM. Wystarczy połączenie z internetem.
+
+Wady:
+
+    Koszty: Usługa jest płatna, zazwyczaj w modelu "pay-as-you-go" (płacisz za każde przetworzone słowo/token).
+
+    Prywatność: Wysyłasz swoje dane (prompty) na serwery zewnętrznej firmy. Choć firmy takie jak OpenAI mają ścisłe polityki prywatności, dla niektórych zastosowań (np. dane medyczne, tajemnice firmowe) jest to niedopuszczalne.
+
+    Zależność od internetu: Bez połączenia z siecią usługa nie zadziała.
+
+    Mniejsza kontrola: Jesteś ograniczony do modeli i konfiguracji oferowanych przez dostawcę.
+
+2. Ścieżka 2: Modele Lokalne – Własny model w Twoim komputerze
+
+Wracając do naszej analogii: to tak, jakbyś kupił własny samochód. Masz go w garażu, możesz go modyfikować i jeździć nim o każdej porze dnia i nocy bez dodatkowych opłat za przejazd. Musisz jednak najpierw ponieść koszt zakupu, dbać o niego i mieć dla niego miejsce.
+
+Jak to działa?
+
+    Wybierasz jeden z wielu dostępnych modeli open-source (np. Llama 3, Mistral, Phi-3).
+
+    Pobierasz na swój dysk pliki modelu (tzw. "wagi"), które mogą zajmować od kilku do kilkudziesięciu gigabajtów.
+
+    Używasz specjalistycznego oprogramowania (np. biblioteki transformers, llama.cpp), aby załadować model do pamięci komputera (najlepiej do pamięci karty graficznej, VRAM).
+
+    Twój kod komunikuje się bezpośrednio z modelem działającym na Twojej maszynie.
+
+Zalety:
+
+    Pełna prywatność: Wszystkie dane i zapytania pozostają na Twoim komputerze. Nic nie jest wysyłane do internetu.
+
+    Brak kosztów bieżących: Po zakupie odpowiedniego sprzętu, korzystanie z modelu jest darmowe, niezależnie od liczby zapytań.
+
+    Działanie offline: Możesz z niego korzystać bez dostępu do internetu.
+
+    Pełna kontrola: Masz pełną swobodę w eksperymentowaniu z modelem, jego parametrami i dostosowywaniem go do swoich potrzeb.
+
+Wady:
+
+    Wysokie wymagania sprzętowe: Potrzebujesz mocnego komputera, a przede wszystkim wydajnej karty graficznej (GPU) z dużą ilością pamięci VRAM (często 12 GB to minimum).
+
+    Złożona konfiguracja: Instalacja i uruchomienie modelu mogą być skomplikowane i wymagać wiedzy technicznej.
+
+    Ograniczona wydajność: Jakość i szybkość odpowiedzi zależą od mocy Twojego sprzętu. Zazwyczaj nie dorównują one topowym modelom dostępnym przez API.
+
+    Odpowiedzialność: Sam jesteś odpowiedzialny za utrzymanie, aktualizacje i rozwiązywanie problemów.
+
+3. Tabela porównawcza: API vs. Model Lokalny
+Kryterium	API (np. OpenAI)	Model Lokalny (Open-Source)
+Koszt	Płatność za użycie (bieżące opłaty)	Wysoki koszt początkowy (sprzęt), potem darmowe
+Wymagania Sprzętowe	Minimalne (dostęp do internetu)	Bardzo wysokie (mocne GPU, dużo RAM/VRAM)
+Wydajność / Jakość	Najwyższa dostępna na rynku	Dobra, ale ograniczona mocą sprzętu
+Prywatność Danych	Niska (dane wysyłane na zewnątrz)	Maksymalna (dane nie opuszczają komputera)
+Łatwość Użycia	Bardzo łatwe (kilka linijek kodu)	Złożona (instalacja, konfiguracja)
+Dostępność Offline	Nie	Tak
+Kontrola / Personalizacja	Ograniczona	Pełna
+
+4. Kiedy wybrać które rozwiązanie?
+
+    Wybierz API, jeśli:
+
+        Potrzebujesz najwyższej możliwej jakości odpowiedzi.
+
+        Szybko budujesz prototyp i chcesz uzyskać wyniki bez martwienia się o infrastrukturę.
+
+        Twoja aplikacja musi być łatwo skalowalna.
+
+        Nie masz dostępu do mocnego sprzętu.
+
+        Prywatność danych nie jest absolutnie krytycznym czynnikiem.
+
+    Wybierz model lokalny, gdy:
+
+        Pracujesz z wrażliwymi, poufnymi danymi (np. firmowymi, medycznymi, osobistymi).
+
+        Prywatność jest Twoim najwyższym priorytetem.
+
+        Potrzebujesz, aby aplikacja działała bez dostępu do internetu.
+
+        Chcesz dogłębnie eksperymentować z architekturą modelu.
+
+        Przewidujesz bardzo intensywne użytkowanie i chcesz uniknąć wysokich rachunków za API w długim terminie.
+
+Podsumowanie
+
+Wybór między API a modelem lokalnym to jedna z fundamentalnych decyzji podczas pracy z LLM. Nie ma jednej "lepszej" odpowiedzi – wszystko zależy od kontekstu projektu.
+
+    API to wygoda, moc i skalowalność w zamian za bieżące koszty i mniejszą prywatność.
+
+    Model lokalny to pełna kontrola, prywatność i niezależność w zamian za inwestycję w sprzęt i większą złożoność techniczną.
+
+Znajomość obu tych dróg otwiera przed Tobą pełne spektrum możliwości, jakie dają nowoczesne modele językowe.

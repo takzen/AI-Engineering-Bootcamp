@@ -1,0 +1,92 @@
+Moduł 6, Punkt 44: Tworzenie chainów i testowanie ich działania
+
+Witaj ponownie w świecie wizualnego tworzenia AI! W poprzedniej lekcji zainstalowaliśmy LangFlow i zapoznaliśmy się z jego interfejsem. Teraz czas na praktykę. Zbudujemy od zera nasz pierwszy, fundamentalny przepływ – prosty łańcuch (chain), który przyjmuje zapytanie, formatuje je za pomocą szablonu i przekazuje do modelu językowego.
+
+To absolutna podstawa, na której opierają się niemal wszystkie bardziej złożone aplikacje.
+
+    Fundament każdego przepływu: LLMChain
+
+Pamiętasz LLMChain z poprzedniego modułu? To najprostszy, ale i najważniejszy łańcuch w LangChain. Składa się z trzech kluczowych elementów:
+
+    Model (LLM): "Mózg" operacji, który będzie generował odpowiedź (np. ChatOpenAI).
+
+    Szablon (Prompt Template): "Instrukcja" dla mózgu, która mówi mu, jak ma przetworzyć dane wejściowe.
+
+    Łańcuch (Chain): "Klej", który łączy model i szablon w jedną, spójną jednostkę.
+
+Naszym celem jest odtworzenie tej struktury w sposób wizualny w LangFlow. Zaczynajmy!
+
+    Przewodnik krok po kroku: Twój pierwszy łańcuch w LangFlow
+
+Otwórz aplikację LangFlow (jeśli jest zamknięta, wpisz langflow run w terminalu) i stwórz nowy, pusty projekt.
+
+Krok 1: Dodaj niezbędne komponenty (klocki)
+
+Po lewej stronie ekranu znajduje się panel z listą wszystkich dostępnych komponentów. Użyj wyszukiwarki, aby znaleźć i przeciągnąć na środek ekranu (na obszar roboczy) następujące trzy elementy:
+
+    ChatOpenAI: Znajdziesz go w kategorii Models -> Chat Models. To będzie nasz model językowy.
+
+    PromptTemplate: Znajdziesz go w kategorii Prompts. To będzie nasz szablon zapytania.
+
+    LLMChain: Znajdziesz go w kategorii Chains. To będzie nasz główny łańcuch.
+
+Po tym kroku powinieneś mieć na ekranie trzy niezależne bloki.
+
+Krok 2: Skonfiguruj każdy komponent
+
+Teraz musimy "powiedzieć" każdemu klockowi, jak ma działać. Kliknij na każdy z nich, aby otworzyć panel konfiguracji po prawej stronie.
+
+    Konfiguracja ChatOpenAI:
+
+        Kliknij na blok ChatOpenAI.
+
+        LangFlow poprosi Cię o podanie klucza API OpenAI. Możesz go wpisać bezpośrednio lub utworzyć nową poświadczenie (credential), co jest lepszą praktyką.
+
+        Upewnij się, że w polu Model Name wybrany jest model, np. gpt-4o lub gpt-3.5-turbo.
+
+        Możesz dostosować Temperature, ale na razie zostawmy wartość domyślną.
+
+    Konfiguracja PromptTemplate:
+
+        Kliknij na blok PromptTemplate.
+
+        Najważniejsze jest pole Template. Wpisz w nim prosty szablon, np.:
+        Odpowiedz na pytanie: {input}
+
+        Zwróć uwagę na {input}. To jest nazwa naszej zmiennej wejściowej. LangFlow automatycznie rozpozna, że ten komponent będzie oczekiwał danych wejściowych o nazwie "input".
+
+Krok 3: Połącz komponenty w łańcuch
+
+To jest wizualna magia LangFlow. Będziemy teraz tworzyć połączenia, które w kodzie odpowiadają przypisaniu llm=... i prompt=....
+
+    Najedź kursorem na małe, szare kółko po prawej stronie bloku ChatOpenAI. To jest jego wyjście. Kliknij je i przeciągnij linię do kółka po lewej stronie bloku LLMChain z etykietą llm. Puść przycisk myszy. Gratulacje, właśnie podłączyłeś model do łańcucha!
+
+    Teraz zrób to samo dla promptu. Najedź na wyjście bloku PromptTemplate i przeciągnij linię do wejścia w bloku LLMChain z etykietą prompt.
+
+Twój schemat powinien teraz wyglądać jak spójny przepływ: ChatOpenAI i PromptTemplate "wchodzą" do LLMChain.
+
+Krok 4: Testowanie w interfejsie chatu
+
+Twój pierwszy łańcuch jest gotowy do testów!
+
+    W prawym dolnym rogu ekranu znajdź i kliknij ikonę dymka czatu. Otworzy się panel konwersacji.
+
+    W polu tekstowym na dole wpisz dowolne pytanie, np. "Jaka jest stolica Polski?". Naciśnij Enter.
+
+    Obserwuj, co dzieje się na obszarze roboczym. Zobaczysz animację pokazującą, jak dane przepływają przez Twój łańcuch – od pola tekstowego, przez PromptTemplate, do LLMChain, który komunikuje się z ChatOpenAI, a następnie zwraca odpowiedź.
+
+    Wynik pojawi się w oknie chatu.
+
+    Podsumowanie i wnioski
+
+Właśnie zrobiłeś w kilka minut to, co w poprzednim module wymagało napisania kilkunastu linijek kodu. Zbudowałeś i przetestowałeś działający łańcuch AI bez pisania ani jednej linijki w Pythonie.
+
+Kluczowe wnioski z tej lekcji:
+
+    Budowanie przepływów w LangFlow polega na dodawaniu komponentów, konfigurowaniu ich i łączeniu ze sobą.
+
+    Połączenia wizualne bezpośrednio odpowiadają parametrom, które przekazywaliśmy w kodzie (np. LLMChain(llm=..., prompt=...)).
+
+    Wbudowany czat pozwala na natychmiastowe testowanie i weryfikację logiki przepływu, co drastycznie przyspiesza pracę.
+
+Opanowanie tej podstawowej umiejętności jest fundamentem do budowania znacznie bardziej zaawansowanych aplikacji, które poznamy w kolejnych lekcjach. Czas na eksperymenty! Spróbuj zmienić treść promptu lub parametry modelu i zobacz, jak wpłynie to na odpowiedzi.

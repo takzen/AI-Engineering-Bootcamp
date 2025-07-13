@@ -1,0 +1,95 @@
+Moduł 4, lekcja 29: Fine-tuning modeli LLMs – Tworzenie specjalisty
+
+Opanowaliśmy już sztukę prompt engineeringu, czyli efektywnej rozmowy z modelem ogólnego przeznaczenia. Ale co, jeśli potrzebujemy nie "złotej rączki", ale wyspecjalizowanego eksperta, który myśli i mówi dokładnie tak, jak tego chcemy, bez konieczności ciągłego instruowania go w każdym prompcie? Właśnie tutaj do gry wchodzi fine-tuning.
+
+1. Od lekarza ogólnego do kardiologa – Czym jest Fine-tuning?
+
+Wyobraź sobie, że pre-trenowany model LLM (taki jak GPT, Llama czy Mistral) to absolwent medycyny. Posiada ogromną, ogólną wiedzę na temat ludzkiego ciała, ale nie jest specjalistą w żadnej dziedzinie.
+
+    Prompt Engineering: To jakbyś temu młodemu lekarzowi dał szczegółową instrukcję i podręcznik do kardiologii, prosząc o zdiagnozowanie konkretnego przypadku. Zrobi to dobrze, ale za każdym razem musisz mu dawać te same instrukcje.
+
+    Fine-tuning (dostrajanie): To wysłanie tego lekarza na kilkuletnią specjalizację z kardiologii. Po tym procesie staje się on ekspertem w tej dziedzinie. Nie musisz mu już dawać podręcznika za każdym razem – on po prostu "myśli" jak kardiolog.
+
+Fine-tuning to proces dalszego trenowania już wytrenowanego modelu na znacznie mniejszym, specjalistycznym zbiorze danych, aby dostosować go do konkretnego zadania, stylu lub dziedziny wiedzy.
+
+2. Jak przebiega proces fine-tuningu?
+
+Proces ten można podzielić na trzy kluczowe etapy.
+
+Etap 1: Wybór modelu bazowego
+Wszystko zaczyna się od wyboru "lekarza ogólnego". Może to być jeden z potężnych modeli open-source (np. Llama 3, Mistral 7B) lub model dostępny przez API, które oferuje opcję dostrajania (np. starsze modele OpenAI, jak GPT-3.5 Turbo).
+
+Etap 2: Przygotowanie danych treningowych (NAJWAŻNIEJSZY KROK!)
+To jest serce całego procesu. Musimy stworzyć wysokiej jakości zbiór danych, który pokaże modelowi, jak ma się zachowywać. Zbiór ten składa się z setek, a najlepiej tysięcy par przykładów w formacie instrukcja -> oczekiwana odpowiedź.
+
+    Cel: Stworzenie bota do obsługi klienta dla sklepu z kawą, który odpowiada w przyjaznym, ale profesjonalnym tonie.
+
+    Przykładowe dane treningowe (w formacie prompt -> completion):
+    Generated json
+
+          
+    [
+      {
+        "prompt": "Jakie macie metody parzenia kawy?",
+        "completion": "Cześć! W naszej ofercie znajdziesz kawy idealne do espresso, dripa, AeroPressu i French Pressa. Która metoda interesuje Cię najbardziej?"
+      },
+      {
+        "prompt": "Czy macie kawy bezkofeinowe?",
+        "completion": "Oczywiście! Mamy pyszną kawę bezkofeinową z Kolumbii, przetwarzaną metodą Swiss Water. Charakteryzuje się nutami czekolady i orzechów."
+      },
+      {
+        "prompt": "Jak długo trwa wysyłka?",
+        "completion": "Standardowo paczki wysyłamy w ciągu 24 godzin, a dostawa kurierem zajmuje zazwyczaj 1-2 dni robocze. Otrzymasz od nas numer do śledzenia przesyłki."
+      }
+    ]
+
+        
+
+    IGNORE_WHEN_COPYING_START
+
+    Use code with caution. Json
+    IGNORE_WHEN_COPYING_END
+
+Jakość i spójność tych danych są absolutnie kluczowe dla sukcesu fine-tuningu.
+
+Etap 3: Proces trenowania
+Mając model bazowy i zbiór danych, uruchamiamy proces trenowania. Model "przegląda" nasze przykłady i delikatnie modyfikuje swoje wewnętrzne parametry (wagi), aby odpowiedzi, które generuje, były coraz bardziej podobne do naszych "oczekiwanych odpowiedzi". To proces wymagający mocy obliczeniowej (zazwyczaj GPU) i czasu.
+
+3. Fine-tuning a Prompt Engineering – Kiedy i co wybrać?
+
+Te dwie techniki nie wykluczają się, ale służą różnym celom.
+Kryterium	Prompt Engineering	Fine-tuning
+Złożoność	Niska (pisanie tekstu)	Wysoka (przygotowanie danych, proces treningu)
+Koszt początkowy	Niski	Wysoki (czas, zasoby obliczeniowe)
+Spójność odpowiedzi	Zależna od jakości promptu	Bardzo wysoka i powtarzalna
+Wymagana ilość danych	Mała (kilka przykładów w prompcie)	Duża (setki/tysiące przykładów)
+Elastyczność	Wysoka (łatwo zmienić zadanie)	Niska (model jest specjalistą)
+Długość promptu	Dłuższe, bardziej złożone	Krótsze, prostsze
+
+Kiedy warto rozważyć fine-tuning?
+
+    Gdy potrzebujesz ekstremalnej spójności: Chcesz, aby chatbot ZAWSZE odpowiadał w tym samym stylu i formacie.
+
+    Gdy zadanie jest bardzo niszowe: Masz do wykonania zadanie (np. klasyfikacja specyficznych dokumentów prawnych), którego ogólny model nie rozumie dobrze.
+
+    Gdy chcesz zoptymalizować koszty/szybkość: Po fine-tuningu możesz używać znacznie krótszych promptów, co w przypadku API obniża koszty i skraca czas odpowiedzi.
+
+    Gdy chcesz nauczyć model specyficznego "dialektu": Na przykład, aby posługiwał się wewnętrznym żargonem firmowym lub odpowiadał w stylu konkretnej, znanej osoby.
+
+Ważna uwaga: Fine-tuning nie jest najlepszym sposobem na "wgranie" do modelu nowej wiedzy (np. całej bazy produktów). Lepszą techniką do tego jest RAG (Retrieval-Augmented Generation), którą poznamy w przyszłości. Fine-tuning lepiej sprawdza się w nauce stylu i zachowania.
+
+Podsumowanie
+
+Fine-tuning to potężne narzędzie do transformacji ogólnego modelu językowego w wyspecjalizowanego eksperta.
+
+Najważniejsze do zapamiętania:
+
+    Fine-tuning to dalszy trening modelu na specjalistycznym zbiorze danych.
+
+    Celem jest nauczenie modelu stylu, formatu i specyficznego sposobu rozumowania, a nie wgranie nowej wiedzy.
+
+    Najważniejszym i najtrudniejszym elementem jest przygotowanie wysokiej jakości, spójnego zbioru danych treningowych.
+
+    Jest to proces bardziej złożony i kosztowny niż prompt engineering, ale zapewnia znacznie większą spójność i wydajność w niszowych zadaniach.
+
+    To idealne rozwiązanie, gdy potrzebujesz, aby model stał się prawdziwym ekspertem w wąskiej dziedzinie, a nie tylko wszechstronnym pomocnikiem.

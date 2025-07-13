@@ -1,0 +1,105 @@
+Moduł 1, Punkt 1: Kim jest AI Engineer?
+
+1. Wprowadzenie – Definicja i Rola w Ekosystemie AI
+
+    Definicja: AI Engineer (Inżynier Sztucznej Inteligencji) to specjalista, który projektuje, buduje, wdraża i utrzymuje systemy oparte na AI w środowisku produkcyjnym.
+
+    Most między nauką a biznesem: AI Engineer przekształca teoretyczne modele uczenia maszynowego (stworzone przez naukowców lub dostępne jako gotowe rozwiązania) w działające, niezawodne i skalowalne produkty.
+
+    Analogia budowlana:
+
+        AI Scientist (Naukowiec): Wynajduje w laboratorium nowy, rewolucyjny materiał (np. nowy algorytm, architekturę modelu). Jego praca jest teoretyczna.
+
+        AI Engineer (Inżynier Budowy): Bierze ten materiał i buduje z niego funkcjonalny, bezpieczny wieżowiec (aplikację AI). Wie, jak go użyć, jak położyć fundamenty i jak zapewnić, by budynek służył ludziom.
+
+2. Kluczowe Odpowiedzialności i Zadania
+
+    Projektowanie i Budowanie Potoków Danych (Data Pipelines):
+
+        Modele AI potrzebują danych. Inżynier AI tworzy zautomatyzowane procesy (pipeline) do zbierania, czyszczenia (np. usuwanie duplikatów, uzupełnianie braków), transformacji (np. normalizacja, skalowanie) i ładowania danych.
+
+        Technologie: Apache Spark, Airflow, DVC, praca z bazami danych (SQL, NoSQL).
+
+    Trening i Dostrajanie Modeli (Model Training & Fine-tuning):
+
+        Bierze gotowe architektury modeli (np. z bibliotek jak transformers) lub modele stworzone przez Data Scientistów.
+
+        Trenuje je na przygotowanych wcześniej danych.
+
+        Dostraja hiperparametry (np. learning rate, batch size), aby uzyskać najlepszą wydajność.
+
+        Ocenia model za pomocą odpowiednich metryk (np. dokładność, precyzja, F1-score).
+
+        Technologie: PyTorch, TensorFlow, Scikit-learn, Keras.
+
+    Wdrażanie Modeli na Produkcję (Model Deployment):
+
+        To kluczowa odpowiedzialność, która odróżnia AI Engineera.
+
+        Pakuje wytrenowany model w sposób, który umożliwia jego wywoływanie – najczęściej poprzez stworzenie API (np. za pomocą FastAPI).
+
+        Uruchamia model na serwerach, zazwyczaj w chmurze (AWS, Google Cloud, Azure), dbając o jego skalowalność i dostępność.
+
+        Technologie: Docker, Kubernetes, FastAPI, Flask, serwisy chmurowe (AWS SageMaker, Google AI Platform).
+
+    MLOps (Machine Learning Operations):
+
+        Jest to połączenie uczenia maszynowego, DevOps i inżynierii danych.
+
+        Celem jest automatyzacja i usprawnienie całego cyklu życia modelu – od przygotowania danych, przez trening, aż po wdrożenie i monitorowanie.
+
+        Obejmuje wersjonowanie danych i modeli, automatyzację treningu i wdrażania (CI/CD dla ML).
+
+        Technologie: MLflow, Kubeflow, DVC, GitHub Actions.
+
+    Monitorowanie i Utrzymanie Modeli (Monitoring & Maintenance):
+
+        Praca nie kończy się na wdrożeniu. AI Engineer musi monitorować, jak model radzi sobie na "żywych" danych.
+
+        Sprawdza, czy nie występuje tzw. "dryf modelu" (model drift), czyli pogorszenie jego wydajności z czasem, gdy zmieniają się dane wejściowe.
+
+        Implementuje systemy logowania i alertowania, które informują o problemach.
+
+        W razie potrzeby uruchamia proces ponownego treningu modelu na nowych danych.
+
+        Technologie: Prometheus, Grafana, narzędzia monitorujące dostawców chmurowych.
+
+3. Różnice w stosunku do innych ról
+
+    AI Engineer vs. Data Scientist:
+
+        Data Scientist: Skupia się na eksploracji, badaniach i prototypowaniu. Analizuje dane, aby znaleźć wzorce, buduje i testuje hipotezy, tworzy prototypowe modele. Jego głównym celem jest odpowiedź na pytanie "Czy to jest możliwe?".
+
+        AI Engineer: Skupia się na produkcji, skalowalności i niezawodności. Bierze sprawdzony prototyp i buduje wokół niego solidny system. Jego głównym celem jest odpowiedź na pytanie "Jak sprawić, by to działało dla milionów użytkowników 24/7?".
+
+    AI Engineer vs. Data Analyst:
+
+        Data Analyst: Pracuje na danych historycznych, aby wyciągać wnioski i tworzyć raporty. Odpowiada na pytanie "Co się stało?". Używa narzędzi takich jak SQL, Excel, Tableau.
+
+        AI Engineer: Buduje systemy predykcyjne, które działają w czasie rzeczywistym. Odpowiada na pytanie "Co się stanie?". Używa głównie Pythona i narzędzi do uczenia maszynowego.
+
+4. Zestaw Kluczowych Umiejętności
+
+    Programowanie: Głównie Python (perfekcyjna znajomość).
+
+    Biblioteki i Frameworki: Pandas, NumPy (do danych), PyTorch/TensorFlow (do modeli), Scikit-learn, FastAPI/Flask (do API), Pydantic (do walidacji).
+
+    Inżynieria Oprogramowania: Znajomość zasad SOLID, wzorców projektowych, testowania kodu.
+
+    Chmura Obliczeniowa: Praktyczna znajomość co najmniej jednego dostawcy (AWS, GCP, Azure).
+
+    Konteneryzacja i Orkiestracja: Docker i Kubernetes.
+
+    MLOps: Rozumienie i praktyczne stosowanie narzędzi do automatyzacji cyklu życia modelu.
+
+    Bazy Danych: Zarówno relacyjne (SQL), jak i nierelacyjne (NoSQL).
+
+    Umiejętności Miękkie: Rozwiązywanie problemów, komunikacja, rozumienie potrzeb biznesowych.
+
+5. Podsumowanie – Dlaczego ta rola jest tak ważna?
+
+    AI Engineer to "budowniczy" ery sztucznej inteligencji. To on sprawia, że niesamowite możliwości AI stają się użytecznymi i dostępnymi produktami.
+
+    Jest to rola interdyscyplinarna, łącząca wiedzę z zakresu danych, programowania i inżynierii systemów.
+
+    Wartość biznesowa AI jest realizowana dopiero wtedy, gdy model zostanie wdrożony na produkcję – i to jest główne zadanie Inżyniera AI.

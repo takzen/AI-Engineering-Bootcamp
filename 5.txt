@@ -1,0 +1,97 @@
+Moduł 1, Punkt 5: Jak wygląda proces tworzenia aplikacji AI?
+
+1. Wprowadzenie – To nie jest tylko trening modelu
+
+    Wiele osób myśli, że tworzenie AI to głównie proces trenowania modelu. W rzeczywistości trening to często jeden z najkrótszych etapów.
+
+    Profesjonalne tworzenie aplikacji AI to cykliczny i iteracyjny proces inżynierski, który obejmuje znacznie więcej niż tylko uczenie maszynowe. Można go podzielić na kilka kluczowych, następujących po sobie faz.
+
+    Proces ten jest często opisywany przez metodologie takie jak CRISP-DM (dla analizy danych) czy bardziej nowoczesne podejścia MLOps. Niezależnie od nazwy, podstawowe kroki pozostają podobne. Omówimy dziś uproszczony, ale praktyczny model tego procesu.
+
+2. Faza 1: Zrozumienie Problemu i Definicja Celu (Business Understanding)
+
+    Cel: Zanim napiszemy linijkę kodu, musimy zrozumieć, co chcemy osiągnąć. To najważniejszy i najczęściej pomijany krok.
+
+    Kluczowe pytania:
+
+        Jaki problem biznesowy rozwiązujemy? (np. Chcemy skrócić czas odpowiedzi na zapytania klientów).
+
+        Czy AI jest na pewno najlepszym rozwiązaniem? (Może wystarczy prostsza automatyzacja lub lepszy formularz?).
+
+        Jak będziemy mierzyć sukces? (np. "Skrócenie czasu odpowiedzi o 30%", "Zmniejszenie liczby zgłoszeń do działu wsparcia o 20%").
+
+        Jakie dane mamy dostępne? Czy są wystarczającej jakości? Jakie są ograniczenia (prawne, etyczne)?
+
+    Wynik tej fazy: Jasno zdefiniowany cel projektu, wskaźniki sukcesu (KPI) oraz wstępna ocena wykonalności. To jest nasz "kamień węgielny".
+
+3. Faza 2: Gromadzenie i Przygotowanie Danych (Data Acquisition & Preparation)
+
+    Cel: Zebranie wszystkich niezbędnych danych i doprowadzenie ich do formy, na której model będzie mógł się uczyć. To najbardziej czasochłonna faza, często zajmująca 60-80% czasu projektu.
+
+    Kroki:
+
+        Gromadzenie (Acquisition): Pozyskiwanie danych z różnych źródeł – baz danych (SQL), plików (CSV, JSON), API, logów systemowych, web scrapingu.
+
+        Eksploracja (Exploration): Pierwsze spojrzenie na dane (np. w Jupyter Notebooku z użyciem Pandas). Szukanie wzorców, anomalii, brakujących wartości.
+
+        Czyszczenie (Cleaning): Obsługa brakujących danych (usuwanie lub uzupełnianie), poprawianie błędów, usuwanie duplikatów.
+
+        Transformacja (Transformation): Przekształcanie danych w użyteczne cechy (features). Np. konwersja dat na dni tygodnia, normalizacja wartości liczbowych, tokenizacja tekstu.
+
+        Etykietowanie (Labeling): W uczeniu nadzorowanym, przypisywanie etykiet do danych (np. oznaczanie recenzji jako "pozytywna" lub "negatywna").
+
+    Wynik tej fazy: Czysty, dobrze przygotowany i podzielony zbiór danych (treningowy, walidacyjny, testowy).
+
+4. Faza 3: Budowa i Trening Modelu (Modeling & Training)
+
+    Cel: Wybór odpowiedniej architektury modelu i wytrenowanie go na przygotowanych danych. To jest serce części "naukowej" projektu.
+
+    Kroki:
+
+        Wybór Modelu: Na podstawie problemu wybieramy architekturę – od prostych modeli (regresja liniowa) po złożone sieci neuronowe (np. Transformer dla zadań językowych). Często zaczyna się od prostszego modelu jako punktu odniesienia (baseline).
+
+        Trening: Uruchomienie procesu uczenia modelu na zbiorze treningowym.
+
+        Ewaluacja: Sprawdzenie wydajności modelu na zbiorze walidacyjnym (którego model nie widział podczas treningu). Używamy metryk zdefiniowanych w Fazie 1.
+
+        Dostrajanie (Fine-tuning): Modyfikacja hiperparametrów modelu (np. learning rate) i powtarzanie kroków 2 i 3, aby znaleźć najlepszą wersję.
+
+    Wynik tej fazy: Wytrenowany, zewaluowany i zapisany plik z wagami modelu, który osiąga zadowalające wyniki na danych testowych.
+
+5. Faza 4: Wdrożenie na Produkcję (Deployment)
+
+    Cel: Uczynienie modelu dostępnym dla użytkowników końcowych lub innych systemów. To jest moment przejścia od prototypu do produktu.
+
+    Kroki:
+
+        Stworzenie API: "Opakowanie" logiki modelu (wczytanie wag, funkcja do predykcji) w API za pomocą FastAPI. Zdefiniowanie modeli wejścia i wyjścia za pomocą Pydantic.
+
+        Konteneryzacja: Spakowanie całej aplikacji (kod Pythona, API, zależności, plik modelu) w kontener Docker. To zapewnia spójność i przenośność.
+
+        Uruchomienie w Chmurze: Wdrożenie kontenera na platformie chmurowej (AWS, GCP, Azure). Konfiguracja skalowania, równoważenia obciążenia (load balancing) i zabezpieczeń.
+
+    Wynik tej fazy: Działający, publicznie (lub prywatnie) dostępny endpoint API, gotowy do przyjmowania zapytań.
+
+6. Faza 5: Monitorowanie i Utrzymanie (Monitoring & Maintenance)
+
+    Cel: Zapewnienie, że wdrożony model działa poprawnie, wydajnie i utrzymuje swoją jakość w czasie. Praca nad aplikacją AI nigdy się nie kończy.
+
+    Kroki:
+
+        Monitorowanie Techniczne: Śledzenie wskaźników systemowych, takich jak czas odpowiedzi API, zużycie CPU/RAM, liczba błędów.
+
+        Monitorowanie Modelu: Śledzenie jakości predykcji na "żywych" danych. Wykrywanie dryfu modelu (model drift), czyli sytuacji, gdy charakter danych produkcyjnych zaczyna odbiegać od danych treningowych, co pogarsza jakość modelu.
+
+        Logowanie i Alertowanie: Zbieranie logów z aplikacji i ustawianie alertów, które informują o problemach (np. nagły wzrost liczby błędów, spadek dokładności predykcji).
+
+        Ponowny Trening (Retraining): Na podstawie zebranych danych i wyników monitoringu, okresowo uruchamia się proces ponownego treningu modelu na nowszych, bardziej aktualnych danych.
+
+    Wynik tej fazy: Niezawodny system, który nie tylko działa, ale jest też odporny na zmiany i którego jakość jest stale nadzorowana. To prowadzi z powrotem do Fazy 2 (nowe dane) i Fazy 3 (nowy model), zamykając cykl.
+
+Podsumowanie – Cykliczna Natura Procesu
+
+    Tworzenie aplikacji AI to nie jest wodospad (jednokierunkowy proces), ale cykl życia.
+
+    Wyniki z fazy monitorowania stają się danymi wejściowymi do kolejnej iteracji projektu, co pozwala na ciągłe doskonalenie aplikacji.
+
+    Każda z technologii, które poznaliśmy – Python, Pandas, Pydantic, FastAPI, Docker, bazy danych – odgrywa kluczową rolę w co najmniej jednej z tych faz, tworząc razem kompletny, profesjonalny proces inżynierii AI.

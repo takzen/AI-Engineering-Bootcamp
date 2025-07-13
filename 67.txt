@@ -1,0 +1,103 @@
+Moduł 8, Punkt 67: Monitorowanie aplikacji AI w LangSmith
+
+Gratulacje, dotarłeś do modułu, który oddziela amatorów od profesjonalistów. Zbudowałeś już potężne aplikacje w LangChain i LangGraph. Działają. Ale co tak naprawdę dzieje się w ich wnętrzu, gdy korzystają z nich prawdziwi użytkownicy? Ile kosztują? Jak szybko działają? Gdzie popełniają błędy?
+
+Odpowiedzi na te pytania dostarcza LangSmith – platforma stworzona przez twórców LangChain specjalnie do obserwowalności (observability), czyli monitorowania, debugowania i testowania aplikacji opartych o LLM.
+
+    Problem: "Czarna skrzynka" aplikacji AI
+
+Twoja wdrożona aplikacja to "czarna skrzynka". Widzisz zapytania wchodzące i odpowiedzi wychodzące, ale nie masz pojęcia, co działo się pośrodku:
+
+    Jaki dokładnie prompt został ostatecznie wysłany do modelu?
+
+    Jakich narzędzi użył agent i z jakim wynikiem?
+
+    Ile tokenów zużyto na to konkretne zapytanie?
+
+    Jak długo trwał każdy krok w łańcuchu lub grafie?
+
+    Które zapytania użytkowników najczęściej prowadzą do błędów?
+
+Bez wglądu w te dane, optymalizacja i poprawa aplikacji jest jak szukanie igły w stogu siana.
+
+    Czym jest LangSmith i jak działa?
+
+LangSmith to platforma deweloperska, która działa jak "rejestrator lotu" dla Twojej aplikacji AI.
+
+Jak to działa?
+Integracja jest banalnie prosta. Wystarczy, że w środowisku, w którym działa Twoja aplikacja (na serwerze, w kontenerze Docker), ustawisz kilka zmiennych środowiskowych:
+LANGCHAIN_TRACING_V2="true"
+LANGCHAIN_API_KEY="ls__..."
+LANGCHAIN_PROJECT="moja-produkcyjna-aplikacja"
+
+Od tego momentu, każda operacja wykonana przez LangChain lub LangGraph jest automatycznie i w tle rejestrowana w LangSmith. Nie musisz zmieniać ani jednej linijki kodu swojej aplikacji!
+
+Co jest rejestrowane?
+Każde wywołanie Twojej aplikacji (np. chain.invoke() lub app.invoke()) jest zapisywane jako ślad (trace). Ślad to hierarchiczna struktura, która zawiera każdy, nawet najmniejszy krok wykonany przez Twój system.
+
+    Kluczowe funkcje monitorowania w LangSmith
+
+Wejdźmy do panelu LangSmith i zobaczmy, co możemy tam znaleźć.
+
+    Panel Projektu (Project Dashboard):
+    To Twoje centrum dowodzenia. Na pierwszy rzut oka widzisz kluczowe metryki dla wybranego projektu w danym okresie czasu:
+
+        Liczba uruchomień (Runs): Ile razy Twoja aplikacja została wywołana.
+
+        Wskaźnik błędów (Error Rate): Jaki procent wywołań zakończył się błędem.
+
+        Latencja (Latency): Jak długo (średnio, 99. percentyl) trwa uzyskanie odpowiedzi. Widzisz, czy Twoja aplikacja nie zwalnia.
+
+        Zużycie tokenów (Token Usage): Ile tokenów zostało zużytych, co bezpośrednio przekłada się na koszt.
+
+    Tabela Śladów (Traces Table):
+    To szczegółowa lista wszystkich ostatnich wywołań Twojej aplikacji. Dla każdego śladu widzisz:
+
+        Nazwę: Główna nazwa łańcucha lub grafu.
+
+        Czas trwania: Ile trwało całe wywołanie.
+
+        Status: Sukces (zielony) lub Błąd (czerwony).
+
+        Opinie (Feedback): Jeśli zbierasz opinie od użytkowników (np. kciuk w górę/dół), zobaczysz je tutaj.
+
+    Szczegóły Śladu (Trace View):
+    Po kliknięciu na dowolny ślad z tabeli, wchodzisz w serce LangSmith. To tutaj odbywa się prawdziwa magia:
+
+        Hierarchiczny widok: Po lewej stronie widzisz drzewo wszystkich operacji, które złożyły się na ten jeden ślad, np. AgentExecutor -> ChatOpenAI -> TavilySearch.
+
+        Szczegóły kroku: Klikając na dowolny krok (np. ChatOpenAI), po prawej stronie widzisz jego pełne dane:
+
+            Wejścia (Inputs): Dokładna treść sformatowanego promptu, który trafił do modelu.
+
+            Wyjścia (Outputs): Surowa odpowiedź z modelu.
+
+            Metadane: Czas trwania tego kroku, zużycie tokenów, nazwa modelu, temperatura itp.
+
+        Wizualizacja grafu: Dla aplikacji LangGraph, zobaczysz graficzną reprezentację przepływu z podświetloną ścieżką, którą podążyło to konkretne wywołanie.
+
+    Praktyczne zastosowania monitoringu
+
+Dzięki tym narzędziom możesz w końcu odpowiedzieć na kluczowe pytania:
+
+    Identyfikacja problemów: Sortując tabelę śladów po statusie "Error", natychmiast znajdujesz wszystkie nieudane wywołania i możesz przeanalizować, co poszło nie tak.
+
+    Optymalizacja kosztów: W panelu projektu widzisz, czy koszty nagle nie wzrosły. Analizując ślady, możesz znaleźć zapytania, które zużywają najwięcej tokenów i zastanowić się, jak je zoptymalizować.
+
+    Poprawa wydajności: Sortując po czasie trwania, znajdujesz "najwolniejsze" zapytania. W widoku śladu możesz dokładnie zobaczyć, który krok (np. wywołanie narzędzia, a może sam LLM?) jest "wąskim gardłem".
+
+    Analiza zachowań użytkowników: Przeglądając listę zapytań, dowiadujesz się, o co najczęściej pytają użytkownicy i jak Twoja aplikacja sobie z tym radzi.
+
+    Podsumowanie
+
+LangSmith zamienia zgadywanie w inżynierię opartą na danych. Przestajesz się domyślać, dlaczego Twoja aplikacja działa wolno lub daje złe odpowiedzi – po prostu to widzisz.
+
+Najważniejsze do zapamiętania:
+
+    Obserwowalność jest kluczowa: Nie można ulepszać czegoś, czego się nie mierzy. LangSmith dostarcza danych do podejmowania świadomych decyzji.
+
+    Integracja jest bezinwazyjna: Wystarczy ustawić zmienne środowiskowe, aby zacząć zbierać dane, bez modyfikacji istniejącego kodu.
+
+    Od ogółu do szczegółu: Zaczynasz od ogólnego panelu metryk, a w razie potrzeby możesz "zanurkować" w dowolny pojedynczy ślad, aby zrozumieć jego działanie na poziomie mikro.
+
+W kolejnej lekcji zobaczymy, jak wykorzystać te dane do aktywnego debugowania i testowania naszych aplikacji.

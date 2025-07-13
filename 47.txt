@@ -1,0 +1,97 @@
+Moduł 6, Punkt 47: Praca z blokami w LangFlow
+
+W poprzednich lekcjach poznaliśmy ogólną koncepcję budowania przepływów w LangFlow. Teraz zejdziemy na niższy, bardziej praktyczny poziom i przyjrzymy się "atomom", z których składa się każda aplikacja – blokom (nazywanym też komponentami lub węzłami).
+
+Opanowanie sztuki pracy z blokami to klucz do szybkości, czytelności i efektywności Twojej pracy w LangFlow. To jak nauka skrótów klawiszowych i najlepszych praktyk w edytorze kodu.
+
+    Anatomia bloku – Co widzisz na ekranie?
+
+Każdy blok, który przeciągasz na obszar roboczy, ma podobną strukturę. Przyjrzyjmy się jej na przykładzie bloku PromptTemplate:
+
+    Nazwa bloku: Na górze widnieje czytelna nazwa, np. PromptTemplate.
+
+    Wejścia (Inputs): Po lewej stronie bloku znajdują się "gniazda" wejściowe. To tutaj podłączasz dane z innych bloków. Każde gniazdo ma etykietę (np. template, input_variables), która odpowiada parametrowi w kodzie LangChain.
+
+    Wyjścia (Outputs): Po prawej stronie znajduje się jedno lub więcej gniazd wyjściowych. To stąd pobierasz wynik działania bloku, aby przekazać go dalej.
+
+    Pola konfiguracyjne: Wewnątrz samego bloku mogą znajdować się pola do wpisywania wartości (np. pole tekstowe dla szablonu w PromptTemplate). Są to najważniejsze parametry, które można edytować bezpośrednio.
+
+    Panel boczny (Sidebar): Po kliknięciu na blok, po prawej stronie ekranu pojawia się szczegółowy panel konfiguracji. Znajdziesz tu wszystkie dostępne parametry dla danego bloku, również te bardziej zaawansowane.
+
+    Podstawowe operacje na blokach
+
+To są czynności, które będziesz wykonywać bez przerwy.
+
+    Dodawanie bloków:
+
+        Najprościej: Kliknij przycisk + Add Component po lewej stronie lub użyj paska wyszukiwania.
+
+        Szybciej: Kliknij prawym przyciskiem myszy w dowolnym miejscu na obszarze roboczym. Pojawi się menu kontekstowe z wyszukiwarką – to najszybszy sposób na dodanie nowego bloku.
+
+    Łączenie bloków:
+
+        Kliknij na kółko wyjściowe jednego bloku i przeciągnij linię do kółka wejściowego drugiego bloku.
+
+        LangFlow jest "inteligentny" – jeśli typy danych się zgadzają, połączenie zostanie utworzone. Jeśli nie, linia będzie czerwona lub nie pozwoli się połączyć.
+
+    Konfiguracja bloków:
+
+        Wpisuj wartości bezpośrednio w polach na bloku.
+
+        Dla bardziej zaawansowanych opcji, kliknij blok i użyj panelu bocznego. Zwróć uwagę, że niektóre pola to przełączniki (toggle), inne to listy rozwijane, a jeszcze inne to pola tekstowe.
+
+    Duplikowanie bloków:
+
+        Zaznacz blok, a następnie użyj skrótu Ctrl+D (lub Cmd+D na Macu). Możesz też kliknąć na blok i wybrać opcję Duplicate z menu, które pojawi się na dole. Jest to niezwykle przydatne, gdy potrzebujesz kilku podobnie skonfigurowanych promptów lub modeli.
+
+    Usuwanie bloków i połączeń:
+
+        Aby usunąć blok, zaznacz go i naciśnij klawisz Delete lub Backspace.
+
+        Aby usunąć połączenie, kliknij na linię, która je reprezentuje, a następnie naciśnij Delete.
+
+    Zaawansowane techniki i dobre praktyki
+
+Gdy już opanujesz podstawy, te techniki znacznie usprawnią Twoją pracę.
+
+    Grupowanie bloków:
+
+        Zaznacz kilka powiązanych ze sobą bloków (trzymając Shift i klikając lub rysując prostokąt zaznaczenia).
+
+        Kliknij prawym przyciskiem myszy i wybierz Group Selection.
+
+        Twoje bloki zostaną umieszczone w ramce, którą możesz nazwać (np. "Logika Pobierania Danych") i nadać jej kolor. To absolutnie kluczowe dla utrzymania czytelności w dużych przepływach!
+
+    Używanie "Globalnych Zmiennych":
+
+        W panelu po prawej stronie (gdy żaden blok nie jest zaznaczony) znajdziesz sekcję Global Variables.
+
+        Możesz tu zdefiniować zmienną, np. OPENAI_API_KEY.
+
+        Następnie, w konfiguracji bloku ChatOpenAI, zamiast wpisywać klucz, możesz odwołać się do tej zmiennej, wpisując {{OPENAI_API_KEY}}.
+
+        Dzięki temu, jeśli będziesz chciał zmienić klucz, zrobisz to w jednym miejscu, a nie w dziesięciu różnych blokach modeli.
+
+    "Zamrażanie" (Freezing) bloków:
+
+        Jeśli masz blok, którego wynik jest stały i nie chcesz, aby był on ponownie obliczany przy każdym uruchomieniu przepływu (np. załadowany plik), możesz go "zamrozić".
+
+        Zaznacz blok i poszukaj opcji Freeze w menu.
+
+        Zamrożony blok wykona się raz, a jego wynik zostanie zapamiętany w pamięci podręcznej na czas sesji.
+
+    Podsumowanie
+
+Efektywna praca w LangFlow to nie tylko wiedza, które bloki ze sobą połączyć, ale także umiejętność sprawnego zarządzania nimi na obszarze roboczym.
+
+Najważniejsze do zapamiętania:
+
+    Poznaj anatomię bloku: Zrozum, gdzie są wejścia, wyjścia i jak korzystać z panelu bocznego do zaawansowanej konfiguracji.
+
+    Używaj skrótów i menu kontekstowego: Dodawanie bloków prawym przyciskiem myszy i duplikowanie za pomocą Ctrl+D to Twoi najlepsi przyjaciele.
+
+    Organizuj swój przepływ: Używaj grupowania, aby wizualnie oddzielać logiczne części aplikacji. To niezwykle ważne dla czytelności i utrzymania projektu.
+
+    Centralizuj konfigurację: Korzystaj z globalnych zmiennych do przechowywania wartości, które są używane w wielu miejscach (jak klucze API).
+
+Poświęcenie chwili na opanowanie tych mechanik zaprocentuje ogromną oszczędnością czasu i nerwów podczas budowania Twoich kolejnych, coraz bardziej złożonych aplikacji AI.

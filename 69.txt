@@ -1,0 +1,109 @@
+Moduł 8, Punkt 69: Testowanie modeli i optymalizacja wydajności
+
+W poprzedniej lekcji nauczyliśmy się reagować na błędy, które już wystąpiły. Ale jak możemy proaktywnie zapobiegać problemom z jakością? Jak możemy być pewni, że nowa wersja naszego promptu jest faktycznie lepsza od starej? Jak znaleźć "wąskie gardła", które spowalniają naszą aplikację, zanim użytkownicy zaczną narzekać?
+
+W tej lekcji skupimy się na dwóch kluczowych aspektach inżynierii AI: systematycznym testowaniu jakości (ewaluacji) oraz optymalizacji wydajności i kosztów. LangSmith dostarcza do tego wyspecjalizowanych narzędzi.
+
+    Problem: Skąd wiesz, że "lepsze" jest faktycznie lepsze?
+
+Wyobraź sobie, że modyfikujesz prompt w swoim agencie, aby dawał bardziej szczegółowe odpowiedzi. Uruchamiasz go dla jednego, dwóch zapytań i wydaje się, że działa lepiej. Ale czy na pewno?
+
+    Czy poprawa nie dotyczy tylko tych kilku testowych przypadków?
+
+    Czy przypadkiem nie pogorszyłeś odpowiedzi dla innych typów zapytań (regresja)?
+
+    Czy "bardziej szczegółowa" odpowiedź nie jest teraz znacznie wolniejsza i droższa?
+
+Poleganie na anegdotycznych, manualnych testach jest nieefektywne i prowadzi do iluzji postępu. Potrzebujemy systematycznego, mierzalnego podejścia.
+
+    Ewaluacja (Testing & Evaluation) w LangSmith
+
+LangSmith pozwala na zautomatyzowanie procesu oceny jakości Twojej aplikacji na podstawie predefiniowanych zestawów danych.
+
+Workflow ewaluacji:
+
+    Stwórz Zestaw Danych (Dataset):
+
+        W LangSmith tworzysz zbiór danych, który jest "złotym standardem" dla Twojej aplikacji. Każdy wiersz w zbiorze to para:
+
+            Wejście (Input): Przykładowe zapytanie użytkownika (np. "Jaka jest stolica Francji?").
+
+            Oczekiwane Wyjście (Reference Output): Idealna, wzorcowa odpowiedź (np. "Stolicą Francji jest Paryż.").
+
+        Zestawy danych możesz tworzyć ręcznie lub, co bardzo wygodne, dodając do nich interesujące ślady (traces) z historii uruchomień.
+
+    Zdefiniuj Ewaluatory (Evaluators):
+
+        Ewaluator to funkcja, która porównuje odpowiedź wygenerowaną przez Twoją aplikację z oczekiwanym wyjściem i wystawia ocenę.
+
+        LangSmith oferuje wiele wbudowanych ewaluatorów, np.:
+
+            Kryteria (Criteria): Używa LLM do oceny odpowiedzi na podstawie zdefiniowanych kryteriów, np. conciseness (zwięzłość), correctness (poprawność), harmfulness (szkodliwość).
+
+            Dopasowanie Wyrażeń Regularnych (Regex Match): Sprawdza, czy odpowiedź pasuje do wzorca.
+
+            Podobieństwo Semantyczne (Embedding Distance): Porównuje wektory odpowiedzi i wzorca.
+
+            Dopasowanie JSON (JSON Validity/Equality): Sprawdza, czy wyjście jest poprawnym JSON-em o określonej strukturze.
+
+    Uruchom Test (Run Evaluation):
+
+        W panelu LangSmith wybierasz, którą wersję swojej aplikacji (lub który prompt) chcesz przetestować.
+
+        Wskazujesz zestaw danych, na którym ma być przeprowadzony test.
+
+        Wybierasz ewaluatory, które mają być użyte do oceny.
+
+        LangSmith automatycznie uruchomi Twoją aplikację dla każdego wejścia z zestawu danych i zbierze wyniki oraz oceny.
+
+    Analizuj Wyniki:
+
+        Otrzymujesz szczegółowy raport w formie tabeli, gdzie dla każdego przypadku testowego widzisz wejście, wyjście, ocenę od każdego ewaluatora i czas wykonania.
+
+        Możesz łatwo porównać wyniki dwóch różnych wersji aplikacji (np. "v1 z prostym promptem" vs "v2 ze złożonym promptem") i na podstawie twardych danych zdecydować, która jest lepsza.
+
+    Optymalizacja wydajności i kosztów
+
+Jakość to nie wszystko. Aplikacja musi być też szybka i tania. LangSmith dostarcza narzędzi do identyfikacji "wąskich gardeł".
+
+    Analiza Latencji (Latency Analysis):
+
+        W panelu projektu, dashboard Latency pokazuje rozkład czasów odpowiedzi (p50, p95, p99). Jeśli widzisz, że 99% Twoich zapytań trwa dłużej niż np. 10 sekund, masz problem z wydajnością.
+
+        W tabeli śladów możesz posortować uruchomienia po czasie trwania (Duration), aby znaleźć te najwolniejsze.
+
+        W widoku szczegółowym takiego "wolnego" śladu możesz dokładnie zobaczyć, który krok w hierarchii (np. wywołanie LLM, a może wolne narzędzie?) zajął najwięcej czasu. To wskazuje, gdzie należy skupić swoje wysiłki optymalizacyjne.
+
+    Analiza Kosztów (Cost Analysis):
+
+        Dashboard Token Usage pokazuje całkowite zużycie tokenów (wejściowych i wyjściowych). Możesz monitorować, jak zmiany w promptach wpływają na koszty.
+
+        Sortując ślady po zużyciu tokenów, możesz znaleźć "najdroższe" zapytania.
+
+        Częstą przyczyną wysokich kosztów jest nieefektywne zarządzanie historią konwersacji (przekazywanie zbyt długiego kontekstu w każdym zapytaniu). Analiza promptu w śladzie natychmiast to ujawni.
+
+    Praktyczne wnioski z optymalizacji
+
+Analizując dane w LangSmith, możesz podjąć konkretne, świadome decyzje:
+
+    "Widzę, że mój agent do klasyfikacji zapytań używa GPT-4o i generuje 80% kosztów, a trwa 3 sekundy. Zastąpię go tańszym i szybszym GPT-3.5-Turbo i przeprowadzę test ewaluacyjny, aby sprawdzić, czy jakość nie spadła."
+
+    "Okazuje się, że najwolniejszym krokiem jest wywołanie narzędzia, które łączy się z zewnętrznym, wolnym API. Muszę dodać warstwę buforowania (caching) dla tego narzędzia."
+
+    "Testy pokazują, że mój nowy, złożony prompt daje lepsze wyniki tylko o 2%, ale zwiększa koszty o 30%. To nie jest opłacalna zmiana."
+
+    Podsumowanie
+
+LangSmith dostarcza kompletny zestaw narzędzi do cyklu życia aplikacji AI, który wykracza daleko poza samo pisanie kodu.
+
+Najważniejsze do zapamiętania:
+
+    Testuj systematycznie, nie anegdotycznie: Używaj zestawów danych i automatycznych ewaluatorów, aby podejmować decyzje o jakości na podstawie danych.
+
+    Buduj "bibliotekę błędów": Każdy znaleziony problem z jakością dodawaj do zestawu testowego, aby chronić się przed regresją w przyszłości.
+
+    Monitoruj metryki produkcyjne: Regularnie sprawdzaj dashboardy latencji i kosztów, aby wcześnie wykrywać problemy z wydajnością i optymalizować swoją aplikację.
+
+    Optymalizacja to kompromis: Zawsze balansuj między jakością odpowiedzi, szybkością działania i kosztem. LangSmith daje Ci dane, aby znaleźć "złoty środek".
+
+Dzięki tym praktykom, jesteś w stanie nie tylko budować, ale także profesjonalnie utrzymywać, rozwijać i optymalizować aplikacje AI, zapewniając ich wysoką jakość i efektywność w długim okresie.

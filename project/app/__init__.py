@@ -1,0 +1,1 @@
+# Plik może być pusty. Jego obecność sprawia, że folder app jest traktowany jako pakiet Pythona.

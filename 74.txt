@@ -1,0 +1,87 @@
+Moduł 8, Punkt 74: LangSmith w integracji z bazami danych
+
+Jednym z najbardziej wartościowych zastosowań systemów AI jest umożliwienie użytkownikom "rozmowy" z danymi przechowywanymi w tradycyjnych bazach danych (np. SQL). Zbudowaliśmy już takie systemy za pomocą agentów SQL w LangChain i LangGraph.
+
+Działają one magicznie, ale "pod maską" odbywa się niezwykle złożony proces: model musi zrozumieć schemat bazy, napisać poprawne zapytanie SQL, wykonać je i zinterpretować wyniki. W tym wieloetapowym procesie mnóstwo rzeczy może pójść nie tak. Tutaj z pomocą przychodzi LangSmith, dając nam bezprecedensowy wgląd w każdą z tych interakcji.
+
+    Typowe problemy w pipeline'ach "Text-to-SQL"
+
+Gdy debugujemy agenta SQL, napotykamy na unikalne wyzwania, które trudno zdiagnozować, patrząc tylko na finalną odpowiedź:
+
+    Błędnie wygenerowany SQL: Model może wygenerować zapytanie, które jest syntaktycznie niepoprawne lub logicznie błędne (np. łączy nie te tabele, co trzeba).
+
+    "Halucynacje" na temat schematu: Model może "wymyślić" kolumny lub tabele, które nie istnieją w bazie.
+
+    Niewydajne zapytania: Wygenerowany SQL może technicznie działać, ale być bardzo niewydajny, powodując długie czasy odpowiedzi i obciążenie bazy danych.
+
+    Zła interpretacja wyników: Model może poprawnie wykonać zapytanie, ale źle zinterpretować otrzymane dane i przedstawić użytkownikowi mylące wnioski.
+
+    Problemy z uprawnieniami: Agent może próbować wykonać operację (np. DELETE), do której nie ma uprawnień w bazie danych.
+
+    Jak LangSmith pomaga diagnozować problemy z bazami danych?
+
+Gdy Twój agent SQL jest podłączony do LangSmith, każde jego uruchomienie tworzy bogaty ślad (trace), który pozwala Ci prześledzić cały proces myślowy.
+
+Workflow debugowania w LangSmith:
+
+    Zidentyfikuj problematyczny ślad: Znajdź uruchomienie, które dało złą odpowiedź lub zakończyło się błędem.
+
+    Przeanalizuj hierarchię śladu: W widoku śladu zobaczysz kroki, które wykonał agent, np.:
+
+        SQL Agent Executor (główny proces)
+
+            ChatOpenAI (agent podejmuje decyzję)
+
+            sql_db_query (wykonanie narzędzia, które wysyła SQL do bazy)
+
+            ChatOpenAI (agent interpretuje wynik i generuje finalną odpowiedź)
+
+    Zajrzyj do "mózgu" agenta: Kliknij na pierwszy krok ChatOpenAI. W panelu wejść zobaczysz dokładny prompt, który otrzymał model. Będzie on zawierał nie tylko pytanie użytkownika, ale także schemat bazy danych, który LangChain automatycznie dołączył. Możesz tu sprawdzić, czy schemat został poprawnie odczytany.
+
+    Sprawdź wygenerowany SQL: W tym samym kroku, w panelu wyjść, zobaczysz decyzję agenta. Jeśli zdecydował się użyć narzędzia sql_db_query, zobaczysz dokładne zapytanie SQL, które wygenerował. To kluczowy moment! Możesz skopiować ten SQL i uruchomić go bezpośrednio w swoim kliencie bazy danych, aby sprawdzić, czy jest poprawny.
+
+    Przeanalizuj interakcję z bazą: Kliknij na krok sql_db_query.
+
+        Wejście: Zobaczysz SQL, który został wykonany.
+
+        Wyjście: Zobaczysz surowy wynik, który wrócił z bazy danych. Możesz zweryfikować, czy jest on zgodny z Twoimi oczekiwaniami.
+
+        Błąd: Jeśli wykonanie zapytania SQL spowodowało błąd w bazie (np. błąd składni, naruszenie klucza obcego), pełny komunikat o błędzie z bazy danych zobaczysz właśnie tutaj.
+
+    Oceń finalną interpretację: Na koniec, kliknij na ostatni krok ChatOpenAI. Zobaczysz, jak agent otrzymał surowe dane z bazy i jakie było jego finalne sformułowanie odpowiedzi dla użytkownika. Możesz ocenić, czy ta interpretacja była poprawna.
+
+    Praktyczne scenariusze i wnioski z analizy w LangSmith
+
+    Scenariusz: "Agent nie widzi nowej kolumny"
+
+        Analiza w LangSmith: W prompcie agenta sprawdzasz schemat bazy. Widzisz, że schemat przekazany do LLM jest przestarzały i nie zawiera nowej kolumny.
+
+        Wniosek/Naprawa: Problem nie leży w modelu, ale w sposobie, w jaki LangChain odświeża schemat bazy. Musisz sprawdzić konfigurację obiektu SQLDatabase w swoim kodzie.
+
+    Scenariusz: "Agent zwraca błędne dane, mimo że pytanie jest proste"
+
+        Analiza w LangSmith: Patrzysz na wygenerowany SQL. Okazuje się, że agent użył LEFT JOIN zamiast INNER JOIN, co spowodowało dołączenie niechcianych wierszy.
+
+        Wniosek/Naprawa: Musisz poprawić główny prompt systemowy agenta, dodając bardziej precyzyjne instrukcje, jak ma konstruować zapytania JOIN w Twoim konkretnym przypadku.
+
+    Scenariusz: "Aplikacja jest bardzo wolna przy zapytaniach analitycznych"
+
+        Analiza w LangSmith: Sortujesz ślady po czasie trwania. Widzisz, że najwolniejsze są te, które wykonują złożone zapytania analityczne. W widoku śladu odkrywasz, że 95% czasu zajmuje krok sql_db_query. Wygenerowany SQL jest poprawny, ale bardzo niewydajny (np. brak indeksów w bazie).
+
+        Wniosek/Naprawa: Problem nie leży w LangChain, ale w samej bazie danych. Musisz zoptymalizować bazę, dodając odpowiednie indeksy, aby przyspieszyć wykonywanie tego typu zapytań.
+
+    Podsumowanie
+
+LangSmith jest absolutnie niezbędnym narzędziem do budowy i utrzymania niezawodnych systemów "Text-to-SQL". Zamienia on proces debugowania z czarnej magii w systematyczną analizę inżynieryjną.
+
+Najważniejsze do zapamiętania:
+
+    Ślad to cała historia: LangSmith daje Ci pełen wgląd w cały cykl: od zrozumienia pytania, przez inspekcję schematu, generację SQL, wykonanie zapytania, aż po interpretację wyniku.
+
+    Wygenerowany SQL jest kluczem: Zawsze analizuj dokładne zapytanie SQL, które stworzył model. To najczęstsze źródło problemów.
+
+    Oddzielaj problemy AI od problemów bazy danych: LangSmith pomaga Ci zdiagnozować, czy problem leży w logice generowania SQL przez model, czy w wydajności lub konfiguracji samej bazy danych.
+
+    Buduj zestawy testowe: Każdy znaleziony przypadek błędnego SQL dodawaj do zestawu testowego, aby zapewnić, że przyszłe zmiany w prompcie nie spowodują regresji.
+
+Dzięki temu podejściu, jesteś w stanie budować systemy, które nie tylko w imponujący sposób łączą świat języka naturalnego i danych strukturalnych, ale są także transparentne, diagnozowalne i niezawodne.

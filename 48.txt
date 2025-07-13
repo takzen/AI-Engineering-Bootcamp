@@ -1,0 +1,120 @@
+Moduł 6, Punkt 48: Tworzenie chatbotów w LangFlow
+
+W poprzednich lekcjach opanowaliśmy podstawy pracy z LangFlow, tworząc proste łańcuchy. Teraz nadszedł czas, aby zbudować jedną z najbardziej pożądanych aplikacji AI – w pełni funkcjonalnego, "pamiętającego" chatbota.
+
+Dobra wiadomość jest taka, że znasz już wszystkie niezbędne komponenty z modułu o LangChain. W LangFlow proces ten jest po prostu znacznie szybszy i bardziej wizualny. Przekonajmy się!
+
+    Architektura chatbota w LangFlow
+
+Przypomnijmy sobie kluczowe elementy składowe chatbota, które teraz odtworzymy w formie wizualnych bloków:
+
+    Model (LLM): "Mózg" naszej aplikacji, np. ChatOpenAI.
+
+    Szablon (Prompt Template): "Osobowość" i instrukcje dla bota, z miejscem na historię rozmowy i nowe pytanie.
+
+    Pamięć (Memory): Komponent, który przechowuje historię konwersacji, np. ConversationBufferMemory.
+
+    Łańcuch (Chain): "Klej", który spaja wszystkie te elementy w jedną, działającą całość, czyli LLMChain.
+
+    Interfejs Użytkownika: Wbudowane w LangFlow komponenty Chat Input i Chat Output.
+
+    Przewodnik krok po kroku: Budujemy chatbota z pamięcią
+
+Uruchom LangFlow i stwórz nowy, pusty projekt. Naszym celem jest stworzenie bota, który pamięta poprzednie wiadomości.
+
+Krok 1: Dodaj kluczowe komponenty
+
+Użyj paska wyszukiwania lub menu kontekstowego (prawy przycisk myszy), aby dodać na obszar roboczy następujące bloki:
+
+    Chat Input (z kategorii Inputs)
+
+    Chat Output (z kategorii Outputs)
+
+    ChatOpenAI (z kategorii Models)
+
+    PromptTemplate (z kategorii Prompts)
+
+    ConversationBufferMemory (z kategorii Memory)
+
+    LLMChain (z kategorii Chains)
+
+Rozmieść je na ekranie tak, aby tworzyły logiczny przepływ od lewej do prawej.
+
+Krok 2: Skonfiguruj każdy blok
+
+Teraz nadamy każdemu elementowi odpowiednie parametry.
+
+    ChatOpenAI: Kliknij na blok i skonfiguruj go – podaj klucz API (jeśli jeszcze tego nie zrobiłeś) i wybierz model, np. gpt-4o.
+
+    ConversationBufferMemory: Kliknij na ten blok. Zauważysz, że ma on parametr Memory Key. Domyślnie jest to history. Zapamiętaj tę nazwę, będzie nam potrzebna w szablonie!
+
+    PromptTemplate: To najważniejszy krok! Kliknij na blok i w polu Template wpisz szablon, który uwzględnia zarówno historię, jak i nowe zapytanie:
+    Generated code
+
+          
+    Jesteś pomocnym i przyjaznym asystentem.
+
+    Historia dotychczasowej rozmowy:
+    {history}
+
+    Pytanie od użytkownika:
+    {input}
+
+    Twoja odpowiedź:
+
+        
+
+    IGNORE_WHEN_COPYING_START
+
+    Use code with caution.
+    IGNORE_WHEN_COPYING_END
+
+    Zwróć uwagę, że użyliśmy {history} – to jest dokładnie ta sama nazwa, co Memory Key z poprzedniego bloku. Tak właśnie LangFlow wie, gdzie wstawić historię rozmowy.
+
+Krok 3: Połącz komponenty w działający system
+
+Teraz czas na rysowanie połączeń. To wizualny odpowiednik budowania łańcucha w kodzie.
+
+    Połącz wyjście ChatOpenAI z wejściem llm w bloku LLMChain.
+
+    Połącz wyjście PromptTemplate z wejściem prompt w bloku LLMChain.
+
+    Połącz wyjście ConversationBufferMemory z wejściem memory w bloku LLMChain.
+
+    Połącz wyjście z bloku Chat Input z wejściem input w bloku LLMChain. To połączenie dostarcza nowe pytanie od użytkownika.
+
+    Na koniec, połącz wyjście text z bloku LLMChain z wejściem message w bloku Chat Output. To spowoduje, że wynik działania łańcucha zostanie wyświetlony użytkownikowi.
+
+Twój schemat powinien teraz wyglądać jak kompletny system: Chat Input dostarcza dane do LLMChain, który korzysta z ChatOpenAI, PromptTemplate i ConversationBufferMemory, a jego wynik trafia do Chat Output.
+
+Krok 4: Testowanie chatbota
+
+Otwórz panel chatu w prawym dolnym rogu. Czas na test pamięci!
+
+    Pierwsze pytanie: "Cześć, mam na imię Karol."
+
+        Oczekiwana odpowiedź: Bot powinien grzecznie odpowiedzieć, np. "Cześć Karol! Miło mi Cię poznać."
+
+    Drugie pytanie: "Jaki jest największy ocean na Ziemi?"
+
+        Oczekiwana odpowiedź: Bot powinien odpowiedzieć na pytanie, np. "Największym oceanem na Ziemi jest Ocean Spokojny."
+
+    Trzecie pytanie (test pamięci): "A tak w ogóle, to jak mam na imię?"
+
+        Oczekiwana odpowiedź: Jeśli wszystko działa poprawnie, bot powinien odpowiedzieć: "Masz na imię Karol."
+
+Jeśli bot pamięta Twoje imię, oznacza to, że komponent ConversationBufferMemory działa prawidłowo i jest poprawnie zintegrowany z resztą przepływu.
+
+    Podsumowanie
+
+W zaledwie kilka minut udało Ci się stworzyć w pełni funkcjonalnego chatbota z pamięcią, co w kodzie zajęłoby znacznie więcej czasu na napisanie i skonfigurowanie.
+
+Kluczowe wnioski z tej lekcji:
+
+    Architektura chatbota w LangFlow jest wizualnym odzwierciedleniem tej samej logiki, którą stosowaliśmy w kodzie LangChain.
+
+    Prawidłowe dopasowanie nazw zmiennych (np. Memory Key w komponencie pamięci i {history} w szablonie promptu) jest kluczowe dla poprawnego przepływu danych.
+
+    Dzięki interaktywnemu interfejsowi chatu, możesz natychmiastowo testować i weryfikować działanie pamięci i persony swojego bota.
+
+Masz teraz solidny fundament. Możesz eksperymentować dalej – zmień "osobowość" bota w szablonie PromptTemplate, spróbuj użyć innego typu pamięci (np. ConversationBufferWindowMemory) lub dodaj kolejne komponenty, aby rozbudować jego możliwości.

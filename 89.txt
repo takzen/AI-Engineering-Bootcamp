@@ -1,0 +1,81 @@
+Moduł 9, Punkt 89: RAG vs tradycyjne modele LLM
+
+Przez cały ten moduł zgłębialiśmy technikę Retrieval-Augmented Generation (RAG). Nauczyliśmy się, jak ją budować, optymalizować i skalować. Teraz nadszedł czas na fundamentalne pytanie: dlaczego w ogóle jej potrzebujemy? Dlaczego nie możemy po prostu użyć potężnego, "gołego" modelu LLM, takiego jak GPT-4o?
+
+W tej ostatniej lekcji modułu dokonamy bezpośredniego porównania obu podejść, abyś mógł świadomie decydować, które z nich jest odpowiednie dla Twojego problemu.
+
+    Dwa podejścia do wiedzy w AI
+
+Wyobraź sobie, że zatrudniasz niezwykle inteligentnego, ale nieco roztargnionego eksperta. Masz dwa sposoby na wykorzystanie jego potencjału:
+
+    Podejście 1: "Goły" LLM (Poleganie na pamięci wewnętrznej)
+    Zadajesz ekspertowi pytanie i liczysz na to, że zna odpowiedź, bazując na wszystkim, czego nauczył się w swoim życiu (podczas treningu). Jest to niezwykle szybkie i płynne, ale ma swoje wady.
+
+    Podejście 2: RAG (Korzystanie z zewnętrznej bazy wiedzy)
+    Zadajesz ekspertowi pytanie, ale zanim on odpowie, dajesz mu dostęp do Twojej firmowej biblioteki i mówisz: "Znajdź relevantne dokumenty, przeczytaj je, a dopiero potem sformułuj odpowiedź, opierając się na tym, co właśnie przeczytałeś".
+
+    Porównanie w kluczowych aspektach
+
+Cecha	"Goły" Model LLM (np. GPT-4o)	System RAG (np. GPT-4o + Baza Wektorowa)
+Źródło wiedzy	Wewnętrzne, "zamrożone" parametry modelu. Wiedza kończy się w momencie zakończenia treningu.	Zewnętrzna, dynamiczna baza wiedzy (Twoje dokumenty, baza danych, strony WWW).
+Aktualność danych	Niska. Model nie wie nic o wydarzeniach po dacie odcięcia wiedzy.	Wysoka. Wystarczy zaktualizować bazę wiedzy, aby system poznał nowe informacje.
+Dostęp do danych prywatnych	Brak. Model nie ma dostępu do Twoich firmowych, poufnych danych.	Pełen i kontrolowany. System odpowiada na podstawie Twoich prywatnych dokumentów.
+Halucynacje	Wyższe ryzyko. Gdy model nie zna odpowiedzi, ma tendencję do "wymyślania" faktów, aby zadowolić użytkownika.	Niskie ryzyko. Odpowiedzi są "ugruntowane" (grounded) w konkretnych fragmentach tekstu z bazy wiedzy.
+Transparentność / Możliwość cytowania	Brak. Nie wiemy, na podstawie jakich "wewnętrznych" danych model sformułował odpowiedź. To "czarna skrzynka".	Wysoka. Możemy pokazać użytkownikowi dokładne fragmenty źródłowe, na podstawie których powstała odpowiedź.
+Koszt aktualizacji wiedzy	Astronomiczny. Wymaga re-treningu lub kosztownego fine-tuningu całego modelu.	Niski. Wymaga jedynie ponownego zindeksowania nowych lub zmienionych dokumentów.
+Złożoność implementacji	Banalnie prosta. Jedno wywołanie API.	Znacznie wyższa. Wymaga zbudowania i utrzymania całego pipeline'u (loadery, splittery, baza wektorowa).
+Latencja (czas odpowiedzi)	Bardzo niska. Jedno szybkie wywołanie API.	Wyższa. Musi najpierw wykonać krok wyszukiwania (retrieval), a dopiero potem generowania.
+
+    Kiedy wybrać które podejście? Decyzyjne drzewko
+
+Oto prosty proces myślowy, który pomoże Ci podjąć decyzję:
+
+Pytanie 1: Czy Twoja aplikacja musi odpowiadać na podstawie wiedzy, która jest...
+
+    ...aktualna (po 2023 roku)?
+
+    ...specyficzna dla Twojej domeny (np. medycyna, prawo)?
+
+    ...prywatna (np. dane firmowe)?
+
+Jeśli odpowiedź na choćby jedno z tych pytań brzmi "TAK", to potrzebujesz systemu RAG.
+
+Jeśli odpowiedź na wszystkie te pytania brzmi "NIE", przejdź do Pytania 2.
+
+Pytanie 2: Czy Twoja aplikacja wykonuje zadania kreatywne lub ogólne, które nie wymagają opierania się na konkretnych faktach?
+
+    Generowanie pomysłów marketingowych.
+
+    Pisanie wierszy.
+
+    Tłumaczenie tekstu.
+
+    Prowadzenie ogólnej rozmowy (small talk).
+
+Jeśli odpowiedź brzmi "TAK", to prawdopodobnie wystarczy Ci "goły" model LLM. Jest szybszy, tańszy i prostszy w implementacji, a ryzyko halucynacji jest w tych zastosowaniach mniejsze lub mniej szkodliwe.
+
+    Przyszłość: Hybrydowe podejścia
+
+Warto pamiętać, że to nie jest wybór "zero-jedynkowy". Najbardziej zaawansowane systemy (takie jak te budowane w LangGraph) często łączą oba podejścia. Agent może najpierw spróbować odpowiedzieć, bazując na swojej wewnętrznej wiedzy, a dopiero gdy stwierdzi, że jej nie posiada, dynamicznie zdecydować o użyciu narzędzia RAG do przeszukania bazy wiedzy.
+
+    Podsumowanie
+
+RAG to nie jest "lepsza" wersja LLM. To technika, która rozszerza możliwości LLM, pozwalając mu operować na zewnętrznej, kontrolowanej przez Ciebie wiedzy.
+
+Użyj "gołego" LLM, gdy:
+
+    Potrzebujesz szybkości i prostoty.
+
+    Wykonujesz zadania kreatywne, ogólne lub nie wymagające weryfikowalnych faktów.
+
+    Twoje zadanie opiera się na ogólnej wiedzy o świecie sprzed daty odcięcia.
+
+Użyj systemu RAG, gdy:
+
+    Wiarygodność i wierność faktom są absolutnie kluczowe.
+
+    Aplikacja musi korzystać z aktualnych, prywatnych lub bardzo specjalistycznych danych.
+
+    Chcesz dać użytkownikom możliwość weryfikacji odpowiedzi poprzez cytowanie źródeł.
+
+Świadomy wybór między tymi dwoma podejściami jest jedną z najważniejszych decyzji architektonicznych, jakie podejmiesz podczas projektowania swojej aplikacji AI.

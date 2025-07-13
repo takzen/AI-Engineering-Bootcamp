@@ -1,0 +1,87 @@
+Moduł 7, Punkt 66: Praktyczne wdrożenia LangGraph
+
+Przez cały kurs poznaliśmy ogromną liczbę narzędzi i technik – od prostych łańcuchów, przez wizualne prototypowanie, aż po złożoną orkiestrację w LangGraph. Teraz czas zebrać tę wiedzę i zobaczyć, jak przekłada się ona na realne, produkcyjne systemy, które rozwiązują skomplikowane problemy biznesowe.
+
+LangGraph nie jest tylko akademickim eksperymentem. To narzędzie stworzone do budowy nowej generacji aplikacji AI. W tej lekcji przeanalizujemy kilka praktycznych, zaawansowanych architektur, które możesz zbudować, wykorzystując poznane wzorce.
+
+    Wzorzec 1: Samo-korygujący się system RAG (Self-Correcting RAG)
+
+Problem: Standardowy system RAG jest świetny, ale ma słabość: jeśli retriever (wyszukiwarka) pobierze z bazy wektorowej nieprawidłowe lub niekompletne fragmenty (chunki), to LLM, nawet najlepszy, wygeneruje na ich podstawie złą odpowiedź ("garbage in, garbage out").
+
+Rozwiązanie w LangGraph: Zbudowanie grafu, który potrafi ocenić jakość pobranych danych i, w razie potrzeby, spróbować ponownie.
+
+Architektura:
+
+    Węzeł Retrieve: Na podstawie pytania użytkownika pobiera fragmenty z bazy wektorowej.
+
+    Węzeł Grade Documents (Krytyk): To kluczowy, nowy element. Specjalnie skonstruowany LLM ocenia, czy pobrane fragmenty są rzeczywiście relevantne i wystarczające do odpowiedzi na pytanie. Może zwrócić ocenę: tak lub nie.
+
+    Krawędź Warunkowa:
+
+        Jeśli ocena to tak, przepływ idzie do węzła Generate Answer, który tworzy odpowiedź na podstawie dobrych fragmentów.
+
+        Jeśli ocena to nie, przepływ idzie do węzła Rewrite Query.
+
+    Węzeł Rewrite Query: Inny LLM analizuje oryginalne pytanie i próbuję je przeformułować, aby było bardziej precyzyjne (np. dodając synonimy, rozszerzając kontekst).
+
+    Pętla: Po przeformułowaniu zapytania, graf wraca do węzła Retrieve, aby spróbować wyszukiwania z nowym, lepszym zapytaniem.
+
+Korzyść: System staje się znacznie bardziej odporny na niedoskonałości bazy wektorowej i niejednoznaczne pytania użytkowników. Potrafi sam naprawić swój proces wyszukiwania.
+
+    Wzorzec 2: Zespół Agentów do Planowania i Wykonywania (Plan-and-Execute)
+
+Problem: Jak rozwiązać bardzo złożone, wieloetapowe zadanie, takie jak "Zrób research na temat najlepszych praktyk w marketingu AI, stwórz na tej podstawie strategię dla mojej firmy i napisz trzy przykładowe posty na bloga"?
+
+Rozwiązanie w LangGraph: Stworzenie zespołu agentów, gdzie jeden jest "mózgiem" (planistą), a inni są "rękami" (wykonawcami).
+
+Architektura:
+
+    Węzeł Planner (Planista): Otrzymuje złożone zadanie. Jego jedyną rolą jest rozbicie go na listę mniejszych, konkretnych kroków, np.:
+
+        Krok 1: Wyszukaj w internecie "AI marketing best practices 2024".
+
+        Krok 2: Przeanalizuj znalezione artykuły i zsyntetyzuj 5 kluczowych strategii.
+
+        Krok 3: Napisz post na bloga na temat strategii nr 1.
+
+        ...itd.
+
+    Węzeł Executor (Wykonawca): To agent z dostępem do narzędzi (wyszukiwarka, edytor tekstu). Pobiera jeden krok z planu i go wykonuje.
+
+    Węzeł Updater: Aktualizuje stan, dodając wynik wykonanego kroku i oznaczając go jako "ukończony".
+
+    Krawędź Warunkowa (Główna Pętla): Po aktualizacji, sprawdza, czy w planie są jeszcze jakieś nieukończone kroki.
+
+        Jeśli tak, przepływ wraca do węzła Executor, aby pobrał kolejny krok.
+
+        Jeśli nie (wszystkie kroki ukończone), przepływ idzie do węzła Final Answer, który kompiluje wszystkie wyniki w ostateczną odpowiedź.
+
+Korzyść: System potrafi radzić sobie z bardzo złożonymi, długotrwałymi zadaniami w zorganizowany sposób, a cały proces jest transparentny i łatwy do śledzenia.
+
+    Wzorzec 3: Human-in-the-Loop (Człowiek w pętli)
+
+Problem: W wielu krytycznych zastosowaniach (np. medycyna, finanse) nie możemy w 100% zaufać autonomicznej decyzji AI. Potrzebujemy, aby człowiek-ekspert zatwierdził kluczowe kroki.
+
+Rozwiązanie w LangGraph: Zaprojektowanie grafu, który w pewnym momencie zatrzymuje się i czeka na zewnętrzną interwencję.
+
+Architektura:
+
+    Węzeł Propose Action: Agent analizuje problem i proponuje plan działania lub konkretną akcję do wykonania.
+
+    Krawędź Warunkowa "Wymaga Zatwierdzenia?": Logika sprawdza, czy proponowana akcja jest na tyle krytyczna, że wymaga ludzkiej zgody.
+
+        Jeśli nie, przepływ idzie bezpośrednio do węzła Execute Action.
+
+        Jeśli tak, przepływ idzie do specjalnego stanu AWAITING_HUMAN_INPUT.
+
+    Stan AWAITING_HUMAN_INPUT: Graf zatrzymuje swoje działanie. System backendowy wysyła powiadomienie do interfejsu użytkownika (np. email do eksperta, wiadomość w panelu aplikacji), prezentując proponowaną akcję z przyciskami "Zatwierdź" / "Odrzuć".
+
+    Kontynuacja po interwencji: Gdy człowiek kliknie przycisk, jego decyzja jest wysyłana z powrotem do grafu, który wznawia pracę, podążając odpowiednią ścieżką.
+
+Korzyść: Tworzymy systemy, które łączą szybkość i moc AI z niezastąpionym osądem i odpowiedzialnością człowieka, co jest kluczowe w zastosowaniach o wysokim ryzyku.
+
+    Podsumowanie
+
+LangGraph to nie tylko biblioteka – to nowy sposób myślenia o architekturze oprogramowania AI. Pozwala nam odejść od prostych, liniowych procesów na rzecz budowy złożonych, adaptacyjnych i inteligentnych systemów, które bardziej przypominają współpracujące ze sobą zespoły niż sztywne linie produkcyjne.
+
+Wzorce takie jak samo-korekcja, planowanie i wykonywanie oraz człowiek w pętli to tylko wierzchołek góry lodowej. Mając w ręku potęgę stanowych, cyklicznych grafów, jesteś teraz w stanie projektować i wdrażać rozwiązania dla problemów, które jeszcze do niedawna wydawały się poza zasięgiem automatyzacji.

@@ -1,0 +1,104 @@
+Moduł 8, Punkt 68: Analiza błędów i debugowanie aplikacji
+
+W poprzedniej lekcji nauczyliśmy się, jak monitorować naszą aplikację i zbierać dane za pomocą LangSmith. Zbieranie danych to jedno, ale prawdziwa wartość pojawia się, gdy zaczynamy ich używać do znajdowania i naprawiania błędów.
+
+Debugowanie aplikacji opartych o LLM jest wyjątkowo trudne, ponieważ problemy rzadko są prostymi błędami składni. Znacznie częściej są to subtelne problemy z logiką promptu, nieoczekiwane zachowanie modelu lub błędy w interakcji z narzędziami. LangSmith został stworzony, aby rzucić światło na te "szare strefy".
+
+    Dwa rodzaje błędów w aplikacjach AI
+
+W LangSmith napotkamy na dwa główne typy problemów:
+
+    Twarde błędy (Hard Errors): To błędy, które powodują rzucenie wyjątku i przerwanie działania aplikacji. Przykłady:
+
+        Błąd API (np. zły klucz, przeciążenie serwerów OpenAI).
+
+        Błąd wykonania narzędzia (np. narzędzie próbowało podzielić przez zero).
+
+        Błąd parsowania (model zwrócił niepoprawny JSON).
+        W LangSmith takie ślady są wyraźnie oznaczone na czerwono.
+
+    Miękkie błędy (Soft Errors) / Problemy z jakością: To znacznie trudniejsza kategoria. Aplikacja technicznie działa i zwraca odpowiedź, ale odpowiedź jest zła. Przykłady:
+
+        Halucynacje (model "wymyśla" fakty).
+
+        Odpowiedź nie na temat.
+
+        Odpowiedź niekompletna lub zbyt ogólna.
+
+        Nieuprzejmy lub nieodpowiedni ton.
+        LangSmith sam z siebie nie wie, że to błąd. Tutaj kluczowe staje się zbieranie opinii (feedback) od użytkowników lub wewnętrznych testerów.
+
+    Workflow debugowania twardych błędów w LangSmith
+
+Załóżmy, że w panelu projektu widzisz, że wskaźnik błędów wzrósł do 5%. Czas działać!
+
+    Filtrowanie po błędach: W tabeli śladów użyj filtra, aby wyświetlić tylko te uruchomienia, które zakończyły się błędem (Status: Error).
+
+    Wybór śladu do analizy: Kliknij na jeden z czerwonych śladów, aby go otworzyć.
+
+    Identyfikacja źródła błędu: W widoku śladu, przewiń hierarchię operacji. Krok, który zawiódł, będzie również oznaczony na czerwono.
+
+    Analiza szczegółów kroku: Kliknij na ten czerwony krok. Po prawej stronie, w panelu szczegółów, znajdziesz:
+
+        Inputs: Dokładne dane wejściowe, które otrzymał ten krok. To kluczowe – możesz zobaczyć, jakie dane doprowadziły do błędu.
+
+        Error: Pełny komunikat o błędzie (traceback), dokładnie taki, jakbyś go widział w konsoli Pythona.
+
+    Reprodukcja i naprawa:
+
+        Teraz, gdy znasz dokładne dane wejściowe i komunikat o błędzie, możesz spróbować odtworzyć ten błąd lokalnie w swoim środowisku deweloperskim.
+
+        Jeśli problemem był np. zły format danych przekazywanych do narzędzia, możesz poprawić logikę agenta lub prompt, aby generował poprawne dane.
+
+    Workflow debugowania miękkich błędów (problemy z jakością)
+
+Załóżmy, że użytkownicy zgłaszają, że chatbot często daje nieprecyzyjne odpowiedzi.
+
+    Wykorzystanie opinii (Feedback):
+
+        W interfejsie swojej aplikacji zaimplementuj prosty mechanizm oceny (np. 👍/👎). Te oceny wysyłaj do LangSmith i przypisuj do odpowiednich śladów.
+
+        W panelu LangSmith możesz teraz filtrować ślady, które otrzymały negatywną opinię (np. "ocena = 0").
+
+    Analiza "złego" śladu:
+
+        Otwórz ślad z negatywną oceną. Przeczytaj całą konwersację.
+
+        Zanurkuj w szczegóły kroku, który wygenerował finalną odpowiedź (zwykle ChatOpenAI).
+
+        Sprawdź ostateczny prompt! Przeanalizuj, jaki dokładnie prompt (z całą historią i kontekstem) otrzymał model. Czy był on jasny? Czy zawierał wszystkie niezbędne informacje? Bardzo często problem leży właśnie tutaj.
+
+    Tworzenie zestawu testowego:
+
+        Gdy znajdziesz przykład złej odpowiedzi, nie pozwól mu uciec! W LangSmith możesz jednym kliknięciem dodać ten ślad do zestawu danych (dataset).
+
+        Z czasem budujesz w ten sposób "bibliotekę" trudnych przypadków i przykładów błędów.
+
+    Eksperymentowanie i regresja:
+
+        Wróć do swojego kodu (lub przepływu w LangFlow) i spróbuj poprawić prompt lub logikę.
+
+        Następnie, możesz uruchomić swój zestaw testowy na nowej wersji aplikacji, aby sprawdzić, czy:
+        a) Naprawiłeś stary błąd.
+        b) Nie zepsułeś przy okazji czegoś, co wcześniej działało (test regresji).
+
+    "Playground" – interaktywne debugowanie:
+    LangSmith oferuje funkcję "Playground". Możesz otworzyć dowolny krok z przeszłości, zmodyfikować jego dane wejściowe (np. poprawić fragment promptu) i uruchomić go ponownie bezpośrednio w interfejsie LangSmith, aby zobaczyć, czy zmiana przyniosła oczekiwany efekt. To niezwykle przyspiesza proces iteracji nad promptami.
+
+    Podsumowanie
+
+LangSmith przekształca debugowanie z reaktywnego gaszenia pożarów w proaktywny, ustrukturyzowany proces.
+
+Najważniejsze do zapamiętania:
+
+    Rozróżniaj twarde i miękkie błędy: Twarde błędy są łatwiejsze do zdiagnozowania, miękkie wymagają oceny i opinii.
+
+    Ślad to Twoje miejsce zbrodni: Analizuj szczegóły śladów, aby zidentyfikować dokładny krok i dane wejściowe, które spowodowały problem.
+
+    Prompt jest najczęstszym winowajcą: W przypadku problemów z jakością, zawsze zaczynaj od analizy ostatecznego promptu, który trafił do LLM.
+
+    Buduj bibliotekę testów: Każdy znaleziony błąd to cenna lekcja. Dodawaj problematyczne przypadki do zestawów danych, aby testować przyszłe wersje swojej aplikacji.
+
+    Iteruj w Playground: Używaj Playground do szybkiego eksperymentowania ze zmianami w promptach bez konieczności modyfikacji i wdrażania całego kodu.
+
+Dzięki tym technikom, proces poprawy Twojej aplikacji staje się systematyczny, mierzalny i znacznie bardziej efektywny.

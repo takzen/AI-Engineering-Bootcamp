@@ -1,0 +1,23 @@
+Struktura Projektu
+
+Oto finalna struktura folderów i plików, którą zbudujemy.
+
+
+project_rodo_ai/
+│
+├── app/
+│   ├── __init__.py
+│   ├── core.py
+│   ├── ingest_data.py
+│   └── main.py
+│
+├── data/
+│   └── README.md  (instrukcja, by tu umieścić plik PDF)
+│
+├── ui/
+│   └── app_ui.py
+│
+├── .env.example
+├── .gitignore
+├── README.md
+└── requirements.txt

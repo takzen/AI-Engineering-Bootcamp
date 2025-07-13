@@ -1,0 +1,21 @@
+#(Plik informujący Git, które pliki i foldery ma ignorować. Bardzo ważny!)
+
+# Środowisko wirtualne
+.venv/
+venv/
+
+# Pliki środowiskowe
+.env
+
+# Cache Pythona
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Wygenerowana baza wektorowa
+vector_db/
+
+# Pliki IDE
+.vscode/
+.idea/

@@ -1,0 +1,61 @@
+Moduł 9, Punkt 79: Jak działa Retrieval-Augmented Generation?
+
+Witaj w module, który poświęcimy jednej z najważniejszych i najbardziej rewolucyjnych technik w świecie praktycznych zastosowań Dużych Modeli Językowych: Retrieval-Augmented Generation (RAG). Jeśli chcesz, aby Twoja aplikacja AI odpowiadała na pytania na podstawie Twoich własnych dokumentów, najnowszych informacji z internetu lub firmowej bazy wiedzy, to RAG jest technologią, którą musisz opanować.
+
+    Fundamentalny problem Dużych Modeli Językowych
+
+Standardowy LLM, taki jak GPT-4o, jest niezwykle potężny, ale ma dwa kluczowe ograniczenia:
+
+    Problem wiedzy odciętej (Knowledge Cut-off): Jego wiedza kończy się w momencie, w którym zakończono jego trening. Nie wie nic o wydarzeniach, które miały miejsce po tej dacie.
+
+    Problem danych prywatnych: Nie ma on absolutnie żadnego dostępu do Twoich prywatnych plików, dokumentacji firmowej czy wewnętrznej bazy danych.
+
+Próba rozwiązania tego przez "do-trenowanie" (fine-tuning) modelu na własnych danych jest niezwykle kosztowna, skomplikowana i niepraktyczna za każdym razem, gdy dane się zmieniają.
+
+    Główna idea RAG: Egzamin z otwartymi książkami
+
+RAG rozwiązuje ten problem w genialnie prosty sposób. Zamiast zmuszać model do "zapamiętania" wszystkiego, traktujemy go jak niezwykle inteligentnego studenta, który zdaje egzamin z otwartymi książkami.
+
+    Standardowy LLM: Działa jak student na egzaminie z zamkniętymi książkami. Musi polegać wyłącznie na wiedzy, którą ma "w głowie". Jeśli nie zna odpowiedzi, zaczyna zgadywać (halucynować).
+
+    System RAG: Działa jak ten sam student, ale przed odpowiedzią na pytanie może zajrzeć do przygotowanych wcześniej notatek (Twoich dokumentów). Jego zadaniem nie jest przypomnienie sobie odpowiedzi, ale znalezienie jej w dostarczonych materiałach i sformułowanie na ich podstawie spójnej wypowiedzi.
+
+    Dwie fazy działania RAG: Architektura krok po kroku
+
+Proces RAG składa się z dwóch głównych, odrębnych faz.
+
+Faza 1: Indeksowanie (Przygotowanie "biblioteki" – robione raz lub okresowo)
+
+To jest proces przygotowawczy, który wykonujemy, zanim użytkownik zada jakiekolwiek pytanie. Celem jest przetworzenie Twoich dokumentów i umieszczenie ich w specjalnej bazie danych, gotowej do błyskawicznego przeszukiwania.
+
+    Ładowanie (Loading): Wczytujemy Twoje dane z różnych źródeł. Może to być plik PDF, strona internetowa, baza danych czy zwykły plik tekstowy.
+
+    Dzielenie (Splitting/Chunking): Długie dokumenty są dzielone na mniejsze, logiczne fragmenty (chunki). Robimy to, ponieważ LLM-y mają ograniczoną "pamięć roboczą" (okno kontekstowe) i nie możemy im przekazać całej książki na raz.
+
+    Embedding (Tworzenie wektorów): To serce całego procesu. Każdy fragment tekstu jest przepuszczany przez specjalny model (embedding model), który zamienia go w wektor liczbowy. Wektor ten jest matematyczną reprezentacją znaczenia tego fragmentu. Podobne w znaczeniu fragmenty będą miały podobne wektory.
+
+    Przechowywanie (Storing): Wszystkie te wektory, wraz z odpowiadającymi im fragmentami tekstu, są zapisywane w specjalnej bazie wektorowej (Vector Store). Możesz o niej myśleć jak o super-bibliotece, gdzie książki są ułożone nie alfabetycznie, ale według znaczenia.
+
+Faza 2: Wyszukiwanie i Generowanie (Odpowiadanie na pytanie – robione przy każdym zapytaniu)
+
+Ta faza uruchamia się, gdy użytkownik wpisuje swoje pytanie.
+
+    Embedding Zapytania: Pytanie użytkownika (np. "Jakie są zasady urlopu na żądanie?") jest również zamieniane na wektor liczbowy za pomocą tego samego modelu embeddingowego.
+
+    Wyszukiwanie (Retrieval): System bierze wektor zapytania i przeszukuje bazę wektorową w poszukiwaniu najbardziej podobnych wektorów należących do fragmentów dokumentów. To jest matematyczny odpowiednik znalezienia najbardziej relevantnych stron w notatkach.
+
+    Wzbogacanie (Augmentation): Najbardziej pasujące fragmenty tekstu (np. 3-5 najbardziej relevantnych chunków) są pobierane z bazy. Następnie są one łączone z oryginalnym pytaniem użytkownika w jeden, duży prompt.
+
+    Generowanie (Generation): Ten wzbogacony prompt jest wysyłany do Dużego Modelu Językowego (LLM) z instrukcją w stylu: "Używając wyłącznie poniższego kontekstu, odpowiedz na pytanie użytkownika". LLM generuje odpowiedź, opierając ją wyłącznie na dostarczonych fragmentach.
+
+    Najważniejsze korzyści z używania RAG
+
+    Redukcja halucynacji: Odpowiedzi są "ugruntowane" (grounded) w faktach z Twoich dokumentów, co drastycznie zmniejsza ryzyko, że model "wymyśli" odpowiedź.
+
+    Dostęp do aktualnej i prywatnej wiedzy: Pozwala AI odpowiadać na podstawie informacji, które powstały po zakończeniu jego treningu, lub na podstawie Twoich prywatnych, firmowych danych.
+
+    Transparentność i możliwość cytowania: Ponieważ wiemy, które fragmenty zostały użyte do wygenerowania odpowiedzi, możemy je pokazać użytkownikowi, zwiększając jego zaufanie ("Odpowiedziałem na podstawie paragrafu 3.2 z dokumentu XYZ").
+
+    Efektywność kosztowa: Aktualizacja wiedzy systemu polega na ponownym zindeksowaniu dokumentów, co jest znacznie tańsze i szybsze niż kosztowny re-trening całego LLM.
+
+RAG to obecnie standardowa i najskuteczniejsza metoda budowania inteligentnych, opartych na wiedzy systemów Q&A, chatbotów i asystentów AI. W kolejnych lekcjach przyjrzymy się każdemu z etapów tego procesu w praktyce.

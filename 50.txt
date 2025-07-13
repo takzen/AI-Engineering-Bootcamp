@@ -1,0 +1,140 @@
+Moduł 6, Punkt 50: Łączenie LangFlow z danymi zewnętrznymi
+
+Do tej pory nasze aplikacje w LangFlow korzystały z ogólnej wiedzy modelu LLM lub, jak w przypadku agenta, z publicznie dostępnego internetu. To potężne, ale co, jeśli chcemy zbudować aplikację, która odpowiada na pytania na podstawie naszych własnych, prywatnych dokumentów?
+
+Na przykład:
+
+    Chatbot, który odpowiada na pytania pracowników na podstawie wewnętrznego regulaminu firmy (pliku PDF).
+
+    System Q&A dla klientów, który bazuje na szczegółowej dokumentacji technicznej produktu.
+
+    Asystent, który analizuje i podsumowuje treść przesłanego artykułu naukowego.
+
+W tej lekcji nauczymy się, jak zbudować w LangFlow kompletny system RAG (Retrieval-Augmented Generation), który pozwala "karmić" model naszą własną wiedzą.
+
+    Architektura systemu RAG w LangFlow
+
+System RAG, który budowaliśmy w kodzie, składa się z dwóch głównych faz. W LangFlow wizualnie oddzielimy te fazy, co znacznie poprawi czytelność i wydajność.
+
+Faza 1: Indeksowanie (proces jednorazowy, "wolny")
+Celem tej fazy jest przetworzenie naszego dokumentu i zapisanie go w formie, którą AI potrafi przeszukiwać.
+
+    Loader: Wczytanie dokumentu (np. z pliku PDF, TXT).
+
+    Splitter: Podzielenie długiego tekstu na mniejsze, zarządzalne fragmenty (chunki).
+
+    Embeddings: Zamiana każdego fragmentu tekstu na wektor liczbowy (embedding).
+
+    Vector Store: Zapisanie wektorów wraz z ich tekstowymi odpowiednikami w specjalnej bazie danych.
+
+Faza 2: Wyszukiwanie i Odpowiadanie (proces wielokrotny, "szybki")
+Ta faza uruchamia się za każdym razem, gdy użytkownik zada pytanie.
+
+    Retriever: Wyszukanie w bazie wektorowej fragmentów najbardziej pasujących do pytania użytkownika.
+
+    Prompt: Sformułowanie zapytania do LLM, które zawiera zarówno oryginalne pytanie, jak i znalezione fragmenty (kontekst).
+
+    LLM: Wygenerowanie odpowiedzi na podstawie dostarczonego kontekstu.
+
+    Przewodnik krok po kroku: Budujemy system Q&A na pliku PDF
+
+Uruchom LangFlow i stwórz nowy projekt. Przygotuj na swoim komputerze dowolny plik PDF, na podstawie którego będziesz zadawać pytania.
+
+Krok 1: Dodaj komponenty do indeksowania
+
+Przeciągnij na lewą stronę obszaru roboczego następujące bloki:
+
+    PyPDFLoader (z kategorii Loaders) – służy do wczytywania plików PDF.
+
+    RecursiveCharacterTextSplitter (z kategorii Text Splitters) – inteligentnie dzieli tekst.
+
+    OpenAIEmbeddings (z kategorii Embeddings) – tworzy wektory.
+
+    FAISS (z kategorii Vector Stores) – popularna, szybka baza wektorowa.
+
+Krok 2: Skonfiguruj i połącz fazę indeksowania
+
+    PyPDFLoader: Kliknij na blok i w polu Path wskaż ścieżkę do swojego pliku PDF na dysku.
+
+    RecursiveCharacterTextSplitter: Możesz dostosować parametry Chunk Size i Chunk Overlap, ale na razie zostaw domyślne.
+
+    OpenAIEmbeddings: Skonfiguruj klucz API OpenAI, jeśli to konieczne.
+
+    Połącz bloki:
+
+        Połącz wyjście PyPDFLoader z wejściem documents w RecursiveCharacterTextSplitter.
+
+        Połącz wyjście RecursiveCharacterTextSplitter z wejściem documents w FAISS.
+
+        Połącz wyjście OpenAIEmbeddings z wejściem embeddings w FAISS.
+
+Masz teraz kompletny przepływ indeksowania. Możesz go przetestować, klikając ikonę "play" lub błyskawicy na bloku FAISS. Powinien on przetworzyć plik i być gotowy do użycia.
+
+Krok 3: Dodaj komponenty do odpowiadania na pytania
+
+Przeciągnij na prawą stronę obszaru roboczego następujące bloki:
+
+    Chat Input
+
+    Chat Output
+
+    ChatOpenAI
+
+    PromptTemplate
+
+    RetrievalQA (z kategorii Chains) – to specjalny łańcuch, zoptymalizowany do zadań Q&A z retrieverem.
+
+Krok 4: Skonfiguruj i połącz fazę odpowiadania
+
+    PromptTemplate: W polu Template wpisz szablon, który instruuje model, jak ma korzystać z kontekstu:
+    Generated code
+
+          
+    Użyj poniższego kontekstu, aby odpowiedzieć na pytanie. Jeśli nie znasz odpowiedzi, po prostu powiedz, że nie wiesz. Nie próbuj wymyślać odpowiedzi.
+
+    Kontekst: {context}
+
+    Pytanie: {question}
+
+    Pomocna odpowiedź:
+
+        
+
+    IGNORE_WHEN_COPYING_START
+
+    Use code with caution.
+    IGNORE_WHEN_COPYING_END
+
+    Połącz bloki:
+
+        Kluczowy krok: Połącz wyjście z bloku FAISS (który teraz działa jako retriever) z wejściem retriever w bloku RetrievalQA.
+
+        Połącz wyjście ChatOpenAI z wejściem llm w bloku RetrievalQA.
+
+        Połącz wyjście PromptTemplate z wejściem prompt (lub chain_type_kwargs -> prompt) w RetrievalQA.
+
+        Połącz Chat Input z wejściem query w RetrievalQA.
+
+        Połącz wyjście result z RetrievalQA z wejściem w Chat Output.
+
+Twój kompletny schemat RAG jest gotowy.
+
+Krok 5: Testowanie systemu
+
+Otwórz panel chatu i zadaj pytanie, na które odpowiedź znajduje się w Twoim dokumencie PDF. Na przykład, jeśli załadowałeś regulamin pracy, zapytaj: "Ile dni urlopu przysługuje pracownikowi?".
+
+Zobaczysz, jak pytanie trafia do RetrievalQA, który najpierw pyta FAISS o relevantne fragmenty, a następnie przekazuje je wraz z pytaniem do ChatOpenAI, aby wygenerować ostateczną odpowiedź.
+
+    Podsumowanie
+
+Wizualne budowanie systemów RAG w LangFlow doskonale ilustruje ich dwuetapową naturę i pozwala na łatwe eksperymentowanie z każdym elementem procesu – od sposobu dzielenia tekstu po treść promptu.
+
+Kluczowe wnioski z tej lekcji:
+
+    Dziel i rządź: Najlepszą praktyką jest fizyczne oddzielenie na obszarze roboczym fazy indeksowania od fazy odpowiadania.
+
+    Komponenty wielofunkcyjne: Bloki takie jak FAISS mogą działać w dwóch trybach – jako "budowniczy" indeksu oraz jako "wyszukiwarka" (retriever).
+
+    Wyspecjalizowane łańcuchy: LangFlow, tak jak LangChain, oferuje gotowe, zoptymalizowane łańcuchy do konkretnych zadań, jak RetrievalQA, co znacznie upraszcza budowę przepływu.
+
+Masz teraz umiejętność tworzenia aplikacji AI, które posiadają specjalistyczną wiedzę z dowolnej, dostarczonej przez Ciebie dziedziny. To otwiera drzwi do nieskończonej liczby praktycznych zastosowań.

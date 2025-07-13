@@ -1,0 +1,89 @@
+Moduł 8, Punkt 78: Debugowanie pipeline'ów AI
+
+Dotarliśmy do ostatniej lekcji tego kursu. Przeszliśmy drogę od budowy prostych łańcuchów po orkiestrację skomplikowanych, wieloagentowych systemów. Wiemy już, jak monitorować i testować nasze aplikacje. Teraz skupimy się na samym "rzemiośle" debugowania – czyli praktycznym procesie myślowym i zestawie działań, które podejmujemy, gdy stajemy twarzą w twarz ze złożonym problemem w naszym pipeline'ie AI.
+
+Ta lekcja nie wprowadzi nowych narzędzi, ale pokaże, jak efektywnie używać tych, które już znamy, aby systematycznie dochodzić do źródła problemu.
+
+    Filozofia debugowania w systemach LLM: Od objawu do przyczyny
+
+Debugowanie pipeline'u AI rzadko jest procesem liniowym. To raczej praca detektywistyczna. Zaczynamy od objawu (np. "chatbot udziela nieprawidłowej odpowiedzi"), a naszym celem jest znalezienie pierwotnej przyczyny (np. "nieprecyzyjny opis narzędzia w prompcie agenta").
+
+Kluczowy proces myślowy:
+
+    Zidentyfikuj i odizoluj problem: Znajdź konkretny przykład (zapytanie), który powoduje błąd.
+
+    Prześledź przepływ danych (Trace): Użyj LangSmith, aby zobaczyć, co dokładnie działo się krok po kroku.
+
+    Postaw hipotezę: Na podstawie śladu, sformułuj przypuszczenie, co jest przyczyną problemu.
+
+    Zweryfikuj hipotezę: Użyj narzędzi (np. Playground w LangSmith), aby przetestować swoją hipotezę na izolowanym komponencie.
+
+    Zastosuj poprawkę i przetestuj regresję: Wprowadź zmianę w kodzie i uruchom zestaw testów, aby upewnić się, że naprawa nie zepsuła czegoś innego.
+
+    Praktyczny przewodnik: Scenariusze debugowania pipeline'ów
+
+Przeanalizujmy kilka typowych problemów i zobaczmy, jak podejść do ich rozwiązania.
+
+    Scenariusz 1: Agent używa złego narzędzia
+
+        Objaw: Prosisz agenta, aby "obliczył 2+2", a on zamiast kalkulatora używa wyszukiwarki internetowej.
+
+        Proces debugowania:
+
+            Izolacja: Uruchamiasz agenta z dokładnie tym zapytaniem.
+
+            Śledzenie w LangSmith: Otwierasz ślad tego uruchomienia. Widzisz, że węzeł agent podjął decyzję o wywołaniu tavily_search_results_json.
+
+            Analiza promptu agenta: Klikasz na krok ChatOpenAI wewnątrz węzła agent. Analizujesz dokładny prompt, który otrzymał model.
+
+            Hipoteza: "Prawdopodobnie opisy moich narzędzi w prompcie są niejasne. Opis kalkulatora jest zbyt ogólny, a opis wyszukiwarki zbyt szeroki, przez co model wybiera ją domyślnie".
+
+            Weryfikacja w Playground: Otwierasz ten krok w Playground. Kopiujesz prompt, ale modyfikujesz opisy narzędzi, czyniąc je bardziej precyzyjnymi (np. "użyj tego narzędzia WYŁĄCZNIE do obliczeń matematycznych"). Uruchamiasz ponownie. Widzisz, że teraz model poprawnie wybiera kalkulator.
+
+            Poprawka i test regresji: Aktualizujesz opisy narzędzi w swoim kodzie. Uruchamiasz pełen zestaw testów, aby sprawdzić, czy agent nadal poprawnie używa wyszukiwarki do innych pytań.
+
+    Scenariusz 2: System RAG zwraca odpowiedź "Nie wiem", mimo że informacja jest w dokumencie
+
+        Objaw: Pytasz o konkretny paragraf z dokumentu, a system odpowiada, że nie może znaleźć informacji.
+
+        Proces debugowania:
+
+            Izolacja: Uruchamiasz system z tym konkretnym pytaniem.
+
+            Śledzenie w LangSmith: Otwierasz ślad. Koncentrujesz się na dwóch kluczowych krokach: Retriever i Generate Answer (LLM).
+
+            Analiza kroku Retriever: Klikasz na ten krok. Patrzysz na jego wejście (oryginalne pytanie) i wyjście (lista pobranych fragmentów/chunków).
+
+            Hipoteza 1 (Problem z retrieverem): "Retriever nie pobrał żadnych fragmentów lub pobrał nieprawidłowe". Jeśli widzisz, że lista chunków jest pusta lub nie zawiera szukanej informacji, to tu leży problem. Może to być wina:
+
+                Złego modelu embeddingowego.
+
+                Nieprawidłowych parametrów wyszukiwania (np. zbyt wysoki próg podobieństwa).
+
+                Złego sposobu podziału tekstu na fragmenty (chunking).
+
+            Hipoteza 2 (Problem z generatorem): "Retriever pobrał poprawne fragmenty, ale LLM ich nie użył". Jeśli widzisz, że poprawne informacje są w chunkach, przechodzisz do analizy kroku Generate Answer. Patrzysz na jego prompt i widzisz, że pobrane fragmenty (context) zostały poprawnie wstawione.
+
+                W tym momencie hipoteza brzmi: "Mój prompt do generowania odpowiedzi jest źle skonstruowany. Może jest zbyt restrykcyjny i każe modelowi odpowiadać 'Nie wiem', jeśli nie jest w 100% pewny, zamiast syntetyzować odpowiedź z podanego kontekstu".
+
+            Weryfikacja i poprawka: W zależności od tego, która hipoteza okazała się prawdziwa, skupiasz swoje działania na poprawie odpowiedniej części pipeline'u – albo procesu retrievalu, albo promptu generatora.
+
+    Złote zasady debugowania pipeline'ów
+
+Niezależnie od problemu, te zasady zawsze się sprawdzają.
+
+    Zawsze zaczynaj od śladu (Trace): Nie zgaduj. LangSmith daje Ci dowody. Zawsze opieraj swoje hipotezy na danych ze śladu.
+
+    Myśl w kategoriach "Wejście-Wyjście" dla każdego kroku: Traktuj każdy węzeł w grafie lub krok w łańcuchu jak osobną funkcję. Czy dla danego wejścia wygenerował oczekiwane wyjście? Jeśli nie, problem leży wewnątrz tego kroku. Jeśli tak, problem jest gdzieś indziej.
+
+    Izoluj problematyczny komponent: Użyj Playground lub napisz mały, lokalny skrypt, aby testować tylko ten jeden, podejrzany komponent (np. sam retriever lub sam LLM z konkretnym promptem).
+
+    Iteruj i mierz: Każda zmiana powinna być weryfikowana za pomocą zestawu testów ewaluacyjnych. Unikaj subiektywnego wrażenia "teraz działa lepiej". Potrzebujesz twardych danych.
+
+    Podsumowanie
+
+Debugowanie złożonych pipeline'ów AI to nie magia, lecz metodyczna praca detektywistyczna. To umiejętność, która odróżnia dewelopera, który potrafi "coś sklecić", od inżyniera, który potrafi budować niezawodne i przewidywalne systemy.
+
+Narzędzia takie jak LangSmith dają Ci bezprecedensowy wgląd w działanie Twoich aplikacji, ale to Twoja umiejętność analitycznego myślenia, stawiania hipotez i systematycznego ich weryfikowania jest kluczem do sukcesu.
+
+Gratuluję ukończenia kursu! Jesteś teraz wyposażony w pełen zestaw wiedzy i narzędzi, aby projektować, budować, wdrażać, monitorować i ulepszać nowoczesne aplikacje oparte o Duże Modele Językowe.

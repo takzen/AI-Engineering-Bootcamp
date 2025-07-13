@@ -1,0 +1,133 @@
+Moduł 4, lekcja 25: Jak działają Large Language Models (LLMs)?
+
+W poprzednich modułach poznaliśmy narzędzia do pracy z danymi. Teraz zanurzymy się w koncepcję, która zrewolucjonizowała świat technologii – Wielkie Modele Językowe (Large Language Models). Zrozumienie, jak działają, jest kluczowe, aby świadomie i efektywnie korzystać z narzędzi takich jak ChatGPT, Gemini czy Claude.
+
+1. Co to jest LLM? Definicja w prostych słowach
+
+Wyobraź sobie niezwykle zaawansowany system autouzupełniania tekstu. Taki, który nie tylko podpowiada następne słowo, ale całe zdania, akapity, a nawet kompletne eseje. Właśnie tym w swojej istocie jest LLM.
+
+LLM to skrót od:
+
+    Large (Wielki): Model jest trenowany na gigantycznej ilości danych (tekstów z internetu, książek, artykułów) i ma miliardy parametrów (wewnętrznych "pokręteł", które dostraja podczas nauki).
+
+    Language (Językowy): Specjalizuje się w przetwarzaniu, rozumieniu i generowaniu ludzkiego języka.
+
+    Model (Model): To nie jest świadoma istota. To złożony model matematyczno-statystyczny, który nauczył się wzorców, reguł, stylów i powiązań występujących w języku.
+
+Można o nim myśleć jak o "statystycznej papudze", która przeczytała prawie cały internet i na tej podstawie potrafi z ogromnym prawdopodobieństwem odgadnąć, jak powinna wyglądać logiczna kontynuacja danego tekstu.
+
+2. Jak LLM się uczy? Proces treningu w 4 krokach
+
+Magia LLM-ów nie bierze się znikąd. To efekt skomplikowanego, ale logicznego procesu treningu.
+
+    Krok 1: Zebranie danych
+    Wszystko zaczyna się od danych. Mówimy tu o setkach terabajtów tekstu: Wikipedia, zbiory książek, artykuły naukowe, kod programistyczny, dyskusje na forach – praktycznie cała dostępna publicznie, cyfrowa wiedza tekstowa.
+
+    Krok 2: Architektura "Transformer"
+    Przełomem, który umożliwił powstanie nowoczesnych LLM-ów, była architektura sieci neuronowej o nazwie "Transformer". Jej kluczowym elementem jest tzw. "mechanizm uwagi" (attention mechanism).
+
+    Krok 3: Mechanizm Uwagi (Attention) – Sekretny składnik
+    Wyobraź sobie, że czytasz zdanie: "Król usiadł na tronie, ponieważ był bardzo zmęczony." Aby zrozumieć, dlaczego usiadł, twój mózg zwraca uwagę na słowa "król" i "zmęczony".
+    Mechanizm uwagi działa podobnie. Analizując zdanie, model uczy się, które słowa są najważniejsze dla kontekstu innych słów. Dzięki temu potrafi zrozumieć długie i złożone zależności.
+
+    Przykład koncepcyjny:
+    W zdaniu: "Głównym miastem Francji jest Paryż. To popularny cel turystyczny."
+    Kiedy model analizuje słowo "To", mechanizm uwagi "podpowiada" mu, że "To" z największym prawdopodobieństwem odnosi się do "Paryża", a nie "Francji".
+
+    Krok 4: Cel – Przewidywanie następnego słowa
+    Podstawowym zadaniem modelu podczas treningu jest niezwykle prosta (w założeniu) gra: dostaje fragment tekstu i ma zgadnąć, jakie będzie następne słowo.
+
+    Przykład gry w zgadywanie:
+    Model dostaje: "Wlazł kotek na..."
+    Próbuje przewidzieć: "płotek"
+    Jeśli zgadł, dostaje "nagrodę" (jego wewnętrzne parametry są lekko wzmacniane).
+    Jeśli podał np. "stół", dostaje "karę" (parametry są korygowane).
+
+    Powtórzenie tego procesu miliardy razy na gigantycznym zbiorze danych sprawia, że model niezwykle dobrze opanowuje statystyczne właściwości języka.
+
+3. Od przewidywania słów do prowadzenia rozmowy
+
+Skoro model potrafi tylko przewidzieć następne słowo, to jak jest w stanie pisać kod, odpowiadać na pytania i prowadzić dialog?
+
+Dzieje się to w pętli. Po wygenerowaniu jednego słowa, jest ono dodawane do pierwotnego tekstu, a nowy, dłuższy tekst staje się podstawą do wygenerowania kolejnego słowa.
+
+Koncepcyjny pseudo-kod działania LLM-a:
+Generated code
+
+      
+prompt = "Napisz wiersz o wiośnie"
+wygenerowany_tekst = prompt
+
+for _ in range(100): # Wygeneruj np. 100 słów
+    nastepne_slowo = model.przewidz(wygenerowany_tekst)
+    wygenerowany_tekst += " " + nastepne_slowo
+    if nastepne_slowo == "<koniec>": # Specjalny token oznaczający koniec
+        break
+
+print(wygenerowany_tekst)
+
+    
+
+IGNORE_WHEN_COPYING_START
+Use code with caution.
+IGNORE_WHEN_COPYING_END
+
+Dodatkowo, po głównym treningu, modele przechodzą fazę "dostrajania" (fine-tuning) i "uczenia ze wzmocnieniem od ludzkich informacji zwrotnych" (RLHF). W tej fazie ludzie oceniają odpowiedzi modelu, ucząc go, które odpowiedzi są pomocne, prawdziwe i bezpieczne. To właśnie ten etap sprawia, że model staje się użytecznym asystentem, a nie tylko generatorem tekstu.
+
+4. Funkcje w kontekście LLM-ów
+
+Choć nie piszemy tu funkcji budujących LLM od zera, to interakcja z nimi często odbywa się poprzez funkcje w bibliotekach (np. OpenAI, Hugging Face). Wyobraźmy sobie taką hipotetyczną funkcję:
+Generated python
+
+      
+def uzyskaj_odpowiedz_od_modela(prompt_uzytkownika, model="gpt-4"):
+    """
+    Ta funkcja wysyła zapytanie (prompt) do modelu językowego
+    i zwraca jego tekstową odpowiedź.
+    """
+    # W tym miejscu kod łączyłby się z serwerem API modelu
+    # i przesyłał prompt...
+    print(f"Wysyłam zapytanie do modelu {model}: '{prompt_uzytkownika}'")
+    odpowiedz_modela = "...odpowiedź zwrócona przez API..."
+    return odpowiedz_modela
+
+# Użycie naszej hipotetycznej funkcji:
+pytanie = "Jaka jest stolica Portugalii?"
+odpowiedz = uzyskaj_odpowiedz_od_modela(pytanie)
+print(odpowiedz)
+
+    
+
+IGNORE_WHEN_COPYING_START
+Use code with caution. Python
+IGNORE_WHEN_COPYING_END
+
+5. Ograniczenia i wyzwania – o czym trzeba pamiętać?
+
+LLM-y to potężne narzędzia, ale nie są nieomylne. Kluczowe ograniczenia to:
+
+    Halucynacje: Model może generować informacje, które brzmią bardzo wiarygodnie, ale są całkowicie zmyślone. On nie "wie", on przewiduje tekst, który statystycznie pasuje.
+
+    Uprzedzenia (Bias): Model uczy się na tekstach stworzonych przez ludzi, więc powiela zawarte w nich stereotypy i uprzedzenia (np. dotyczące płci, rasy, narodowości).
+
+    Wiedza ograniczona w czasie: Model "wie" tylko to, czego nauczył się z danych treningowych. Nie zna wydarzeń, które miały miejsce po dacie zakończenia jego treningu.
+
+    Brak prawdziwego rozumienia: LLM nie rozumie świata jak człowiek. Nie ma doświadczeń, uczuć ani świadomości. To niezwykle złożony system dopasowywania wzorców.
+
+Podsumowanie
+
+Zrozumienie podstaw działania LLM-ów zmienia perspektywę i pozwala używać ich mądrzej.
+
+Najważniejsze do zapamiętania:
+
+    LLM to zaawansowany model statystyczny do przewidywania następnego słowa, a nie istota obdarzona świadomością.
+
+    Jego potęga bierze się z gigantycznej skali danych treningowych i miliardów parametrów.
+
+    Kluczową technologią jest architektura Transformer z mechanizmem uwagi (attention).
+
+    Zdolność do prowadzenia rozmowy to efekt generowania tekstu słowo po słowie oraz specjalistycznego dostrajania (fine-tuning, RLHF).
+
+    Zawsze podchodź krytycznie do odpowiedzi modelu, pamiętając o jego ograniczeniach (halucynacje, uprzedzenia).
+
+Posiadając tę wiedzę, jesteś gotów, aby w kolejnych lekcjach zacząć praktycznie wykorzystywać moc LLM-ów w swoich projektach w Pythonie

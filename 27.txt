@@ -1,0 +1,125 @@
+Moduł 4, lekcja 27: Wprowadzenie do prompt engineeringu
+
+Skoro wiemy już, jak połączyć się z modelem językowym (przez API lub lokalnie), czas na najważniejszą umiejętność praktyczną: jak z nim "rozmawiać", aby uzyskać dokładnie to, czego chcemy. To właśnie jest istotą prompt engineeringu.
+
+1. Sztuka konwersacji z AI – Czym jest Prompt?
+
+Pomyśl o korzystaniu z wyszukiwarki internetowej 20 lat temu i dziś. Kiedyś wpisywaliśmy jedno, dwa słowa. Dziś, aby uzyskać najlepsze wyniki, często wpisujemy całe, precyzyjne pytania, np. "najlepsza włoska restauracja blisko mnie otwarta w niedzielę wieczorem".
+
+W świecie modeli językowych jest podobnie, ale na znacznie wyższym poziomie.
+
+    Prompt: To każde polecenie, pytanie lub tekst, który wpisujesz do modelu, aby zainicjować jego działanie. To Twój wkład.
+
+    Prompt Engineering: To sztuka i nauka tworzenia promptów, które prowadzą do najlepszych możliwych rezultatów – precyzyjnych, trafnych, kreatywnych i zgodnych z Twoimi intencjami.
+
+W informatyce istnieje zasada "Garbage In, Garbage Out" (śmieci na wejściu, śmieci na wyjściu). W przypadku LLM-ów zasada ta jest absolutnie kluczowa. Jakość Twojego promptu bezpośrednio determinuje jakość odpowiedzi modelu.
+
+2. Dlaczego "zwykłe" pytanie nie wystarczy?
+
+Model nie czyta w Twoich myślach. Jest potężnym narzędziem, ale niezwykle dosłownym. Musisz dać mu jasne instrukcje. Zobaczmy różnicę.
+
+Słaby Prompt:
+
+    Opisz Pythona.
+
+Czego możemy się spodziewać? Ogólnego, być może nudnego opisu, który może dotyczyć języka programowania, ale równie dobrze węża. Model musi zgadywać, o co nam chodzi.
+
+Dobry, "zaprojektowany" Prompt:
+
+    Zachowuj się jak doświadczony nauczyciel programowania. Napisz dla początkującego studenta analityki danych zwięzłe wprowadzenie (maksymalnie 3 akapity) do języka Python. Skup się na tym, dlaczego Python jest idealnym narzędziem do analizy danych, wymieniając 3 kluczowe biblioteki (jak pandas i matplotlib). Użyj prostego i zachęcającego języka.
+
+Co tu się stało?
+
+    Nadaliśmy rolę: "Zachowuj się jak doświadczony nauczyciel..."
+
+    Określiliśmy odbiorcę: "...dla początkującego studenta analityki danych..."
+
+    Sprecyzowaliśmy zadanie: "...zwięzłe wprowadzenie..."
+
+    Dodaliśmy ograniczenia: "...maksymalnie 3 akapity..."
+
+    Wskazaliśmy kluczowe elementy: "...skup się na..., wymieniając 3 kluczowe biblioteki..."
+
+    Określiliśmy styl: "...użyj prostego i zachęcającego języka."
+
+Dając modelowi tak precyzyjny przepis, niemal zmuszamy go do wygenerowania odpowiedzi, która będzie dla nas użyteczna.
+
+3. Kluczowe techniki prompt engineeringu
+
+Oto kilka fundamentalnych technik, które od razu podniosą jakość Twoich interakcji z LLM.
+
+a) Nadaj rolę (Assign a Role)
+To najprostszy i jeden z najskuteczniejszych trików. Zaczynaj prompt od określenia, w kogo ma wcielić się model.
+
+    "Zachowuj się jak ekspert od marketingu..."
+
+    "Jesteś krytykiem filmowym. Zrecenzuj..."
+
+    "Działaj jak senior Python developer. Zoptymalizuj ten kod..."
+
+b) Dostarcz kontekst (Provide Context)
+Nie zakładaj, że model zna kontekst Twojego problemu. Im więcej informacji mu dostarczysz, tym lepsza będzie odpowiedź.
+
+    Zamiast: "Napisz tekst reklamowy."
+
+    Lepiej: "Nasz produkt to ekologiczna butelka na wodę wielokrotnego użytku. Naszą grupą docelową są aktywni ludzie w wieku 20-35 lat, dbający o środowisko. Napisz krótki, energiczny tekst na post na Instagrama."
+
+c) Użyj przykładów (Few-Shot Prompting)
+Jeśli chcesz, aby model wykonał zadanie w specyficzny sposób, pokaż mu kilka przykładów. To niezwykle potężna technika.
+
+Przykład: Klasyfikacja sentymentu (ocena wydźwięku tekstu).
+Generated code
+
+      
+Oceń sentyment poniższych zdań jako Pozytywny, Neutralny lub Negatywny.
+
+Tekst: "Ten film był absolutnie fantastyczny! Polecam każdemu."
+Sentyment: Pozytywny
+
+Tekst: "Premiera odbędzie się w przyszłym tygodniu."
+Sentyment: Neutralny
+
+Tekst: "Byłem bardzo zawiedziony jakością obsługi."
+Sentyment: Negatywny
+
+Tekst: "Obsługa klienta była pomocna i szybko rozwiązała mój problem."
+Sentyment:
+
+    
+
+IGNORE_WHEN_COPYING_START
+Use code with caution.
+IGNORE_WHEN_COPYING_END
+
+Model, widząc wzorzec, z dużą dozą prawdopodobieństwa poprawnie uzupełni ostatnią linię jako "Pozytywny".
+
+d) Określ format wyjściowy (Specify the Output Format)
+Chcesz otrzymać dane w konkretnej formie? Po prostu o to poproś! To niezwykle przydatne przy integracji LLM z kodem.
+
+    "...przedstaw wynik w formie tabeli Markdown."
+
+    "...odpowiedz w formacie JSON, z kluczami 'nazwa_produktu', 'cena' i 'kategoria'."
+
+    "...zwróć listę kluczowych punktów, gdzie każdy punkt zaczyna się od myślnika."
+
+    "...wygeneruj tylko i wyłącznie kod w Pythonie, bez żadnego dodatkowego komentarza."
+
+Podsumowanie
+
+Prompt engineering to nie magia, a umiejętność, którą można i trzeba trenować. To dialog, w którym uczymy się precyzyjnie komunikować nasze intencje maszynie.
+
+Najważniejsze do zapamiętania:
+
+    Jakość odpowiedzi zależy bezpośrednio od jakości Twojego promptu.
+
+    Bądź precyzyjny i szczegółowy. Unikaj ogólników.
+
+    Nadawaj modelowi rolę, aby ukierunkować jego styl i wiedzę.
+
+    Zawsze dostarczaj kontekst – model nie czyta w Twoich myślach.
+
+    Jeśli to możliwe, pokaż przykłady (few-shot prompting), aby nauczyć model pożądanego wzorca.
+
+    Jasno określ, w jakim formacie oczekujesz odpowiedzi.
+
+Eksperymentuj! Często najlepsze prompty powstają metodą prób i błędów. W kolejnych lekcjach będziemy intensywnie wykorzystywać te techniki w praktycznych zastosowaniach.

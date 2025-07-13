@@ -1,0 +1,95 @@
+Moduł 6, Punkt 49: Automatyzacja procesów w LangFlow
+
+Do tej pory nasze przepływy w LangFlow działały w sposób liniowy – przyjmowały dane wejściowe i podążały jedną, z góry określoną ścieżką. To świetne do budowy chatbotów czy systemów Q&A, ale prawdziwa magia AI zaczyna się tam, gdzie system potrafi samodzielnie podejmować decyzje i korzystać z zewnętrznych narzędzi.
+
+W tej lekcji przeniesiemy koncepcję Agentów, którą poznaliśmy w Module 5, do wizualnego świata LangFlow. Zbudujemy przepływ, który nie tylko odpowiada na pytania, ale potrafi też aktywnie przeszukiwać internet, aby znaleźć aktualne informacje.
+
+    Od przepływu do autonomicznego agenta
+
+Różnica między prostym łańcuchem a agentem jest fundamentalna:
+
+    Łańcuch (Chain): Podąża za instrukcjami. Jest jak pracownik na linii montażowej.
+
+    Agent: Samodzielnie decyduje, co robić. Jest jak menedżer, który ma do dyspozycji zespół specjalistów (narzędzia) i decyduje, którego z nich użyć do rozwiązania problemu.
+
+Aby zbudować agenta w LangFlow, potrzebujemy kilku kluczowych komponentów:
+
+    Model (LLM): "Mózg" agenta, który będzie podejmował decyzje. Musi to być model, który dobrze radzi sobie z rozumowaniem (np. ChatOpenAI).
+
+    Narzędzia (Tools): Zestaw "supermocy", których agent może użyć. W naszym przypadku będzie to wyszukiwarka internetowa, np. Tavily Search.
+
+    Agent (Agent): Specjalny blok, który łączy model i narzędzia, tworząc pętlę decyzyjną (myśl -> działaj -> obserwuj).
+
+    Wykonawca (Executor): "Silnik", który faktycznie uruchamia agenta i zarządza całym procesem.
+
+    Przewodnik krok po kroku: Budujemy agenta z dostępem do internetu
+
+Uruchom LangFlow i stwórz nowy projekt. Naszym celem jest zbudowanie agenta, który na pytanie "Kto wygrał ostatni Super Bowl?" nie odpowie "Nie wiem, moja wiedza kończy się na 2023 roku", ale aktywnie poszuka tej informacji w internecie.
+
+Krok 1: Dodaj komponenty agenta
+
+Użyj wyszukiwarki, aby znaleźć i przeciągnąć na obszar roboczy następujące bloki:
+
+    ChatOpenAI (z kategorii Models)
+
+    TavilySearchResults (z kategorii Tools) - to jest gotowe narzędzie do wyszukiwania w internecie.
+
+    Tool (z kategorii Agents) - to specjalny blok "opakowujący", który zamienia dowolną funkcję w narzędzie zrozumiałe dla agenta.
+
+    OpenAIFunctionsAgent (z kategorii Agents) - to jest serce naszego agenta.
+
+    AgentExecutor (z kategorii Agents) - to jest wykonawca, który uruchomi agenta.
+
+Krok 2: Skonfiguruj komponenty
+
+    ChatOpenAI: Skonfiguruj go jak zwykle, podając klucz API i wybierając model (gpt-4o jest zalecany dla agentów).
+
+    TavilySearchResults: Ten blok również będzie wymagał klucza API. Musisz założyć darmowe konto na stronie tavily.com, aby go uzyskać. Wklej go w odpowiednie pole w panelu bocznym.
+
+    Tool: To ważny krok. Ten blok służy do nadania naszemu narzędziu nazwy i opisu.
+
+        W polu Name wpisz krótką, zwięzłą nazwę, np. wyszukiwarka_internetowa.
+
+        W polu Description wpisz opis, który wyjaśni agentowi, do czego służy to narzędzie. To kluczowy element! Opis musi być jasny, np.: "Przydatne do wyszukiwania aktualnych informacji w internecie na temat wydarzeń, ludzi i faktów."
+
+Krok 3: Połącz komponenty w architekturę agenta
+
+To jest najbardziej złożone połączenie, jakie do tej pory tworzyliśmy. Postępuj ostrożnie.
+
+    Stworzenie narzędzia: Połącz wyjście TavilySearchResults z wejściem func w bloku Tool. W ten sposób "opakowałeś" wyszukiwarkę w standardowe narzędzie.
+
+    Podłączenie do agenta: Połącz wyjście ChatOpenAI z wejściem llm w bloku OpenAIFunctionsAgent.
+
+    Podłączenie narzędzi do agenta: Połącz wyjście z bloku Tool z wejściem tools w OpenAIFunctionsAgent. To jest wejście, które przyjmuje listę narzędzi, więc może ich być więcej.
+
+    Podłączenie agenta do wykonawcy: Połącz wyjście OpenAIFunctionsAgent z wejściem agent w bloku AgentExecutor.
+
+    Podłączenie narzędzi do wykonawcy: Tak, to nie pomyłka. AgentExecutor również musi mieć bezpośredni dostęp do narzędzi. Połącz wyjście z bloku Tool z wejściem tools w AgentExecutor.
+
+Twój schemat powinien teraz przedstawiać kompletną architekturę: Model i Narzędzia wchodzą do Agenta, a Agent i Narzędzia wchodzą do Wykonawcy. AgentExecutor jest teraz naszym głównym punktem interakcji.
+
+Krok 4: Testowanie agenta
+
+Otwórz panel chatu. Zamiast łączyć go bezpośrednio z AgentExecutor, możesz po prostu zacząć pisać. LangFlow domyślnie "wie", że interakcja ma się odbywać z końcowym, głównym blokiem.
+
+    Zadaj pytanie wymagające wiedzy zewnętrznej: "Ile medali zdobyła Polska na ostatniej olimpiadzie?" lub "Jaka jest teraz pogoda w Londynie?".
+
+    Obserwuj przepływ: Zobaczysz, że animacja jest znacznie bardziej złożona. Przepływ będzie krążył między AgentExecutor a TavilySearchResults kilkukrotnie, w miarę jak agent "myśli", wykonuje akcję i obserwuje wynik.
+
+    Sprawdź odpowiedź: Ostateczna odpowiedź w oknie chatu powinna zawierać aktualne informacje, których model nie miał w swojej pierwotnej wiedzy.
+
+    Podsumowanie
+
+Wizualne budowanie agentów w LangFlow w potężny sposób demistyfikuje ich działanie. Możesz na własne oczy zobaczyć pętlę decyzyjną, którą do tej pory znaliśmy tylko z logów w konsoli.
+
+Kluczowe wnioski z tej lekcji:
+
+    Automatyzacja w LangFlow opiera się na architekturze Agentów i Narzędzi.
+
+    Kluczowe jest prawidłowe połączenie komponentów: Model + Narzędzia -> Agent -> Wykonawca.
+
+    Blok Tool służy jako uniwersalny "adapter", który pozwala agentowi korzystać z różnych funkcji, a jego opis jest krytycznie ważny dla procesu decyzyjnego agenta.
+
+    Budując agentów w LangFlow, zyskujesz nie tylko szybkość prototypowania, ale także bezcenną wizualizację ich skomplikowanego procesu "myślowego".
+
+Możesz teraz eksperymentować, dodając do swojego agenta kolejne narzędzia, np. kalkulator (LLMMathChain) lub nawet inne, stworzone przez siebie przepływy.
