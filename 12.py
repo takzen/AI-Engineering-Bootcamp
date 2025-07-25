@@ -55,7 +55,7 @@ class AsystentAI:
 
 # Powyższy kod działa, ale jest sztywny i nieuporządkowany.
 
-#
+
 # 2. Rozwiązanie: Moduły – czyli pliki jako zestawy narzędzi
 #
 # Modułowość polega na dzieleniu kodu na mniejsze, logiczne pliki (moduły).
@@ -135,7 +135,7 @@ def uruchom_aplikacje():
     # moj_lepszy_asystent.przetworz_polecenie("jaka jest pogoda w Kraków")
     # moj_lepszy_asystent.przetworz_polecenie("opowiedz żart")
 
-#
+
 # 3. Magiczne `if __name__ == "__main__":`
 #
 # Został nam jeden problem. Co, jeśli chcemy, aby plik `utils.py` był jednocześnie
@@ -160,7 +160,7 @@ if __name__ == "__main__":
     print(f"Test funkcji: {wynik}")
 
 
-#
+
 # 4. Podsumowanie – Zasady dobrej organizacji
 #
 # Dzielenie kodu na moduły to klucz do tworzenia skalowalnych i profesjonalnych aplikacji AI.

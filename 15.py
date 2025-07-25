@@ -167,7 +167,7 @@ def analizuj_sentyment(tekst: str):
 # 3. http://127.0.0.1:8000/docs - zobaczysz DARMOWĄ, interaktywną dokumentację API!
 """
 
-#
+
 # 3. Podsumowanie
 #
 #     * API to standard komunikacji między aplikacjami.
@@ -182,4 +182,3 @@ def analizuj_sentyment(tekst: str):
 #
 #     * Umiejętność pracy z API jest absolutnie kluczowa dla każdego specjalisty AI,
 #       zarówno do pozyskiwania danych, jak i do wdrażania własnych modeli.
-#

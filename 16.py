@@ -57,7 +57,7 @@ def oblicz_srednia(lista_liczb):
         return 0
     return sum(lista_liczb) / len(lista_liczb)
 
-#
+
 # Teraz stwórzmy plik z testami dla tych funkcji.
 # Nazwijmy go `test_data_processing.py` i umieśćmy w tym samym folderze.
 #
@@ -66,22 +66,22 @@ def oblicz_srednia(lista_liczb):
 # import data_processing # Importujemy moduł, który chcemy testować
 #
 # # Test 1: Testujemy funkcję wyczysc_tekst
-# def test_wyczysc_tekst_standardowy():
-#     # Słowo kluczowe `assert` sprawdza, czy warunek jest prawdziwy.
-#     # Jeśli nie jest, rzuca błąd AssertionError i test jest oblany.
-#     assert data_processing.wyczysc_tekst("  Witaj Świecie!  ") == "witaj świecie!"
-#     assert data_processing.wyczysc_tekst("Python") == "python"
-#     assert data_processing.wyczysc_tekst("") == ""
-#
+def test_wyczysc_tekst_standardowy():
+    # Słowo kluczowe `assert` sprawdza, czy warunek jest prawdziwy.
+    # Jeśli nie jest, rzuca błąd AssertionError i test jest oblany.
+    assert data_processing.wyczysc_tekst("  Witaj Świecie!  ") == "witaj świecie!"
+    assert data_processing.wyczysc_tekst("Python") == "python"
+    assert data_processing.wyczysc_tekst("") == ""
+
 # # Test 2: Testujemy funkcję oblicz_srednia
-# def test_oblicz_srednia_standardowy():
-#     assert data_processing.oblicz_srednia([1, 2, 3]) == 2.0
-#     assert data_processing.oblicz_srednia([10, 20, 30, 40]) == 25.0
+def test_oblicz_srednia_standardowy():
+    assert data_processing.oblicz_srednia([1, 2, 3]) == 2.0
+    assert data_processing.oblicz_srednia([10, 20, 30, 40]) == 25.0
 #
 # # Test 3: Testujemy przypadki brzegowe (edge cases)
-# def test_oblicz_srednia_pusta_lista():
-#     # Sprawdzamy, jak funkcja zachowuje się dla pustej listy
-#     assert data_processing.oblicz_srednia([]) == 0
+def test_oblicz_srednia_pusta_lista():
+    # Sprawdzamy, jak funkcja zachowuje się dla pustej listy
+    assert data_processing.oblicz_srednia([]) == 0
 #
 #
 # JAK TO URUCHOMIĆ?
@@ -100,13 +100,13 @@ def oblicz_srednia(lista_liczb):
 #
 # --- Dodajemy do pliku: test_data_processing.py ---
 #
-# import pytest # Potrzebujemy importować pytest do zaawansowanych funkcji
-#
-# def test_wyczysc_tekst_niepoprawny_typ():
-#     # Używamy `pytest.raises`, aby powiedzieć: "Oczekuję, że kod wewnątrz
-#     # tego bloku rzuci wyjątek typu TypeError".
-#     with pytest.raises(TypeError):
-#         data_processing.wyczysc_tekst(123) # Ta linia POWINNA spowodować błąd
+import pytest # Potrzebujemy importować pytest do zaawansowanych funkcji
+
+def test_wyczysc_tekst_niepoprawny_typ():
+    # Używamy `pytest.raises`, aby powiedzieć: "Oczekuję, że kod wewnątrz
+    # tego bloku rzuci wyjątek typu TypeError".
+    with pytest.raises(TypeError):
+        data_processing.wyczysc_tekst(123) # Ta linia POWINNA spowodować błąd
 #
 #     # Jeśli błąd nie wystąpi, test zostanie oblany!
 #
@@ -116,19 +116,19 @@ def oblicz_srednia(lista_liczb):
 # Dobrą praktyką jest organizowanie testów w trzech logicznych krokach,
 # co czyni je bardziej czytelnymi (nawet jeśli nie piszemy tego jawnie w komentarzach).
 #
-# def test_przykladowy_w_stylu_gwt():
-#     # 1. Given (Dane wejściowe)
-#     # Przygotuj wszystkie potrzebne dane i warunki początkowe.
-#     lista_wejsciowa = [-10, 0, 10, 20]
-#     oczekiwany_wynik = 5.0
+def test_przykladowy_w_stylu_gwt():
+    # 1. Given (Dane wejściowe)
+    # Przygotuj wszystkie potrzebne dane i warunki początkowe.
+    lista_wejsciowa = [-10, 0, 10, 20]
+    oczekiwany_wynik = 5.0
 #
 #     # 2. When (Akcja)
 #     # Wywołaj testowaną funkcję / wykonaj akcję.
-#     rzeczywisty_wynik = oblicz_srednia(lista_wejsciowa)
-#
+    rzeczywisty_wynik = oblicz_srednia(lista_wejsciowa)
+
 #     # 3. Then (Asercja)
 #     # Sprawdź, czy wynik jest zgodny z oczekiwaniami.
-#     assert rzeczywisty_wynik == oczekiwany_wynik
+    assert rzeczywisty_wynik == oczekiwany_wynik
 #
 #
 # 5. Podsumowanie

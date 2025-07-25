@@ -80,7 +80,7 @@ suma_funkcja = sum(lista_liczb)
 end_sum = time.time()
 print(f"Czas sumowania funkcją sum(): {end_sum - start_sum:.6f} s")
 
-#
+
 #     * Unikaj pętli na rzecz wektoryzacji (NumPy/Pandas)
 #       To najważniejsza technika optymalizacji w analizie danych. Zamiast iterować
 #       po elementach, wykonuj operacje na całych tablicach naraz.
@@ -105,7 +105,7 @@ end_numpy = time.time()
 print(f"Czas mnożenia w NumPy (wektoryzacja): {end_numpy - start_numpy:.6f} s")
 # Różnica w czasie jest gigantyczna!
 
-#
+
 #     * Wybieraj odpowiednie struktury danych
 #       Sprawdzanie, czy element istnieje w liście, jest wolne. W zbiorze (set) - błyskawiczne.
 
@@ -126,7 +126,7 @@ _ = element_do_znalezienia in duzy_zbior
 end_zbior_check = time.time()
 print(f"Czas sprawdzania w zbiorze: {end_zbior_check - start_zbior_check:.6f} s")
 
-#
+
 # 3. Kiedy sięgać po więcej? Profilery i Cython
 #
 # Gdy powyższe techniki nie wystarczają, można sięgnąć po cięższą artylerię:
@@ -156,4 +156,3 @@ print(f"Czas sprawdzania w zbiorze: {end_zbior_check - start_zbior_check:.6f} s"
 #
 # Efektywny kod to nie tylko taki, który działa, ale taki, który szanuje czas –
 # zarówno Twój, jak i komputera.
-#

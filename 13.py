@@ -42,7 +42,7 @@ imiona = ["anna", "piotr", "zofia"]
 imiona_wielkimi = [imie.upper() for imie in imiona]
 print(f"Imiona wielkimi literami: {imiona_wielkimi}")
 
-#
+
 # 2. Słowniki – Bezpieczny dostęp i dynamiczne tworzenie
 #
 # Słowniki to serce wielu aplikacji. Poznajmy techniki, które czynią pracę z nimi łatwiejszą i bezpieczniejszą.
@@ -82,7 +82,7 @@ slowa = ["jabłko", "dom", "analiza", "ai", "dane"]
 slownik_slow = {slowo: len(slowo) for slowo in slowa if len(slowo) > 3}
 print(f"Słownik długości słów: {slownik_slow}")
 
-#
+
 # 3. Zbiory (Sets) – Potęga operacji matematycznych
 #
 # Główną siłą zbiorów, oprócz przechowywania unikalnych wartości, są błyskawiczne
@@ -116,7 +116,7 @@ roz_symetryczna = uzytkownicy_produktu_A.symmetric_difference(uzytkownicy_produk
 roz_symetryczna_operatorem = uzytkownicy_produktu_A ^ uzytkownicy_produktu_B
 print(f"Użytkownicy, którzy polubili tylko jeden produkt: {roz_symetryczna_operatorem}")
 
-#
+
 # 4. Kiedy czego używać? – Podsumowanie
 #
 # Wybór odpowiedniej struktury danych jest kluczowy dla wydajności i czytelności kodu.

@@ -47,7 +47,7 @@ print(type(azor)) # <class '__main__.Pies'> - Python wie, że 'azor' to obiekt k
 print(azor)       # <__main__.Pies object at 0x...> - widzimy, że to obiekt w pamięci
 print(burek)      # <__main__.Pies object at 0x...> - to INNY obiekt w innym miejscu pamięci
 
-#
+
 # 3. Konstruktor `__init__` i atrybuty obiektu (`self`)
 #
 # Nasza klasa `Pies` jest na razie bezużyteczna. Jak nadać obiektom ich unikalne cechy (atrybuty)?
@@ -80,7 +80,7 @@ burek = Pies("Burek", "Mieszaniec", 3)
 print(f"Mój pierwszy pies to {azor.imie}, ma {azor.wiek} lat i jest rasy {azor.rasa}.")
 print(f"Mój drugi pies to {burek.imie}, ma {burek.wiek} lat i jest rasy {burek.rasa}.")
 
-#
+
 # 4. Metody – Co obiekty potrafią robić
 #
 # Metody to funkcje zdefiniowane wewnątrz klasy. Zawsze przyjmują `self` jako pierwszy argument,
@@ -116,7 +116,7 @@ moje_auto.przyspiesz(30)
 moje_auto.zatrzymaj()
 print(f"Prędkość po zatrzymaniu: {moje_auto.predkosc}")
 
-#
+
 # 5. Dlaczego OOP jest przydatne w analizie danych?
 #
 # Może się to wydawać abstrakcyjne, ale w rzeczywistości biblioteki, których będziesz używać

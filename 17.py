@@ -138,7 +138,7 @@ plt.grid(True)
 plt.show()
 # (Po uruchomieniu pod komórką pojawi się wygenerowany wykres)
 
-#
+
 # 6. Podsumowanie
 #
 #     * Jupyter Notebook to interaktywne środowisko do pracy z kodem, tekstem i wizualizacjami.
@@ -149,4 +149,3 @@ plt.show()
 #
 # Od teraz wiele naszych zadań, zwłaszcza tych związanych z analizą i wizualizacją danych,
 # będziemy wykonywać właśnie w Jupyter Notebookach. Czas zacząć eksperymentować!
-#
