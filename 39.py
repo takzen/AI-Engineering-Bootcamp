@@ -2,7 +2,7 @@
 #
 #
 #
-# Gratulacje! Dotarłeś do końca tego modułu. Znasz już budowę łańcuchów, agentów, pamięci i dynamicznych aplikacji.
+# Gratulacje! Dotarłeś prawie do końca tego modułu. Znasz już budowę łańcuchów, agentów, pamięci i dynamicznych aplikacji.
 # Stworzyłeś "mózg" operacji. Ale jak sprawić, by świat zewnętrzny mógł z niego korzystać? Jak zamienić skrypt
 # Pythona w prawdziwą, interaktywną aplikację webową, z którą może wejść w interakcję każdy, nie tylko programista?
 #
