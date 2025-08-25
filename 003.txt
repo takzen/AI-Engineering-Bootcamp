@@ -2,7 +2,8 @@ Moduł 1, Punkt 3: Przegląd kluczowych narzędzi: LangChain, LangFlow, LangGrap
 
 1. Wprowadzenie – Ekosystem LangChain
 
-    Kiedy mówimy "LangChain", często myślimy o pierwotnej bibliotece Pythona. Jednak z czasem wokół niej wyrósł cały ekosystem narzędzi, które mają ułatwić budowanie, wizualizowanie, wdrażanie i monitorowanie aplikacji opartych na dużych modelach językowych (LLM).
+    Kiedy mówimy "LangChain", często myślimy o pierwotnej bibliotece Pythona. Jednak z czasem wokół niej wyrósł cały ekosystem narzędzi, które mają ułatwić budowanie, wizualizowanie, wdrażanie 
+    i monitorowanie aplikacji opartych na dużych modelach językowych (LLM).
 
     Celem tego ekosystemu jest rozwiązanie kluczowych problemów w pracy z LLM-ami: od skomplikowanej logiki, przez brak wizualizacji, aż po trudności w debugowaniu.
 
@@ -68,7 +69,8 @@ Moduł 1, Punkt 3: Przegląd kluczowych narzędzi: LangChain, LangFlow, LangGrap
 
     Dla kogo? Dla zaawansowanych programistów i badaczy AI, którzy potrzebują pełnej kontroli nad logiką działania agenta.
 
-    Analogia: Jeśli LangChain to budowa prostej drogi, to LangGraph to projektowanie skomplikowanego, wielopoziomowego skrzyżowania z sygnalizacją świetlną i pętlami. Daje znacznie większą kontrolę nad przepływem "ruchu" (logiki).
+    Analogia: Jeśli LangChain to budowa prostej drogi, to LangGraph to projektowanie skomplikowanego, wielopoziomowego skrzyżowania z sygnalizacją świetlną i pętlami. Daje znacznie większą kontrolę 
+    nad przepływem "ruchu" (logiki).
 
 5. LangSmith – Platforma do Debugowania i Monitorowania
 

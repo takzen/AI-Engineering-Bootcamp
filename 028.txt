@@ -1,6 +1,7 @@
 Moduł 4, lekcja 28: Praktyczne przykłady skutecznego promptowania
 
-Teoria jest ważna, ale nic nie uczy tak dobrze, jak praktyka. W tej lekcji przejdziemy przez kilka konkretnych scenariuszy, pokazując, jak różnica między słabym a dobrze zaprojektowanym promptem prowadzi do diametralnie różnych wyników. Skupimy się na zadaniach, z którymi jako analitycy danych spotykamy się na co dzień.
+Teoria jest ważna, ale nic nie uczy tak dobrze, jak praktyka. W tej lekcji przejdziemy przez kilka konkretnych scenariuszy, pokazując, jak różnica między słabym a dobrze zaprojektowanym promptem prowadzi 
+do diametralnie różnych wyników. Skupimy się na zadaniach, z którymi jako analitycy danych spotykamy się na co dzień.
 
 1. Zadanie: Podsumowanie długiego tekstu
 
@@ -8,7 +9,10 @@ Wyobraź sobie, że dostajesz raport lub artykuł i musisz szybko zrozumieć jeg
 
     Kontekst: Mamy fragment raportu finansowego. Chcemy z niego wyciągnąć najważniejsze informacje dla zarządu.
 
-    Fragment tekstu: "W trzecim kwartale 2023 roku, spółka 'Innowacje Cyfrowe S.A.' odnotowała znaczący wzrost przychodów o 22% w ujęciu rocznym, osiągając pułap 15,2 mln PLN. Głównym motorem napędowym tego wzrostu był segment oprogramowania chmurowego, który zanotował dynamikę na poziomie 35%. Koszty operacyjne wzrosły o 15% z powodu inwestycji w nową infrastrukturę serwerową oraz zwiększenia zatrudnienia w dziale R&D. Mimo to, zysk netto spółki wzrósł o 18% do 3,4 mln PLN. Spółka z optymizmem patrzy w przyszłość, prognozując dalszy wzrost w segmencie chmurowym, chociaż spodziewa się rosnącej presji konkurencyjnej."
+    Fragment tekstu: "W trzecim kwartale 2023 roku, spółka 'Innowacje Cyfrowe S.A.' odnotowała znaczący wzrost przychodów o 22% w ujęciu rocznym, osiągając pułap 15,2 mln PLN. Głównym motorem napędowym tego 
+    wzrostu był segment oprogramowania chmurowego, który zanotował dynamikę na poziomie 35%. Koszty operacyjne wzrosły o 15% z powodu inwestycji w nową infrastrukturę serwerową oraz zwiększenia zatrudnienia 
+    w dziale R&D. Mimo to, zysk netto spółki wzrósł o 18% do 3,4 mln PLN. Spółka z optymizmem patrzy w przyszłość, prognozując dalszy wzrost w segmencie chmurowym, chociaż spodziewa się rosnącej presji 
+    konkurencyjnej."
 
 Słaby Prompt:
 
@@ -18,7 +22,8 @@ Słaby Prompt:
 
 Dobry Prompt:
 
-    Działając jako analityk finansowy, przygotuj dla zarządu podsumowanie poniższego raportu. Przedstaw kluczowe wnioski w formie 4-punktowej listy. Każdy punkt powinien zawierać konkretne dane liczbowe. Skup się na przychodach, kosztach, zysku netto i głównym czynniku wzrostu.
+    Działając jako analityk finansowy, przygotuj dla zarządu podsumowanie poniższego raportu. Przedstaw kluczowe wnioski w formie 4-punktowej listy. Każdy punkt powinien zawierać konkretne dane liczbowe. 
+    Skup się na przychodach, kosztach, zysku netto i głównym czynniku wzrostu.
 
     Oczekiwany, precyzyjny wynik:
 
@@ -44,7 +49,8 @@ Słaby Prompt:
 
 Dobry Prompt:
 
-    Przeanalizuj poniższy tekst i wyodrębnij z niego kluczowe dane finansowe. Zwróć wynik wyłącznie w formacie JSON. Użyj następujących kluczy: "nazwa_firmy", "okres_raportu", "przychody_mln_pln", "wzrost_przychodow_proc", "zysk_netto_mln_pln", "wzrost_zysku_proc". Wartości liczbowe przedstaw jako float, a nie string.
+    Przeanalizuj poniższy tekst i wyodrębnij z niego kluczowe dane finansowe. Zwróć wynik wyłącznie w formacie JSON. Użyj następujących kluczy: "nazwa_firmy", "okres_raportu", "przychody_mln_pln", 
+    "wzrost_przychodow_proc", "zysk_netto_mln_pln", "wzrost_zysku_proc". Wartości liczbowe przedstaw jako float, a nie string.
 
     Oczekiwany, precyzyjny wynik:
     Generated json

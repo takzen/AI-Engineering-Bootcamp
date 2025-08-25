@@ -82,7 +82,8 @@ być zawsze na bieżąco. Wybierz kilka i śledź je regularnie.
 **Blogi i Społeczności:**
 -   **Blogi firm AI:** Oficjalne blogi OpenAI, Anthropic, Google DeepMind, Mistral AI. Tam najpierw pojawiają się informacje o przełomowych modelach.
 -   **Hugging Face Blog:** Kopalnia wiedzy o modelach open-source, tutorialach i nowych technikach.
--   **Twitter (X) / AI Twitter:** Śledź kluczowe postacie w świecie AI (np. Andrej Karpathy, Harrison Chase, Andrew Ng, Yann LeCun). To tam najszybciej pojawiają się gorące dyskusje i przecieki.
+-   **Twitter (X) / AI Twitter:** Śledź kluczowe postacie w świecie AI (np. Andrej Karpathy, Harrison Chase, Andrew Ng, Yann LeCun). To tam najszybciej pojawiają się 
+gorące dyskusje i przecieki.
 -   **Reddit:** Subreddity takie jak r/LocalLLaMA (dla entuzjastów modeli open-source), r/MachineLearning, r/LangChain.
 """
 
@@ -114,7 +115,8 @@ Prawdziwy rozwój nastąpi, gdy zaczniesz rozumieć fundamentalne koncepcje, kt�
 
 Twoje kierunki dalszej nauki teoretycznej:
 -   **Matematyka dla ML:** Odśwież podstawy algebry liniowej, rachunku prawdopodobieństwa i statystyki. Khan Academy to świetne miejsce na start.
--   **Architektura Transformerów:** Zrozum, jak działa mechanizm uwagi (attention), który jest sercem każdego nowoczesnego LLM. Artykuł "The Illustrated Transformer" to klasyk.
+-   **Architektura Transformerów:** Zrozum, jak działa mechanizm uwagi (attention), który jest sercem każdego nowoczesnego LLM. Artykuł "The Illustrated Transformer" 
+to klasyk.
 -   **Algorytmy:** Miej solidne podstawy z klasycznych algorytmów i struktur danych. To fundament każdego dobrego programisty.
 """
 

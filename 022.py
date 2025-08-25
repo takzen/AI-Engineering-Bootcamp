@@ -23,6 +23,7 @@
 # do słowników i list w Pythonie.
 #
 # Przykład JSON:
+
 """
 {
   "imie": "Anna",
@@ -54,6 +55,7 @@
 #     * `json.loads()`: Deserializuje STRING w formacie JSON do obiektu Pythona.
 #                       (load s -> load from string)
 
+
 import json
 
 # Obiekt Pythona (słownik)
@@ -72,6 +74,7 @@ json_string = json.dumps(osoba_dict, indent=2, ensure_ascii=False)
 
 print("Typ po serializacji:", type(json_string))
 print("Wynikowy string JSON:\n", json_string)
+
 
 
 print("\n--- 2. Deserializacja (JSON string -> Python) ---")

@@ -184,7 +184,8 @@ To iteracyjny cykl:
 
 4.  **Uruchom testy ponownie:** Uruchom `evaluation_suite.py` jeszcze raz.
 
-5.  **Porównaj wyniki:** Czy odpowiedzi faktycznie stały się lepsze? Czy nie pojawiły się nowe problemy (np. model się "gubi" w nadmiarze informacji)? Czy czas odpowiedzi znacząco się nie wydłużył?
+5.  **Porównaj wyniki:** Czy odpowiedzi faktycznie stały się lepsze? Czy nie pojawiły się nowe problemy (np. model się "gubi" w nadmiarze informacji)? Czy czas odpowiedzi 
+znacząco się nie wydłużył?
 
 6.  **Zdecyduj:**
     - Jeśli zmiana pomogła -> Zachowaj ją.

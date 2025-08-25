@@ -92,9 +92,12 @@ if "OPENAI_API_KEY" not in os.environ:
 # Krok 1: Stworzenie bazy wektorowej z opisami produktów (filmów)
 print("--- Indeksowanie bazy filmów ---")
 movie_descriptions = [
-    Document(page_content="Matrix: Innowacyjny thriller science-fiction, pełen akcji, filozoficznych pytań o naturę rzeczywistości i ikonicznego stylu cyberpunku.", metadata={"title": "Matrix"}),
-    Document(page_content="Forrest Gump: Ciepła, wzruszająca i pełna humoru opowieść o życiu prostego człowieka, która jest jednocześnie podróżą przez historię Ameryki. Idealny film na poprawę nastroju.", metadata={"title": "Forrest Gump"}),
-    Document(page_content="Blade Runner 2049: Mroczne, powolne i wizualnie oszałamiające kino neo-noir. Stawia głębokie pytania o to, co to znaczy być człowiekiem w świecie pełnym technologii.", metadata={"title": "Blade Runner 2049"})
+    Document(page_content="Matrix: Innowacyjny thriller science-fiction, pełen akcji, filozoficznych pytań o naturę rzeczywistości i ikonicznego stylu cyberpunku.", 
+             metadata={"title": "Matrix"}),
+    Document(page_content="Forrest Gump: Ciepła, wzruszająca i pełna humoru opowieść o życiu prostego człowieka, która jest jednocześnie podróżą przez historię Ameryki. " \
+    "Idealny film na poprawę nastroju.", metadata={"title": "Forrest Gump"}),
+    Document(page_content="Blade Runner 2049: Mroczne, powolne i wizualnie oszałamiające kino neo-noir. Stawia głębokie pytania o to, co to znaczy być człowiekiem w " \
+    "świecie pełnym technologii.", metadata={"title": "Blade Runner 2049"})
 ]
 embeddings = OpenAIEmbeddings()
 vectorstore = FAISS.from_documents(movie_descriptions, embeddings)

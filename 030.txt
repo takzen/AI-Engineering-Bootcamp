@@ -1,6 +1,7 @@
 Moduł 4, lekcja 30: Jakie są ograniczenia modeli LLMs?
 
-Poznaliśmy już niesamowitą moc modeli językowych. Widzieliśmy, jak potrafią pisać kod, podsumowywać teksty i wcielać się w rolę ekspertów. Jednak, aby być świadomym i odpowiedzialnym użytkownikiem, musimy równie dobrze znać ich słabości. Używanie LLM bez znajomości jego ograniczeń jest jak jazda supersamochodem bez wiedzy o tym, gdzie znajduje się hamulec.
+Poznaliśmy już niesamowitą moc modeli językowych. Widzieliśmy, jak potrafią pisać kod, podsumowywać teksty i wcielać się w rolę ekspertów. Jednak, aby być świadomym i odpowiedzialnym użytkownikiem, musimy 
+równie dobrze znać ich słabości. Używanie LLM bez znajomości jego ograniczeń jest jak jazda supersamochodem bez wiedzy o tym, gdzie znajduje się hamulec.
 
 1. Halucynacje – Kreatywność czy Konfabulacja?
 
@@ -8,7 +9,8 @@ To najważniejsze i najczęściej spotykane ograniczenie. Model LLM może genero
 
     Co to jest? Halucynacja to sytuacja, w której model "wymyśla" fakty, cytaty, źródła, a nawet funkcje w kodzie, które nie istnieją.
 
-    Dlaczego tak się dzieje? Pamiętajmy, że model nie "wie" – on statystycznie przewiduje następne słowo. Czasem najbardziej prawdopodobna statystycznie kontynuacja jest po prostu nieprawdziwa. On nie ma wbudowanego "wykrywacza kłamstw".
+    Dlaczego tak się dzieje? Pamiętajmy, że model nie "wie" – on statystycznie przewiduje następne słowo. Czasem najbardziej prawdopodobna statystycznie kontynuacja jest po prostu nieprawdziwa. On nie ma 
+    wbudowanego "wykrywacza kłamstw".
 
     Praktyczny przykład:
 
@@ -45,7 +47,8 @@ To fundamentalne, filozoficzne ograniczenie. Model doskonale operuje na języku,
 
     Jak to sprawdzić? Zadaj modelowi pytanie wymagające prostego, fizycznego rozumowania, którego nie mógł znaleźć w tekstach, np. nietypową zagadkę logiczną.
 
-    Przykład: Chociaż nowoczesne modele są już trenowane, aby odpowiadać poprawnie, klasyczna zagadka "Co jest cięższe: kilogram pierza czy kilogram ołowiu?" przez długi czas stanowiła dla nich problem. Model nie "rozumie" wagi i masy, on tylko powtarza wzorce, które znalazł w danych treningowych.
+    Przykład: Chociaż nowoczesne modele są już trenowane, aby odpowiadać poprawnie, klasyczna zagadka "Co jest cięższe: kilogram pierza czy kilogram ołowiu?" przez długi czas stanowiła dla nich problem. 
+    Model nie "rozumie" wagi i masy, on tylko powtarza wzorce, które znalazł w danych treningowych.
 
 Kluczowa zasada: Nie ufaj modelowi w zadaniach wymagających nieszablonowego, logicznego rozumowania lub głębokiego zrozumienia kontekstu sytuacyjnego.
 
@@ -63,7 +66,8 @@ Kluczowa zasada: Budując aplikacje oparte na LLM, zawsze bierz pod uwagę ryzyk
 
 Podsumowanie – Myślenie krytyczne to Twoja supermoc
 
-LLM to potężny stażysta: niezwykle zdolny, szybki i posiadający ogromną wiedzę, ale jednocześnie naiwny, podatny na błędy i bezkrytyczny. Twoją rolą, jako doświadczonego profesjonalisty, jest nadzorowanie jego pracy.
+LLM to potężny stażysta: niezwykle zdolny, szybki i posiadający ogromną wiedzę, ale jednocześnie naiwny, podatny na błędy i bezkrytyczny. Twoją rolą, jako doświadczonego profesjonalisty, jest nadzorowanie 
+jego pracy.
 
 Najważniejsze do zapamiętania:
 

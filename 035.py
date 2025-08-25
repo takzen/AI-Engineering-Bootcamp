@@ -26,7 +26,8 @@
 #     1. **Analiza pytania**: Użytkownik pyta: "Który produkt sprzedaje się najlepiej?".
 #     2. **Inspekcja schematu**: Agent używa narzędzia `list_tables_sql_tool`, aby zobaczyć, jakie tabele są w bazie (np. `produkty`, `sprzedaz`).
 #     3. **Sprawdzenie kolumn**: Używa narzędzia `info_sql_tool`, aby sprawdzić, jakie kolumny mają te tabele (np. `produkty` ma `id_produktu`, `nazwa`; `sprzedaz` ma `id_produktu`, `ilosc`).
-#     4. **Napisanie zapytania SQL**: Na podstawie zdobytej wiedzy, LLM konstruuje poprawne zapytanie SQL, np. `SELECT nazwa FROM produkty JOIN sprzedaz ON produkty.id_produktu = sprzedaz.id_produktu GROUP BY nazwa ORDER BY SUM(ilosc) DESC LIMIT 1`.
+#     4. **Napisanie zapytania SQL**: Na podstawie zdobytej wiedzy, LLM konstruuje poprawne zapytanie SQL, np. `SELECT nazwa FROM produkty JOIN sprzedaz ON produkty.id_produktu = sprzedaz.id_produktu 
+#       GROUP BY nazwa ORDER BY SUM(ilosc) DESC LIMIT 1`.
 #     5. **Wykonanie zapytania**: Używa narzędzia `query_sql_tool`, aby wykonać wygenerowany kod SQL na bazie danych.
 #     6. **Interpretacja wyniku**: Otrzymuje wynik z bazy (np. `[('Laptop',)]`), a następnie formułuje ostateczną odpowiedź w języku naturalnym: "Najlepiej sprzedającym się produktem jest Laptop."
 #

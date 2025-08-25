@@ -38,19 +38,19 @@
 #     (To jest wersja, której nauczyliśmy się w poprzedniej lekcji i jest to standardowa dobra praktyka)
 
 # 1. Obraz bazowy (zmienia się rzadko)
-FROM python:3.11-slim
+#FROM python:3.11-slim
 # 2. Katalog roboczy
-WORKDIR /app
+#WORKDIR /app
 # 3. Kopiuj TYLKO plik z zależnościami
-COPY requirements.txt .
+#COPY requirements.txt .
 # 4. Instaluj zależności. Ta warstwa zostanie zbuforowana,
 #    dopóki plik requirements.txt się nie zmieni.
-RUN pip install --no-cache-dir -r requirements.txt
+#RUN pip install --no-cache-dir -r requirements.txt
 # 5. DOPIERO TERAZ kopiuj resztę kodu, który zmienia się często.
-COPY . .
+#COPY . .
 # 6. Port i komenda startowa
-EXPOSE 8000
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+#EXPOSE 8000
+#CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 #     **Efekt**: Teraz, gdy zmieniasz tylko kod w `main.py`, Docker unieważni tylko warstwę
 #     `COPY . .` i błyskawicznie przebuduje obraz, wykorzystując z cache'u warstwę z już

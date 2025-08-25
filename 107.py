@@ -92,10 +92,12 @@ Elementy, które muszą się znaleźć w Twoim CV/profilu:
 """
 Samo wysyłanie setek CV przez portale to strategia mało skuteczna. Musisz działać mądrzej.
 
-- **Portale z ofertami (must-have):** LinkedIn, Just Join IT, No Fluff Jobs. Ustaw alerty na słowa kluczowe: "AI Engineer", "Python Developer", "Machine Learning Engineer", "NLP Engineer". Nie bój się aplikować na stanowiska "Python Developer" – często szukają kogoś z zacięciem do AI.
+- **Portale z ofertami (must-have):** LinkedIn, Just Join IT, No Fluff Jobs. Ustaw alerty na słowa kluczowe: "AI Engineer", "Python Developer", "Machine Learning Engineer", 
+"NLP Engineer". Nie bój się aplikować na stanowiska "Python Developer" – często szukają kogoś z zacięciem do AI.
 
 - **Networking (Twoja tajna broń):**
-    - **LinkedIn:** To nie tylko tablica z ofertami. Znajdź rekruterów z firm, które Cię interesują i napisz do nich krótką, spersonalizowaną wiadomość. Znajdź AI Engineerów z tych firm i zapytaj o ich pracę (ludzie lubią mówić o tym, co robią).
+    - **LinkedIn:** To nie tylko tablica z ofertami. Znajdź rekruterów z firm, które Cię interesują i napisz do nich krótką, spersonalizowaną wiadomość. Znajdź AI Engineerów 
+    z tych firm i zapytaj o ich pracę (ludzie lubią mówić o tym, co robią).
     - **Meetupy/Konferencje:** Uczestnicz w lokalnych lub online'owych spotkaniach dotyczących Pythona i AI. To kopalnia kontaktów.
 
 - **Strategia "na snajpera", a nie "na karabin maszynowy":**
@@ -114,7 +116,8 @@ Jeśli Twoje portfolio i CV zadziałają, dostaniesz zaproszenie na rozmowę. Pr
 
 1.  **Pytania o Ciebie (HR):** "Dlaczego AI?", "Gdzie widzisz siebie za 5 lat?", "Jak się uczysz?". Miej przygotowane krótkie, spójne odpowiedzi.
 
-2.  **Pytania techniczne (Teoria):** "Jak działa RAG?", "Czym jest embedding?", "Do czego służy FastAPI?", "Jakie są zalety i wady używania LangChain?". Musisz znać teorię stojącą za tym, co robiłeś w projekcie.
+2.  **Pytania techniczne (Teoria):** "Jak działa RAG?", "Czym jest embedding?", "Do czego służy FastAPI?", "Jakie są zalety i wady używania LangChain?". Musisz znać 
+teorię stojącą za tym, co robiłeś w projekcie.
 
 3.  **Pytania o Twój projekt (NAJWAŻNIEJSZE):** To tutaj błyszczysz. Bądź gotów na dogłębną dyskusję o swoim projekcie.
     - "Dlaczego wybrałeś właśnie taką architekturę?"

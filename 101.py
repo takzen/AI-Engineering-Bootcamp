@@ -72,74 +72,74 @@
 # # - OPENAI_API_KEY: Klucz API OpenAI, który zostanie przekazany do kontenera.
 
 # --- Plik: .github/workflows/deploy.yml ---
-name: Deploy AI App to Production
+# name: Deploy AI App to Production
 
 # Wyzwalacz: Uruchom ten workflow przy każdym pushu do gałęzi 'main'
-on:
-  push:
-    branches: [ "main" ]
+# on:
+#   push:
+#     branches: [ "main" ]
 
-jobs:
-  # Pierwsze zadanie: testowanie i budowanie obrazu
-  test_and_build:
-    runs-on: ubuntu-latest # Uruchom na maszynie wirtualnej z Ubuntu
-    steps:
-      # Krok 1: Pobranie kodu z repozytorium
-      - name: Checkout code
-        uses: actions/checkout@v4
+# jobs:
+#   # Pierwsze zadanie: testowanie i budowanie obrazu
+#   test_and_build:
+#     runs-on: ubuntu-latest # Uruchom na maszynie wirtualnej z Ubuntu
+#     steps:
+#       # Krok 1: Pobranie kodu z repozytorium
+#       - name: Checkout code
+#         uses: actions/checkout@v4
 
-      # Krok 2: Ustawienie środowiska Pythona
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+#       # Krok 2: Ustawienie środowiska Pythona
+#       - name: Set up Python
+#         uses: actions/setup-python@v5
+#         with:
+#           python-version: '3.11'
 
-      # Krok 3: Instalacja zależności i uruchomienie testów jednostkowych
-      - name: Install dependencies and run tests
-        run: |
-          pip install -r requirements.txt
-          pytest
+#       # Krok 3: Instalacja zależności i uruchomienie testów jednostkowych
+#       - name: Install dependencies and run tests
+#         run: |
+#           pip install -r requirements.txt
+#           pytest
 
-      # Krok 4: Logowanie do Docker Hub
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+#       # Krok 4: Logowanie do Docker Hub
+#       - name: Log in to Docker Hub
+#         uses: docker/login-action@v3
+#         with:
+#           username: ${{ secrets.DOCKERHUB_USERNAME }}
+#           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # Krok 5: Budowanie i wypychanie obrazu Dockera
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          # Tagujemy obraz jako 'latest' i unikalnym numerem commita
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-ai-api:latest, ${{ secrets.DOCKERHUB_USERNAME }}/my-ai-api:${{ github.sha }}
+#       # Krok 5: Budowanie i wypychanie obrazu Dockera
+#       - name: Build and push Docker image
+#         uses: docker/build-push-action@v5
+#         with:
+#           context: .
+#           push: true
+#           # Tagujemy obraz jako 'latest' i unikalnym numerem commita
+#           tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-ai-api:latest, ${{ secrets.DOCKERHUB_USERNAME }}/my-ai-api:${{ github.sha }}
 
   # Drugie zadanie: wdrażanie na serwerze (uruchomi się tylko, jeśli 'test_and_build' się powiedzie)
-  deploy:
-    needs: test_and_build # Zależność od poprzedniego zadania
-    runs-on: ubuntu-latest
-    steps:
-      # Krok 1: Logowanie na serwer i wdrożenie
-      - name: Deploy to production server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.PROD_SERVER_HOST }}
-          username: ${{ secrets.PROD_SERVER_USERNAME }}
-          key: ${{ secrets.PROD_SSH_KEY }}
-          script: |
-            # Komendy wykonywane na serwerze produkcyjnym
-            # 1. Pobierz najnowszy obraz
-            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/my-ai-api:latest
-            # 2. Zatrzymaj i usuń stary kontener (jeśli istnieje)
-            docker stop my-ai-container || true
-            docker rm my-ai-container || true
-            # 3. Uruchom nowy kontener z nowym obrazem i zmiennymi środowiskowymi
-            docker run -d -p 8000:8000 \
-              -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
-              --name my-ai-container \
-              ${{ secrets.DOCKERHUB_USERNAME }}/my-ai-api:latest
+  # deploy:
+  #   needs: test_and_build # Zależność od poprzedniego zadania
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     # Krok 1: Logowanie na serwer i wdrożenie
+  #     - name: Deploy to production server
+  #       uses: appleboy/ssh-action@master
+  #       with:
+  #         host: ${{ secrets.PROD_SERVER_HOST }}
+  #         username: ${{ secrets.PROD_SERVER_USERNAME }}
+  #         key: ${{ secrets.PROD_SSH_KEY }}
+  #         script: |
+  #           # Komendy wykonywane na serwerze produkcyjnym
+  #           # 1. Pobierz najnowszy obraz
+  #           docker pull ${{ secrets.DOCKERHUB_USERNAME }}/my-ai-api:latest
+  #           # 2. Zatrzymaj i usuń stary kontener (jeśli istnieje)
+  #           docker stop my-ai-container || true
+  #           docker rm my-ai-container || true
+  #           # 3. Uruchom nowy kontener z nowym obrazem i zmiennymi środowiskowymi
+  #           docker run -d -p 8000:8000 \
+  #             -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} \
+  #             --name my-ai-container \
+  #             ${{ secrets.DOCKERHUB_USERNAME }}/my-ai-api:latest
 
 #
 # 4. Podsumowanie – Ostateczny Cel Inżynierii AI

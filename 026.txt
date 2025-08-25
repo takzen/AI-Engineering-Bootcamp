@@ -1,10 +1,12 @@
 Moduł 4, lekcja 26: Różnice między OpenAI API a modelami lokalnymi
 
-Wiemy już, CZYM są i jak działają Wielkie Modele Językowe. Teraz pojawia się kluczowe, praktyczne pytanie: JAK możemy z nich korzystać w naszych projektach? Istnieją dwie główne ścieżki, a wybór między nimi zależy od naszych potrzeb, zasobów i priorytetów. Te dwie ścieżki to korzystanie z API oraz uruchamianie modeli lokalnie.
+Wiemy już, CZYM są i jak działają Wielkie Modele Językowe. Teraz pojawia się kluczowe, praktyczne pytanie: JAK możemy z nich korzystać w naszych projektach? Istnieją dwie główne ścieżki, a wybór między 
+nimi zależy od naszych potrzeb, zasobów i priorytetów. Te dwie ścieżki to korzystanie z API oraz uruchamianie modeli lokalnie.
 
 1. Ścieżka 1: API (np. OpenAI API) – Model jako usługa
 
-Wyobraź sobie, że potrzebujesz supersamochodu. Zamiast go kupować, serwisować i budować dla niego garaż, po prostu zamawiasz go z kierowcą przez aplikację, kiedy tylko go potrzebujesz. Płacisz za przejazd i gotowe. Dokładnie tak działa API.
+Wyobraź sobie, że potrzebujesz supersamochodu. Zamiast go kupować, serwisować i budować dla niego garaż, po prostu zamawiasz go z kierowcą przez aplikację, kiedy tylko go potrzebujesz. Płacisz za przejazd 
+i gotowe. Dokładnie tak działa API.
 
 Czym jest API (Application Programming Interface)?
 To "most" komunikacyjny, który pozwala Twojej aplikacji (np. skryptowi w Pythonie) wysyłać zlecenia do modelu językowego działającego na potężnych serwerach firmy (np. OpenAI) i odbierać od niego odpowiedzi.
@@ -35,7 +37,8 @@ Wady:
 
     Koszty: Usługa jest płatna, zazwyczaj w modelu "pay-as-you-go" (płacisz za każde przetworzone słowo/token).
 
-    Prywatność: Wysyłasz swoje dane (prompty) na serwery zewnętrznej firmy. Choć firmy takie jak OpenAI mają ścisłe polityki prywatności, dla niektórych zastosowań (np. dane medyczne, tajemnice firmowe) jest to niedopuszczalne.
+    Prywatność: Wysyłasz swoje dane (prompty) na serwery zewnętrznej firmy. Choć firmy takie jak OpenAI mają ścisłe polityki prywatności, dla niektórych zastosowań (np. dane medyczne, tajemnice firmowe) 
+    jest to niedopuszczalne.
 
     Zależność od internetu: Bez połączenia z siecią usługa nie zadziała.
 
@@ -43,7 +46,8 @@ Wady:
 
 2. Ścieżka 2: Modele Lokalne – Własny model w Twoim komputerze
 
-Wracając do naszej analogii: to tak, jakbyś kupił własny samochód. Masz go w garażu, możesz go modyfikować i jeździć nim o każdej porze dnia i nocy bez dodatkowych opłat za przejazd. Musisz jednak najpierw ponieść koszt zakupu, dbać o niego i mieć dla niego miejsce.
+Wracając do naszej analogii: to tak, jakbyś kupił własny samochód. Masz go w garażu, możesz go modyfikować i jeździć nim o każdej porze dnia i nocy bez dodatkowych opłat za przejazd. Musisz jednak najpierw 
+ponieść koszt zakupu, dbać o niego i mieć dla niego miejsce.
 
 Jak to działa?
 
@@ -120,3 +124,4 @@ Wybór między API a modelem lokalnym to jedna z fundamentalnych decyzji podczas
     Model lokalny to pełna kontrola, prywatność i niezależność w zamian za inwestycję w sprzęt i większą złożoność techniczną.
 
 Znajomość obu tych dróg otwiera przed Tobą pełne spektrum możliwości, jakie dają nowoczesne modele językowe.
+

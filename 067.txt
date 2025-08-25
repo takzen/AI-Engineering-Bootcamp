@@ -30,10 +30,12 @@ LANGCHAIN_TRACING_V2="true"
 LANGCHAIN_API_KEY="ls__..."
 LANGCHAIN_PROJECT="moja-produkcyjna-aplikacja"
 
-Od tego momentu, każda operacja wykonana przez LangChain lub LangGraph jest automatycznie i w tle rejestrowana w LangSmith. Nie musisz zmieniać ani jednej linijki kodu swojej aplikacji!
+Od tego momentu, każda operacja wykonana przez LangChain lub LangGraph jest automatycznie i w tle rejestrowana w LangSmith. Nie musisz zmieniać ani jednej linijki kodu 
+swojej aplikacji!
 
 Co jest rejestrowane?
-Każde wywołanie Twojej aplikacji (np. chain.invoke() lub app.invoke()) jest zapisywane jako ślad (trace). Ślad to hierarchiczna struktura, która zawiera każdy, nawet najmniejszy krok wykonany przez Twój system.
+Każde wywołanie Twojej aplikacji (np. chain.invoke() lub app.invoke()) jest zapisywane jako ślad (trace). Ślad to hierarchiczna struktura, która zawiera każdy, nawet 
+najmniejszy krok wykonany przez Twój system.
 
     Kluczowe funkcje monitorowania w LangSmith
 
@@ -82,9 +84,11 @@ Dzięki tym narzędziom możesz w końcu odpowiedzieć na kluczowe pytania:
 
     Identyfikacja problemów: Sortując tabelę śladów po statusie "Error", natychmiast znajdujesz wszystkie nieudane wywołania i możesz przeanalizować, co poszło nie tak.
 
-    Optymalizacja kosztów: W panelu projektu widzisz, czy koszty nagle nie wzrosły. Analizując ślady, możesz znaleźć zapytania, które zużywają najwięcej tokenów i zastanowić się, jak je zoptymalizować.
+    Optymalizacja kosztów: W panelu projektu widzisz, czy koszty nagle nie wzrosły. Analizując ślady, możesz znaleźć zapytania, które zużywają najwięcej tokenów i 
+    zastanowić się, jak je zoptymalizować.
 
-    Poprawa wydajności: Sortując po czasie trwania, znajdujesz "najwolniejsze" zapytania. W widoku śladu możesz dokładnie zobaczyć, który krok (np. wywołanie narzędzia, a może sam LLM?) jest "wąskim gardłem".
+    Poprawa wydajności: Sortując po czasie trwania, znajdujesz "najwolniejsze" zapytania. W widoku śladu możesz dokładnie zobaczyć, który krok (np. wywołanie narzędzia, 
+    a może sam LLM?) jest "wąskim gardłem".
 
     Analiza zachowań użytkowników: Przeglądając listę zapytań, dowiadujesz się, o co najczęściej pytają użytkownicy i jak Twoja aplikacja sobie z tym radzi.
 

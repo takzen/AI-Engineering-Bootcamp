@@ -2,7 +2,7 @@
 
 # 🤖 RODO Ekspert AI
 
-![Project Demo GIF](https://user-images.githubusercontent.com/username/repo/demo.gif)  <!-- Zastąp linkiem do własnego GIFa! -->
+https://github.com/takzen/AI-Engineering-Bootcamp/tree/main/project  
 
 ## 📄 Opis projektu
 

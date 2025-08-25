@@ -69,15 +69,15 @@
 # # Poniżej znajduje się kod testów dla tego łańcucha.
 
 # --- Kod aplikacji w pliku: title_generator.py ---
-# from langchain_openai import ChatOpenAI
-# from langchain.prompts import ChatPromptTemplate
-# from langchain_core.output_parsers import StrOutputParser
-#
-# def get_title_chain():
-#     llm = ChatOpenAI(model="gpt-4o", temperature=0)
-#     prompt = ChatPromptTemplate.from_template("Zaproponuj chwytliwy tytuł dla artykułu o: {topic}")
-#     chain = prompt | llm | StrOutputParser()
-#     return chain
+from langchain_openai import ChatOpenAI
+from langchain.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
+def get_title_chain():
+    llm = ChatOpenAI(model="gpt-4o", temperature=0)
+    prompt = ChatPromptTemplate.from_template("Zaproponuj chwytliwy tytuł dla artykułu o: {topic}")
+    chain = prompt | llm | StrOutputParser()
+    return chain
 # --- Koniec pliku title_generator.py ---
 
 

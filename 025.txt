@@ -1,6 +1,7 @@
 Moduł 4, lekcja 25: Jak działają Large Language Models (LLMs)?
 
-W poprzednich modułach poznaliśmy narzędzia do pracy z danymi. Teraz zanurzymy się w koncepcję, która zrewolucjonizowała świat technologii – Wielkie Modele Językowe (Large Language Models). Zrozumienie, jak działają, jest kluczowe, aby świadomie i efektywnie korzystać z narzędzi takich jak ChatGPT, Gemini czy Claude.
+W poprzednich modułach poznaliśmy narzędzia do pracy z danymi. Teraz zanurzymy się w koncepcję, która zrewolucjonizowała świat technologii – Wielkie Modele Językowe (Large Language Models). 
+Zrozumienie, jak działają, jest kluczowe, aby świadomie i efektywnie korzystać z narzędzi takich jak ChatGPT, Gemini czy Claude.
 
 1. Co to jest LLM? Definicja w prostych słowach
 
@@ -21,7 +22,8 @@ Można o nim myśleć jak o "statystycznej papudze", która przeczytała prawie 
 Magia LLM-ów nie bierze się znikąd. To efekt skomplikowanego, ale logicznego procesu treningu.
 
     Krok 1: Zebranie danych
-    Wszystko zaczyna się od danych. Mówimy tu o setkach terabajtów tekstu: Wikipedia, zbiory książek, artykuły naukowe, kod programistyczny, dyskusje na forach – praktycznie cała dostępna publicznie, cyfrowa wiedza tekstowa.
+    Wszystko zaczyna się od danych. Mówimy tu o setkach terabajtów tekstu: Wikipedia, zbiory książek, artykuły naukowe, kod programistyczny, dyskusje na forach – praktycznie cała dostępna publicznie, 
+    cyfrowa wiedza tekstowa.
 
     Krok 2: Architektura "Transformer"
     Przełomem, który umożliwił powstanie nowoczesnych LLM-ów, była architektura sieci neuronowej o nazwie "Transformer". Jej kluczowym elementem jest tzw. "mechanizm uwagi" (attention mechanism).
@@ -72,7 +74,8 @@ IGNORE_WHEN_COPYING_START
 Use code with caution.
 IGNORE_WHEN_COPYING_END
 
-Dodatkowo, po głównym treningu, modele przechodzą fazę "dostrajania" (fine-tuning) i "uczenia ze wzmocnieniem od ludzkich informacji zwrotnych" (RLHF). W tej fazie ludzie oceniają odpowiedzi modelu, ucząc go, które odpowiedzi są pomocne, prawdziwe i bezpieczne. To właśnie ten etap sprawia, że model staje się użytecznym asystentem, a nie tylko generatorem tekstu.
+Dodatkowo, po głównym treningu, modele przechodzą fazę "dostrajania" (fine-tuning) i "uczenia ze wzmocnieniem od ludzkich informacji zwrotnych" (RLHF). W tej fazie ludzie oceniają odpowiedzi modelu, 
+ucząc go, które odpowiedzi są pomocne, prawdziwe i bezpieczne. To właśnie ten etap sprawia, że model staje się użytecznym asystentem, a nie tylko generatorem tekstu.
 
 4. Funkcje w kontekście LLM-ów
 

@@ -41,17 +41,6 @@
 # Stworzymy kompletne, działające API dla prostego łańcucha, który generuje nazwy
 # dla firm.
 #
-# Krok 0: Instalacja
-# # W terminalu wykonaj:
-# # pip install fastapi "uvicorn[standard]" langchain-openai
-import os
-from fastapi import FastAPI
-from pydantic import BaseModel
-from langchain_openai import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import Str, która "opakowuje" łańcuch LangChain
-# generujący ciekawostki na zadany temat.
-#
 # Krok 0: Instalacja i struktura projektu
 # # W terminalu zainstaluj niezbędne pakiety:
 # # pip install fastapi "uvicorn[standard]" langchain-openai
@@ -64,30 +53,7 @@ from langchain_openai import ChatOpenAI
 from langchain.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-# Konfiguracja API
-# os.environ["OPENAI_API_KEY"] = "sk-..."
-if "OPENAI_API_KEY" not in os.environ:
-    print("\nBŁĄD: Upewnij się, że masz ustawioną zmienną środowiskową OPENAI_API_KEY.")
-    # W prawdziwej aplikacji lepiej rzucić wyjątek, ale tutaj dla prostoty używamy print
-    exit()
 
-# Krok 1: Definicja modeli danych (Pydantic)
-# To definiuje, jakiego formatu JSON oczekujemy na wejściu i co zwrócimy na wyjściu.
-class QueryRequest(BaseModel):
-    topic: str
-    
-class QueryResponse(BaseModel):
-    fact: str
-
-# Krok 2: Inicjalizacja aplikacji FastAPI i łańcucha LangChain
-app = FastAPI(
-    title="API do generowania ciekawostek",
-    description="Proste API oparte na FastAPI i LangChain."
-)
-
-# WAŻNE: Łańcuch tworzymy raz,OutputParser
-
-# Konfiguracja API
 # os.environ["OPENAI_API_KEY"] = "sk-..."
 if "OPENAI_API_KEY" not in os.environ:
     # W prawdziwej aplikacji, obsłużylibyśmy to inaczej, ale tutaj zatrzymujemy program.

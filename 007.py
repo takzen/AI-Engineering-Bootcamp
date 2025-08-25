@@ -19,7 +19,8 @@ print("Hello, World!")  # Ten komentarz wyjaśnia, co robi linia po lewej.
 
 
 
-#     Komentarz wieloliniowy (docstring): Formalnie to nie jest komentarz, a wieloliniowy string, ale jest powszechnie używany do dokumentowania funkcji i modułów. Tworzy się go za pomocą potrójnych cudzysłowów """ lub apostrofów '''.
+#     Komentarz wieloliniowy (docstring): Formalnie to nie jest komentarz, a wieloliniowy string, ale jest powszechnie używany do dokumentowania funkcji i modułów. Tworzy się go za pomocą potrójnych 
+# cudzysłowów """ lub apostrofów '''.
 
 """
 To jest komentarz,
@@ -169,7 +170,8 @@ print(not ma_prawo_jazdy) # False
 
 # 5. Kontrola przepływu – Instrukcje warunkowe
 # 
-# Instrukcje warunkowe pozwalają na wykonywanie różnych bloków kodu w zależności od tego, czy dany warunek jest spełniony. UWAGA: W Pythonie bloki kodu definiuje się za pomocą wcięć (zwykle 4 spacje), a nie nawiasów klamrowych!
+# Instrukcje warunkowe pozwalają na wykonywanie różnych bloków kodu w zależności od tego, czy dany warunek jest spełniony. UWAGA: W Pythonie bloki kodu definiuje się za pomocą wcięć (zwykle 4 spacje), 
+# a nie nawiasów klamrowych!
 # 
 #     if: Wykonuje kod, jeśli warunek jest prawdziwy.
 # 

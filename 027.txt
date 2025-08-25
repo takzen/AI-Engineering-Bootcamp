@@ -1,10 +1,12 @@
 Moduł 4, lekcja 27: Wprowadzenie do prompt engineeringu
 
-Skoro wiemy już, jak połączyć się z modelem językowym (przez API lub lokalnie), czas na najważniejszą umiejętność praktyczną: jak z nim "rozmawiać", aby uzyskać dokładnie to, czego chcemy. To właśnie jest istotą prompt engineeringu.
+Skoro wiemy już, jak połączyć się z modelem językowym (przez API lub lokalnie), czas na najważniejszą umiejętność praktyczną: jak z nim "rozmawiać", aby uzyskać dokładnie to, czego chcemy. To właśnie jest 
+istotą prompt engineeringu.
 
 1. Sztuka konwersacji z AI – Czym jest Prompt?
 
-Pomyśl o korzystaniu z wyszukiwarki internetowej 20 lat temu i dziś. Kiedyś wpisywaliśmy jedno, dwa słowa. Dziś, aby uzyskać najlepsze wyniki, często wpisujemy całe, precyzyjne pytania, np. "najlepsza włoska restauracja blisko mnie otwarta w niedzielę wieczorem".
+Pomyśl o korzystaniu z wyszukiwarki internetowej 20 lat temu i dziś. Kiedyś wpisywaliśmy jedno, dwa słowa. Dziś, aby uzyskać najlepsze wyniki, często wpisujemy całe, precyzyjne pytania, np. "najlepsza włoska 
+restauracja blisko mnie otwarta w niedzielę wieczorem".
 
 W świecie modeli językowych jest podobnie, ale na znacznie wyższym poziomie.
 
@@ -12,7 +14,8 @@ W świecie modeli językowych jest podobnie, ale na znacznie wyższym poziomie.
 
     Prompt Engineering: To sztuka i nauka tworzenia promptów, które prowadzą do najlepszych możliwych rezultatów – precyzyjnych, trafnych, kreatywnych i zgodnych z Twoimi intencjami.
 
-W informatyce istnieje zasada "Garbage In, Garbage Out" (śmieci na wejściu, śmieci na wyjściu). W przypadku LLM-ów zasada ta jest absolutnie kluczowa. Jakość Twojego promptu bezpośrednio determinuje jakość odpowiedzi modelu.
+W informatyce istnieje zasada "Garbage In, Garbage Out" (śmieci na wejściu, śmieci na wyjściu). W przypadku LLM-ów zasada ta jest absolutnie kluczowa. Jakość Twojego promptu bezpośrednio determinuje jakość 
+odpowiedzi modelu.
 
 2. Dlaczego "zwykłe" pytanie nie wystarczy?
 
@@ -26,7 +29,8 @@ Czego możemy się spodziewać? Ogólnego, być może nudnego opisu, który moż
 
 Dobry, "zaprojektowany" Prompt:
 
-    Zachowuj się jak doświadczony nauczyciel programowania. Napisz dla początkującego studenta analityki danych zwięzłe wprowadzenie (maksymalnie 3 akapity) do języka Python. Skup się na tym, dlaczego Python jest idealnym narzędziem do analizy danych, wymieniając 3 kluczowe biblioteki (jak pandas i matplotlib). Użyj prostego i zachęcającego języka.
+    Zachowuj się jak doświadczony nauczyciel programowania. Napisz dla początkującego studenta analityki danych zwięzłe wprowadzenie (maksymalnie 3 akapity) do języka Python. Skup się na tym, dlaczego Python 
+    jest idealnym narzędziem do analizy danych, wymieniając 3 kluczowe biblioteki (jak pandas i matplotlib). Użyj prostego i zachęcającego języka.
 
 Co tu się stało?
 
@@ -62,7 +66,8 @@ Nie zakładaj, że model zna kontekst Twojego problemu. Im więcej informacji mu
 
     Zamiast: "Napisz tekst reklamowy."
 
-    Lepiej: "Nasz produkt to ekologiczna butelka na wodę wielokrotnego użytku. Naszą grupą docelową są aktywni ludzie w wieku 20-35 lat, dbający o środowisko. Napisz krótki, energiczny tekst na post na Instagrama."
+    Lepiej: "Nasz produkt to ekologiczna butelka na wodę wielokrotnego użytku. Naszą grupą docelową są aktywni ludzie w wieku 20-35 lat, dbający o środowisko. Napisz krótki, energiczny tekst na post na 
+    Instagrama."
 
 c) Użyj przykładów (Few-Shot Prompting)
 Jeśli chcesz, aby model wykonał zadanie w specyficzny sposób, pokaż mu kilka przykładów. To niezwykle potężna technika.

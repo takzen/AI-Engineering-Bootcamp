@@ -1,12 +1,15 @@
 Moduł 8, Punkt 69: Testowanie modeli i optymalizacja wydajności
 
-W poprzedniej lekcji nauczyliśmy się reagować na błędy, które już wystąpiły. Ale jak możemy proaktywnie zapobiegać problemom z jakością? Jak możemy być pewni, że nowa wersja naszego promptu jest faktycznie lepsza od starej? Jak znaleźć "wąskie gardła", które spowalniają naszą aplikację, zanim użytkownicy zaczną narzekać?
+W poprzedniej lekcji nauczyliśmy się reagować na błędy, które już wystąpiły. Ale jak możemy proaktywnie zapobiegać problemom z jakością? Jak możemy być pewni, że nowa wersja 
+naszego promptu jest faktycznie lepsza od starej? Jak znaleźć "wąskie gardła", które spowalniają naszą aplikację, zanim użytkownicy zaczną narzekać?
 
-W tej lekcji skupimy się na dwóch kluczowych aspektach inżynierii AI: systematycznym testowaniu jakości (ewaluacji) oraz optymalizacji wydajności i kosztów. LangSmith dostarcza do tego wyspecjalizowanych narzędzi.
+W tej lekcji skupimy się na dwóch kluczowych aspektach inżynierii AI: systematycznym testowaniu jakości (ewaluacji) oraz optymalizacji wydajności i kosztów. LangSmith dostarcza 
+do tego wyspecjalizowanych narzędzi.
 
     Problem: Skąd wiesz, że "lepsze" jest faktycznie lepsze?
 
-Wyobraź sobie, że modyfikujesz prompt w swoim agencie, aby dawał bardziej szczegółowe odpowiedzi. Uruchamiasz go dla jednego, dwóch zapytań i wydaje się, że działa lepiej. Ale czy na pewno?
+Wyobraź sobie, że modyfikujesz prompt w swoim agencie, aby dawał bardziej szczegółowe odpowiedzi. Uruchamiasz go dla jednego, dwóch zapytań i wydaje się, że działa lepiej. 
+Ale czy na pewno?
 
     Czy poprawa nie dotyczy tylko tych kilku testowych przypadków?
 
@@ -38,7 +41,8 @@ Workflow ewaluacji:
 
         LangSmith oferuje wiele wbudowanych ewaluatorów, np.:
 
-            Kryteria (Criteria): Używa LLM do oceny odpowiedzi na podstawie zdefiniowanych kryteriów, np. conciseness (zwięzłość), correctness (poprawność), harmfulness (szkodliwość).
+            Kryteria (Criteria): Używa LLM do oceny odpowiedzi na podstawie zdefiniowanych kryteriów, np. conciseness (zwięzłość), correctness (poprawność), harmfulness 
+            (szkodliwość).
 
             Dopasowanie Wyrażeń Regularnych (Regex Match): Sprawdza, czy odpowiedź pasuje do wzorca.
 
@@ -60,7 +64,8 @@ Workflow ewaluacji:
 
         Otrzymujesz szczegółowy raport w formie tabeli, gdzie dla każdego przypadku testowego widzisz wejście, wyjście, ocenę od każdego ewaluatora i czas wykonania.
 
-        Możesz łatwo porównać wyniki dwóch różnych wersji aplikacji (np. "v1 z prostym promptem" vs "v2 ze złożonym promptem") i na podstawie twardych danych zdecydować, która jest lepsza.
+        Możesz łatwo porównać wyniki dwóch różnych wersji aplikacji (np. "v1 z prostym promptem" vs "v2 ze złożonym promptem") i na podstawie twardych danych zdecydować, 
+        która jest lepsza.
 
     Optymalizacja wydajności i kosztów
 
@@ -68,11 +73,13 @@ Jakość to nie wszystko. Aplikacja musi być też szybka i tania. LangSmith dos
 
     Analiza Latencji (Latency Analysis):
 
-        W panelu projektu, dashboard Latency pokazuje rozkład czasów odpowiedzi (p50, p95, p99). Jeśli widzisz, że 99% Twoich zapytań trwa dłużej niż np. 10 sekund, masz problem z wydajnością.
+        W panelu projektu, dashboard Latency pokazuje rozkład czasów odpowiedzi (p50, p95, p99). Jeśli widzisz, że 99% Twoich zapytań trwa dłużej niż np. 10 sekund, masz 
+        problem z wydajnością.
 
         W tabeli śladów możesz posortować uruchomienia po czasie trwania (Duration), aby znaleźć te najwolniejsze.
 
-        W widoku szczegółowym takiego "wolnego" śladu możesz dokładnie zobaczyć, który krok w hierarchii (np. wywołanie LLM, a może wolne narzędzie?) zajął najwięcej czasu. To wskazuje, gdzie należy skupić swoje wysiłki optymalizacyjne.
+        W widoku szczegółowym takiego "wolnego" śladu możesz dokładnie zobaczyć, który krok w hierarchii (np. wywołanie LLM, a może wolne narzędzie?) zajął najwięcej czasu. 
+        To wskazuje, gdzie należy skupić swoje wysiłki optymalizacyjne.
 
     Analiza Kosztów (Cost Analysis):
 
@@ -80,13 +87,15 @@ Jakość to nie wszystko. Aplikacja musi być też szybka i tania. LangSmith dos
 
         Sortując ślady po zużyciu tokenów, możesz znaleźć "najdroższe" zapytania.
 
-        Częstą przyczyną wysokich kosztów jest nieefektywne zarządzanie historią konwersacji (przekazywanie zbyt długiego kontekstu w każdym zapytaniu). Analiza promptu w śladzie natychmiast to ujawni.
+        Częstą przyczyną wysokich kosztów jest nieefektywne zarządzanie historią konwersacji (przekazywanie zbyt długiego kontekstu w każdym zapytaniu). Analiza promptu 
+        w śladzie natychmiast to ujawni.
 
     Praktyczne wnioski z optymalizacji
 
 Analizując dane w LangSmith, możesz podjąć konkretne, świadome decyzje:
 
-    "Widzę, że mój agent do klasyfikacji zapytań używa GPT-4o i generuje 80% kosztów, a trwa 3 sekundy. Zastąpię go tańszym i szybszym GPT-3.5-Turbo i przeprowadzę test ewaluacyjny, aby sprawdzić, czy jakość nie spadła."
+    "Widzę, że mój agent do klasyfikacji zapytań używa GPT-4o i generuje 80% kosztów, a trwa 3 sekundy. Zastąpię go tańszym i szybszym GPT-3.5-Turbo i przeprowadzę test 
+    ewaluacyjny, aby sprawdzić, czy jakość nie spadła."
 
     "Okazuje się, że najwolniejszym krokiem jest wywołanie narzędzia, które łączy się z zewnętrznym, wolnym API. Muszę dodać warstwę buforowania (caching) dla tego narzędzia."
 
@@ -106,4 +115,5 @@ Najważniejsze do zapamiętania:
 
     Optymalizacja to kompromis: Zawsze balansuj między jakością odpowiedzi, szybkością działania i kosztem. LangSmith daje Ci dane, aby znaleźć "złoty środek".
 
-Dzięki tym praktykom, jesteś w stanie nie tylko budować, ale także profesjonalnie utrzymywać, rozwijać i optymalizować aplikacje AI, zapewniając ich wysoką jakość i efektywność w długim okresie.
+Dzięki tym praktykom, jesteś w stanie nie tylko budować, ale także profesjonalnie utrzymywać, rozwijać i optymalizować aplikacje AI, zapewniając ich wysoką jakość i 
+efektywność w długim okresie.

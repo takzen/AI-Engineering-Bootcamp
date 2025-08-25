@@ -4,19 +4,23 @@ Moduł 1, Punkt 1: Kim jest AI Engineer?
 
     Definicja: AI Engineer (Inżynier Sztucznej Inteligencji) to specjalista, który projektuje, buduje, wdraża i utrzymuje systemy oparte na AI w środowisku produkcyjnym.
 
-    Most między nauką a biznesem: AI Engineer przekształca teoretyczne modele uczenia maszynowego (stworzone przez naukowców lub dostępne jako gotowe rozwiązania) w działające, niezawodne i skalowalne produkty.
+    Most między nauką a biznesem: AI Engineer przekształca teoretyczne modele uczenia maszynowego (stworzone przez naukowców lub dostępne jako gotowe rozwiązania) w działające, 
+    niezawodne i skalowalne produkty.
 
     Analogia budowlana:
 
         AI Scientist (Naukowiec): Wynajduje w laboratorium nowy, rewolucyjny materiał (np. nowy algorytm, architekturę modelu). Jego praca jest teoretyczna.
 
-        AI Engineer (Inżynier Budowy): Bierze ten materiał i buduje z niego funkcjonalny, bezpieczny wieżowiec (aplikację AI). Wie, jak go użyć, jak położyć fundamenty i jak zapewnić, by budynek służył ludziom.
+        AI Engineer (Inżynier Budowy): Bierze ten materiał i buduje z niego funkcjonalny, bezpieczny wieżowiec (aplikację AI). Wie, jak go użyć, jak położyć fundamenty i jak 
+        zapewnić, by budynek służył ludziom.
 
 2. Kluczowe Odpowiedzialności i Zadania
 
     Projektowanie i Budowanie Potoków Danych (Data Pipelines):
 
-        Modele AI potrzebują danych. Inżynier AI tworzy zautomatyzowane procesy (pipeline) do zbierania, czyszczenia (np. usuwanie duplikatów, uzupełnianie braków), transformacji (np. normalizacja, skalowanie) i ładowania danych.
+        Modele AI potrzebują danych. Inżynier AI tworzy zautomatyzowane procesy (pipeline) do zbierania, czyszczenia (np. usuwanie duplikatów, uzupełnianie braków), 
+        transformacji (np. normalizacja, skalowanie) 
+        i ładowania danych.
 
         Technologie: Apache Spark, Airflow, DVC, praca z bazami danych (SQL, NoSQL).
 
@@ -68,15 +72,21 @@ Moduł 1, Punkt 1: Kim jest AI Engineer?
 
     AI Engineer vs. Data Scientist:
 
-        Data Scientist: Skupia się na eksploracji, badaniach i prototypowaniu. Analizuje dane, aby znaleźć wzorce, buduje i testuje hipotezy, tworzy prototypowe modele. Jego głównym celem jest odpowiedź na pytanie "Czy to jest możliwe?".
+        Data Scientist: Skupia się na eksploracji, badaniach i prototypowaniu. Analizuje dane, aby znaleźć wzorce, buduje i testuje hipotezy, tworzy prototypowe modele. 
+        Jego głównym celem jest odpowiedź na 
+        pytanie "Czy to jest możliwe?".
 
-        AI Engineer: Skupia się na produkcji, skalowalności i niezawodności. Bierze sprawdzony prototyp i buduje wokół niego solidny system. Jego głównym celem jest odpowiedź na pytanie "Jak sprawić, by to działało dla milionów użytkowników 24/7?".
+        AI Engineer: Skupia się na produkcji, skalowalności i niezawodności. Bierze sprawdzony prototyp i buduje wokół niego solidny system. Jego głównym celem jest odpowiedź 
+        na pytanie "Jak sprawić, by to 
+        działało dla milionów użytkowników 24/7?".
 
     AI Engineer vs. Data Analyst:
 
-        Data Analyst: Pracuje na danych historycznych, aby wyciągać wnioski i tworzyć raporty. Odpowiada na pytanie "Co się stało?". Używa narzędzi takich jak SQL, Excel, Tableau.
+        Data Analyst: Pracuje na danych historycznych, aby wyciągać wnioski i tworzyć raporty. Odpowiada na pytanie "Co się stało?". Używa narzędzi takich jak SQL, Excel, 
+        Tableau.
 
-        AI Engineer: Buduje systemy predykcyjne, które działają w czasie rzeczywistym. Odpowiada na pytanie "Co się stanie?". Używa głównie Pythona i narzędzi do uczenia maszynowego.
+        AI Engineer: Buduje systemy predykcyjne, które działają w czasie rzeczywistym. Odpowiada na pytanie "Co się stanie?". Używa głównie Pythona i narzędzi do uczenia 
+        maszynowego.
 
 4. Zestaw Kluczowych Umiejętności
 

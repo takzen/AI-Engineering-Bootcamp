@@ -1,8 +1,10 @@
 Moduł 8, Punkt 68: Analiza błędów i debugowanie aplikacji
 
-W poprzedniej lekcji nauczyliśmy się, jak monitorować naszą aplikację i zbierać dane za pomocą LangSmith. Zbieranie danych to jedno, ale prawdziwa wartość pojawia się, gdy zaczynamy ich używać do znajdowania i naprawiania błędów.
+W poprzedniej lekcji nauczyliśmy się, jak monitorować naszą aplikację i zbierać dane za pomocą LangSmith. Zbieranie danych to jedno, ale prawdziwa wartość pojawia się, 
+gdy zaczynamy ich używać do znajdowania i naprawiania błędów.
 
-Debugowanie aplikacji opartych o LLM jest wyjątkowo trudne, ponieważ problemy rzadko są prostymi błędami składni. Znacznie częściej są to subtelne problemy z logiką promptu, nieoczekiwane zachowanie modelu lub błędy w interakcji z narzędziami. LangSmith został stworzony, aby rzucić światło na te "szare strefy".
+Debugowanie aplikacji opartych o LLM jest wyjątkowo trudne, ponieważ problemy rzadko są prostymi błędami składni. Znacznie częściej są to subtelne problemy z logiką promptu, 
+nieoczekiwane zachowanie modelu lub błędy w interakcji z narzędziami. LangSmith został stworzony, aby rzucić światło na te "szare strefy".
 
     Dwa rodzaje błędów w aplikacjach AI
 
@@ -66,7 +68,8 @@ Załóżmy, że użytkownicy zgłaszają, że chatbot często daje nieprecyzyjne
 
         Zanurkuj w szczegóły kroku, który wygenerował finalną odpowiedź (zwykle ChatOpenAI).
 
-        Sprawdź ostateczny prompt! Przeanalizuj, jaki dokładnie prompt (z całą historią i kontekstem) otrzymał model. Czy był on jasny? Czy zawierał wszystkie niezbędne informacje? Bardzo często problem leży właśnie tutaj.
+        Sprawdź ostateczny prompt! Przeanalizuj, jaki dokładnie prompt (z całą historią i kontekstem) otrzymał model. Czy był on jasny? Czy zawierał wszystkie niezbędne 
+        informacje? Bardzo często problem leży właśnie tutaj.
 
     Tworzenie zestawu testowego:
 
@@ -83,7 +86,8 @@ Załóżmy, że użytkownicy zgłaszają, że chatbot często daje nieprecyzyjne
         b) Nie zepsułeś przy okazji czegoś, co wcześniej działało (test regresji).
 
     "Playground" – interaktywne debugowanie:
-    LangSmith oferuje funkcję "Playground". Możesz otworzyć dowolny krok z przeszłości, zmodyfikować jego dane wejściowe (np. poprawić fragment promptu) i uruchomić go ponownie bezpośrednio w interfejsie LangSmith, aby zobaczyć, czy zmiana przyniosła oczekiwany efekt. To niezwykle przyspiesza proces iteracji nad promptami.
+    LangSmith oferuje funkcję "Playground". Możesz otworzyć dowolny krok z przeszłości, zmodyfikować jego dane wejściowe (np. poprawić fragment promptu) i uruchomić go 
+    ponownie bezpośrednio w interfejsie LangSmith, aby zobaczyć, czy zmiana przyniosła oczekiwany efekt. To niezwykle przyspiesza proces iteracji nad promptami.
 
     Podsumowanie
 

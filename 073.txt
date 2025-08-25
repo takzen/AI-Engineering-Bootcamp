@@ -1,14 +1,18 @@
 Moduł 8, Punkt 73: Jak zoptymalizować czas odpowiedzi modeli AI?
 
-Zbudowałeś fantastyczną, inteligentną aplikację. Jest niezawodna i daje świetne odpowiedzi. Ale jest jeden problem – jest wolna. Użytkownik zadaje pytanie i czeka 5, 10, a czasem nawet 15 sekund na odpowiedź. W dzisiejszym świecie to wieczność.
+Zbudowałeś fantastyczną, inteligentną aplikację. Jest niezawodna i daje świetne odpowiedzi. Ale jest jeden problem – jest wolna. Użytkownik zadaje pytanie i czeka 5, 10, 
+a czasem nawet 15 sekund na odpowiedź. W dzisiejszym świecie to wieczność.
 
-Latencja (czas odpowiedzi) to jeden z najważniejszych czynników wpływających na doświadczenie użytkownika (UX). Wolna aplikacja AI sprawia wrażenie "zepsutej" lub "nieinteligentnej", nawet jeśli jej odpowiedzi są genialne. W tej lekcji poznamy konkretne, praktyczne techniki optymalizacji, które pozwolą drastycznie skrócić czas oczekiwania i sprawić, że Twoja aplikacja będzie responsywna.
+Latencja (czas odpowiedzi) to jeden z najważniejszych czynników wpływających na doświadczenie użytkownika (UX). Wolna aplikacja AI sprawia wrażenie "zepsutej" lub 
+"nieinteligentnej", nawet jeśli jej odpowiedzi są genialne. W tej lekcji poznamy konkretne, praktyczne techniki optymalizacji, które pozwolą drastycznie skrócić czas 
+oczekiwania i sprawić, że Twoja aplikacja będzie responsywna.
 
     Zrozumienie źródeł opóźnień ("Wąskich gardeł")
 
 Zanim zaczniemy optymalizować, musimy zrozumieć, co tak naprawdę spowalnia naszą aplikację. Opóźnienia w systemach AI zazwyczaj pochodzą z kilku źródeł:
 
-    Czas inferencji LLM: To "czas myślenia" samego modelu. Jest to zazwyczaj największy winowajca. Im większy i bardziej złożony model (np. GPT-4o vs GPT-3.5-Turbo), tym dłużej to trwa.
+    Czas inferencji LLM: To "czas myślenia" samego modelu. Jest to zazwyczaj największy winowajca. Im większy i bardziej złożony model (np. GPT-4o vs GPT-3.5-Turbo), 
+    tym dłużej to trwa.
 
     Latencja sieciowa: Czas potrzebny na wysłanie zapytania do serwerów API (np. OpenAI) i otrzymanie odpowiedzi.
 
@@ -26,17 +30,21 @@ Technika 1: Streaming – Magia Percepcji
 
 To absolutnie najważniejsza technika z perspektywy UX.
 
-    Jak to działa?: Zamiast czekać, aż model wygeneruje całą odpowiedź, strumieniujemy ją token po tokenie. Użytkownik widzi pierwsze słowa odpowiedzi niemal natychmiast, a reszta tekstu pojawia się płynnie na ekranie.
+    Jak to działa?: Zamiast czekać, aż model wygeneruje całą odpowiedź, strumieniujemy ją token po tokenie. Użytkownik widzi pierwsze słowa odpowiedzi niemal natychmiast, 
+    a reszta tekstu pojawia się płynnie na ekranie.
 
-    Efekt: Całkowity czas generowania odpowiedzi jest taki sam, ale postrzegana latencja (perceived latency) jest drastycznie niższa. Użytkownik od razu wie, że system działa i przetwarza jego prośbę.
+    Efekt: Całkowity czas generowania odpowiedzi jest taki sam, ale postrzegana latencja (perceived latency) jest drastycznie niższa. Użytkownik od razu wie, że system 
+    działa i przetwarza jego prośbę.
 
-    Implementacja: Zarówno LangChain, jak i LangGraph oferują metody asynchroniczne (astream, astream_events), które idealnie nadają się do integracji ze StreamingResponse lub EventSourceResponse w FastAPI.
+    Implementacja: Zarówno LangChain, jak i LangGraph oferują metody asynchroniczne (astream, astream_events), które idealnie nadają się do integracji ze StreamingResponse 
+    lub EventSourceResponse w FastAPI.
 
 Technika 2: Caching – Nie pracuj dwa razy
 
 To najskuteczniejsza technika redukcji rzeczywistej latencji i kosztów.
 
-    Jak to działa?: Jeśli dwóch użytkowników zada to samo (lub bardzo podobne) pytanie, odpowiedź jest pobierana z pamięci podręcznej (cache), a nie przez ponowne, kosztowne wywołanie LLM.
+    Jak to działa?: Jeśli dwóch użytkowników zada to samo (lub bardzo podobne) pytanie, odpowiedź jest pobierana z pamięci podręcznej (cache), a nie przez ponowne,
+    kosztowne wywołanie LLM.
 
     Implementacja:
 
@@ -48,7 +56,9 @@ Technika 3: Mądry wybór modelu
 
 Nie zawsze potrzebujesz najpotężniejszego i najdroższego modelu.
 
-    Jak to działa?: Przeanalizuj zadania w swoim pipeline'ie. Do prostych zadań, jak klasyfikacja, routing czy ekstrakcja danych, często wystarczy znacznie szybszy i tańszy model (np. GPT-3.5-Turbo). Używaj najpotężniejszych modeli (jak GPT-4o) tylko tam, gdzie jest to absolutnie konieczne – do generowania finalnej, kreatywnej odpowiedzi.
+    Jak to działa?: Przeanalizuj zadania w swoim pipeline'ie. Do prostych zadań, jak klasyfikacja, routing czy ekstrakcja danych, często wystarczy znacznie szybszy i 
+    tańszy model (np. GPT-3.5-Turbo). Używaj najpotężniejszych modeli (jak GPT-4o) tylko tam, gdzie jest to absolutnie konieczne – do generowania finalnej, kreatywnej 
+    odpowiedzi.
 
     Implementacja: W LangGraph możesz z łatwością przypisać różne instancje LLM do różnych węzłów.
 
@@ -58,7 +68,8 @@ Jeśli Twój przepływ zawiera zadania, które nie zależą od siebie nawzajem, 
 
     Jak to działa?: Zamiast wykonywać Krok A, a potem Krok B, uruchamiasz oba w tym samym czasie i czekasz na zakończenie obu.
 
-    Implementacja: LangGraph naturalnie wspiera tę koncepcję. Jeśli ustawisz kilka węzłów jako punkty wejścia lub jeśli kilka krawędzi prowadzi z jednego węzła do różnych, niezależnych ścieżek, LangGraph postara się je wykonać równolegle.
+    Implementacja: LangGraph naturalnie wspiera tę koncepcję. Jeśli ustawisz kilka węzłów jako punkty wejścia lub jeśli kilka krawędzi prowadzi z jednego węzła do 
+    różnych, niezależnych ścieżek, LangGraph postara się je wykonać równolegle.
 
 Technika 5: Optymalizacja procesu RAG
 
@@ -82,7 +93,8 @@ Złota zasada optymalizacji brzmi: Nie możesz ulepszyć czegoś, czego nie mier
 
     Sortuj ślady po czasie trwania: Znajdź najwolniejsze wywołania i zanurkuj w ich szczegóły.
 
-    Analizuj czas trwania kroków: W widoku śladu zobaczysz, ile milisekund zajął każdy krok w Twoim łańcuchu lub grafie. Od razu zobaczysz, czy "wąskim gardłem" jest wywołanie LLM, narzędzie, czy może retriever.
+    Analizuj czas trwania kroków: W widoku śladu zobaczysz, ile milisekund zajął każdy krok w Twoim łańcuchu lub grafie. Od razu zobaczysz, czy "wąskim gardłem" jest 
+    wywołanie LLM, narzędzie, czy może retriever.
 
     Podsumowanie
 

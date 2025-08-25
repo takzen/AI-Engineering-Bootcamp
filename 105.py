@@ -130,11 +130,11 @@ DB_PATH = os.path.join(os.path.dirname(__file__), '..', 'vector_db')
 # To jest kluczowy element – szablon promptu.
 # Dajemy modelowi AI bardzo konkretne instrukcje, jak ma się zachowywać.
 # Nakazujemy mu być ekspertem od RODO i odpowiadać TYLKO na podstawie dostarczonych fragmentów.
-PROMPT_TEMPLATE = \"\"\"
+PROMPT_TEMPLATE = """\
 Jesteś precyzyjnym i pomocnym asystentem AI, który specjalizuje się w Rozporządzeniu o Ochronie Danych Osobowych (RODO).
-Twoim zadaniem jest odpowiedzieć na pytanie użytkownika wyłącznie na podstawie dostarczonego poniżej Kontekstu.
+Twoim zadaniem jest odpowiedzieć na pytanie użytkownika wyłącznie na podstawie dostarczonego poniżej kontekstu.
 Kontekst zawiera fragmenty dokumentu RODO.
-Jeśli w Kontekście nie ma wystarczających informacji, aby odpowiedzieć na pytanie, odpowiedz:
+Jeśli w kontekście nie ma wystarczających informacji, aby odpowiedzieć na pytanie, odpowiedz:
 "Na podstawie dostarczonych fragmentów dokumentu RODO nie jestem w stanie udzielić odpowiedzi na to pytanie."
 Nie próbuj wymyślać odpowiedzi. Odpowiadaj zawsze w języku polskim.
 
@@ -144,8 +144,8 @@ Kontekst:
 Pytanie:
 {question}
 
-Odpowiedź:
-\"\"\"
+Odpowiedź:"""
+
 
 def get_qa_chain():
     """

@@ -1,6 +1,6 @@
 Moduł 7, Punkt 60: LangGraph vs tradycyjne systemy AI
 
-Gratulacje! Dotarłeś do końca modułu o LangGraph. Opanowałeś sztukę budowania cyklicznych, stanowych i inteligentnych aplikacji. Na zakończenie warto zrobić krok w tył i zastanowić się, dlaczego to podejście jest tak rewolucyjne i czym różni się od tradycyjnych metod tworzenia systemów AI.
+Gratulacje! Opanowałeś sztukę budowania cyklicznych, stanowych i inteligentnych aplikacji. Na zakończenie warto zrobić krok w tył i zastanowić się, dlaczego to podejście jest tak rewolucyjne i czym różni się od tradycyjnych metod tworzenia systemów AI.
 
 Zrozumienie tej różnicy pozwoli Ci docenić, jak fundamentalną zmianę w projektowaniu inteligentnych systemów przynoszą narzędzia takie jak LangGraph.
 
