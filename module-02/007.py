@@ -18,8 +18,8 @@
 print("Hello, World!")  # Ten komentarz wyjaśnia, co robi linia po lewej.
 
 
-
-#     Komentarz wieloliniowy (docstring): Formalnie to nie jest komentarz, a wieloliniowy string, ale jest powszechnie używany do dokumentowania funkcji i modułów. Tworzy się go za pomocą potrójnych 
+# Komentarz wieloliniowy (docstring): Formalnie to nie jest komentarz, a wieloliniowy string, ale jest powszechnie używany do dokumentowania 
+# funkcji i modułów. Tworzy się go za pomocą potrójnych 
 # cudzysłowów """ lub apostrofów '''.
 
 """
@@ -91,7 +91,8 @@ pi = 3.14159
 czy_pada_deszcz = True
 czy_jest_slonce = False
 
-# Typ None (NoneType): Specjalny typ reprezentujący "brak wartości". Jest to często używane do inicjalizacji zmiennej, która dopiero później otrzyma właściwą wartość.
+# Typ None (NoneType): Specjalny typ reprezentujący "brak wartości". Jest to często używane do inicjalizacji zmiennej, która dopiero później 
+# otrzyma właściwą wartość.
 
 zwyciezca_loterii = None
 
@@ -170,7 +171,8 @@ print(not ma_prawo_jazdy) # False
 
 # 5. Kontrola przepływu – Instrukcje warunkowe
 # 
-# Instrukcje warunkowe pozwalają na wykonywanie różnych bloków kodu w zależności od tego, czy dany warunek jest spełniony. UWAGA: W Pythonie bloki kodu definiuje się za pomocą wcięć (zwykle 4 spacje), 
+# Instrukcje warunkowe pozwalają na wykonywanie różnych bloków kodu w zależności od tego, czy dany warunek jest spełniony. UWAGA: W Pythonie bloki 
+# kodu definiuje się za pomocą wcięć (zwykle 4 spacje), 
 # a nie nawiasów klamrowych!
 # 
 #     if: Wykonuje kod, jeśli warunek jest prawdziwy.
@@ -335,7 +337,8 @@ print(wynik_inny) # 50
 
 # Podsumowanie
 # 
-# Opanowanie powyższych koncepcji to kamień milowy w nauce Pythona. Są to absolutne podstawy, które pojawiają się w każdym, nawet najbardziej złożonym programie.
+# Opanowanie powyższych koncepcji to kamień milowy w nauce Pythona. Są to absolutne podstawy, które pojawiają się w każdym, nawet najbardziej złożonym 
+# programie.
 # 
 # Najważniejsze do zapamiętania:
 # 
@@ -355,4 +358,5 @@ print(wynik_inny) # 50
 # 
 #     Umiesz grupować kod w reużywalne bloki za pomocą funkcji def.
 # 
-# Teraz najlepsze, co możesz zrobić, to praktykować! Otwórz edytor kodu i spróbuj napisać proste programy, eksperymentując z każdym z omówionych tutaj elementów. Powodzenia
+# Teraz najlepsze, co możesz zrobić, to praktykować! Otwórz edytor kodu i spróbuj napisać proste programy, eksperymentując z każdym z omówionych tutaj 
+# elementów. Powodzenia

@@ -155,6 +155,7 @@ for osoba in lista_osob:
 #     * Rozumiesz kluczowe tryby: 'r' (odczyt), 'w' (zapis/nadpisanie) i 'a' (dopisywanie).
 #     * Do zapisu używasz metody `.write()`, pamiętając o ręcznym dodawaniu znaku nowej linii `\n`.
 #     * Do odczytu najwygodniej jest iterować po pliku w pętli `for`, używając `.strip()` do czyszczenia linii.
-#     * Potrafisz wczytać prosty plik CSV, podzielić linie za pomocą `.split(',')` i przekształcić dane w bardziej użyteczną strukturę (np. listę słowników).
+#     * Potrafisz wczytać prosty plik CSV, podzielić linie za pomocą `.split(',')` i przekształcić dane w bardziej użyteczną strukturę (np. 
+#       listę słowników).
 #
 # W następnych modułach zobaczymy, jak specjalistyczne biblioteki (np. `csv` i `pandas`) jeszcze bardziej ułatwiają pracę z plikami i danymi.

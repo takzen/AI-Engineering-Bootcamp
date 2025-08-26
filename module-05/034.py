@@ -41,7 +41,8 @@
 #
 #     1. **Zdefiniowanie Narzędzi**: Wybieramy gotowe narzędzia z biblioteki LangChain lub tworzymy własne.
 #     2. **Wybranie Modelu**: Agenci najlepiej działają z modelami czatu (jak `ChatOpenAI`), które są zoptymalizowane pod kątem instrukcji i logiki.
-#     3. **Stworzenie Promptu**: Tworzymy specjalny prompt, który instruuje model, jak ma się zachowywać jako agent i jak korzystać z narzędzi. Na szczęście LangChain Hub dostarcza gotowe, przetestowane szablony.
+#     3. **Stworzenie Promptu**: Tworzymy specjalny prompt, który instruuje model, jak ma się zachowywać jako agent i jak korzystać z narzędzi. 
+#        Na szczęście LangChain Hub dostarcza gotowe, przetestowane szablony.
 #     4. **Połączenie komponentów**: Używamy funkcji `create_..._agent`, aby połączyć LLM, narzędzia i prompt w jednego, spójnego agenta.
 #     5. **Stworzenie `AgentExecutor`**: To "silnik" wykonawczy, który bierze naszego agenta i faktycznie uruchamia pętlę myślenia i działania.
 #
