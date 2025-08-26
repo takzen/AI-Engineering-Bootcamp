@@ -2,8 +2,8 @@ Moduł 1, Punkt 3: Przegląd kluczowych narzędzi: LangChain, LangFlow, LangGrap
 
 1. Wprowadzenie – Ekosystem LangChain
 
-    Kiedy mówimy "LangChain", często myślimy o pierwotnej bibliotece Pythona. Jednak z czasem wokół niej wyrósł cały ekosystem narzędzi, które mają ułatwić budowanie, wizualizowanie, wdrażanie 
-    i monitorowanie aplikacji opartych na dużych modelach językowych (LLM).
+    Kiedy mówimy "LangChain", często myślimy o pierwotnej bibliotece Pythona. Jednak z czasem wokół niej wyrósł cały ekosystem narzędzi, które mają ułatwić budowanie, wizualizowanie, 
+    wdrażanie i monitorowanie aplikacji opartych na dużych modelach językowych (LLM).
 
     Celem tego ekosystemu jest rozwiązanie kluczowych problemów w pracy z LLM-ami: od skomplikowanej logiki, przez brak wizualizacji, aż po trudności w debugowaniu.
 
@@ -49,15 +49,18 @@ Moduł 1, Punkt 3: Przegląd kluczowych narzędzi: LangChain, LangFlow, LangGrap
 
     Dla kogo? Zarówno dla programistów (do szybkiego prototypowania), jak i dla osób mniej technicznych (np. analityków, produktowców), które chcą eksperymentować z możliwościami LLM-ów.
 
-    Analogia: LangFlow to konfigurator samochodu na stronie internetowej. Pozwala Ci wizualnie dobrać silnik, koła, kolor, ale pod spodem nadal korzysta z tych samych części, które oferuje LangChain.
+    Analogia: LangFlow to konfigurator samochodu na stronie internetowej. Pozwala Ci wizualnie dobrać silnik, koła, kolor, ale pod spodem nadal korzysta z tych samych części, które 
+    oferuje LangChain.
 
 4. LangGraph – Budowanie Cyklicznych Agentów i Grafów Stanu
 
     Czym jest? To rozszerzenie LangChain, zaprojektowane specjalnie do budowania bardziej zaawansowanych, cyklicznych aplikacji, takich jak złożeni agenci AI.
 
-    Jego główny cel: Rozwiązanie ograniczeń prostych łańcuchów (Chains), które z natury są liniowe (krok A -> krok B -> krok C). LangGraph pozwala na tworzenie pętli, warunków i bardziej skomplikowanej logiki.
+    Jego główny cel: Rozwiązanie ograniczeń prostych łańcuchów (Chains), które z natury są liniowe (krok A -> krok B -> krok C). LangGraph pozwala na tworzenie pętli, warunków i 
+    bardziej skomplikowanej logiki.
 
-    Jak działa? Definiujesz przepływ jako graf stanu. Każdy "węzeł" (node) w grafie to funkcja lub wywołanie LLM-a. "Krawędzie" (edges) określają, do którego węzła przejść dalej, często na podstawie warunku.
+    Jak działa? Definiujesz przepływ jako graf stanu. Każdy "węzeł" (node) w grafie to funkcja lub wywołanie LLM-a. "Krawędzie" (edges) określają, do którego węzła przejść dalej, 
+    często na podstawie warunku.
 
     Kluczowe zastosowania:
 
@@ -69,8 +72,8 @@ Moduł 1, Punkt 3: Przegląd kluczowych narzędzi: LangChain, LangFlow, LangGrap
 
     Dla kogo? Dla zaawansowanych programistów i badaczy AI, którzy potrzebują pełnej kontroli nad logiką działania agenta.
 
-    Analogia: Jeśli LangChain to budowa prostej drogi, to LangGraph to projektowanie skomplikowanego, wielopoziomowego skrzyżowania z sygnalizacją świetlną i pętlami. Daje znacznie większą kontrolę 
-    nad przepływem "ruchu" (logiki).
+    Analogia: Jeśli LangChain to budowa prostej drogi, to LangGraph to projektowanie skomplikowanego, wielopoziomowego skrzyżowania z sygnalizacją świetlną i pętlami. Daje znacznie 
+    większą kontrolę nad przepływem "ruchu" (logiki).
 
 5. LangSmith – Platforma do Debugowania i Monitorowania
 
@@ -90,7 +93,8 @@ Moduł 1, Punkt 3: Przegląd kluczowych narzędzi: LangChain, LangFlow, LangGrap
 
     Dla kogo? Absolutnie dla każdego, kto buduje aplikacje z LangChain na poważnie. Jest to niezbędne narzędzie do zapewnienia jakości i niezawodności.
 
-    Analogia: LangSmith to deska rozdzielcza, komputer pokładowy i czarna skrzynka samochodu w jednym. Pokazuje prędkość, obroty, zużycie paliwa, a w razie wypadku pozwala odtworzyć, co się stało.
+    Analogia: LangSmith to deska rozdzielcza, komputer pokładowy i czarna skrzynka samochodu w jednym. Pokazuje prędkość, obroty, zużycie paliwa, a w razie wypadku pozwala odtworzyć, 
+    co się stało.
 
 Podsumowanie – Jak te narzędzia współpracują?
 
@@ -100,4 +104,5 @@ Podsumowanie – Jak te narzędzia współpracują?
 
     Jeśli budujesz skomplikowanego agenta z pętlami i warunkami, używasz LangGraph.
 
-    Przez cały ten proces, od prototypu po produkcję, używasz LangSmith do debugowania, testowania i monitorowania swojej aplikacji, aby upewnić się, że działa ona poprawnie i niezawodnie.
+    Przez cały ten proces, od prototypu po produkcję, używasz LangSmith do debugowania, testowania i monitorowania swojej aplikacji, aby upewnić się, że działa ona poprawnie 
+    i niezawodnie.

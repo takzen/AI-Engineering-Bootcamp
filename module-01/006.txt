@@ -4,28 +4,29 @@ Moduł 1, Punkt 6: Jak uczyć się efektywnie w kursie?
 
     Na koniec chciałbym poruszyć temat, który jest być może ważniejszy niż znajomość jakiejkolwiek pojedynczej technologii: jak się uczyć, aby wiedza z tego kursu została z Wami na stałe?
 
-    Kursy online, zwłaszcza techniczne, mają jedną pułapkę: łatwo jest wpaść w tryb pasywnego oglądania. Czujemy, że rozumiemy materiał, gdy go słuchamy, ale gdy przychodzi do samodzielnego napisania kodu, 
-    pojawia się pustka.
+    Kursy online, zwłaszcza techniczne, mają jedną pułapkę: łatwo jest wpaść w tryb pasywnego oglądania. Czujemy, że rozumiemy materiał, gdy go słuchamy, ale gdy przychodzi do 
+    samodzielnego napisania kodu, pojawia się pustka.
 
-    Kluczem do sukcesu jest zmiana podejścia z "oglądam kurs" na "realizuję projekt razem z kursem". Waszym celem nie jest ukończenie wideo, ale zbudowanie czegoś działającego. Poniżej przedstawiam kilka s
-    prawdzonych strategii, które Wam w tym pomogą.
+    Kluczem do sukcesu jest zmiana podejścia z "oglądam kurs" na "realizuję projekt razem z kursem". Waszym celem nie jest ukończenie wideo, ale zbudowanie czegoś działającego. Poniżej 
+    przedstawiam kilka sprawdzonych strategii, które Wam w tym pomogą.
 
 2. Strategia 1: Aktywne Kodowanie (Code-Along, but Better)
 
     Nie tylko przepisuj kod: Gdy oglądasz lekcję, nie ograniczaj się do przepisywania kodu 1:1. To zbyt pasywne.
 
-        Zatrzymaj wideo i spróbuj samemu: Gdy tłumaczę jakiś koncept, np. budowę API w FastAPI, zatrzymaj wideo ZANIM pokażę gotowe rozwiązanie. Spróbuj napisać ten kod samodzielnie na podstawie tego, 
-        co już wiesz. Zmierz się z problemem. Dopiero potem wznów odtwarzanie i porównaj swoje rozwiązanie z moim.
+        Zatrzymaj wideo i spróbuj samemu: Gdy tłumaczę jakiś koncept, np. budowę API w FastAPI, zatrzymaj wideo ZANIM pokażę gotowe rozwiązanie. Spróbuj napisać ten kod samodzielnie 
+        na podstawie tego, co już wiesz. Zmierz się z problemem. Dopiero potem wznów odtwarzanie i porównaj swoje rozwiązanie z moim.
 
-        Eksperymentuj i psuj: Zmień coś w kodzie. Co się stanie, jeśli usuniesz jedną linijkę? Co, jeśli podasz inny typ danych? Celowe "psucie" kodu i analizowanie błędów to jedna z najlepszych metod nauki. 
-        Zobacz, jak aplikacja reaguje, jaki błąd wyrzuca – to buduje intuicję.
+        Eksperymentuj i psuj: Zmień coś w kodzie. Co się stanie, jeśli usuniesz jedną linijkę? Co, jeśli podasz inny typ danych? Celowe "psucie" kodu i analizowanie błędów to jedna 
+        z najlepszych metod nauki. Zobacz, jak aplikacja reaguje, jaki błąd wyrzuca – to buduje intuicję.
 
-        Zadawaj sobie pytanie "Dlaczego?": Nie tylko "Jak?", ale "Dlaczego ta funkcja jest tutaj potrzebna?", "Dlaczego używamy Pydantica, a nie zwykłego słownika?", "Dlaczego Docker jest lepszy niż 
-        instalowanie wszystkiego ręcznie?". Zrozumienie motywacji jest ważniejsze niż zapamiętanie składni.
+        Zadawaj sobie pytanie "Dlaczego?": Nie tylko "Jak?", ale "Dlaczego ta funkcja jest tutaj potrzebna?", "Dlaczego używamy Pydantica, a nie zwykłego słownika?", "Dlaczego Docker 
+        jest lepszy niż instalowanie wszystkiego ręcznie?". Zrozumienie motywacji jest ważniejsze niż zapamiętanie składni.
 
 3. Strategia 2: Buduj Własny, Równoległy Projekt
 
-    Najpotężniejsza technika: To jest strategia dla najbardziej ambitnych, ale dająca najlepsze rezultaty. Oprócz projektu, który tworzymy w kursie, rozpocznij swój własny, mały projekt na boku.
+    Najpotężniejsza technika: To jest strategia dla najbardziej ambitnych, ale dająca najlepsze rezultaty. Oprócz projektu, który tworzymy w kursie, rozpocznij swój własny, mały 
+    projekt na boku.
 
     Jak to działa?
 
@@ -37,8 +38,8 @@ Moduł 1, Punkt 6: Jak uczyć się efektywnie w kursie?
 
         Lekcja o Dockerze? Spróbuj skonteneryzować swój mały projekt.
 
-    Dlaczego to działa? Zmusza Cię to do rozwiązywania problemów, których nie przewidziałem w kursie. Uczysz się adaptować wiedzę do nowego kontekstu, a nie tylko ją odtwarzać. Twój projekt nie musi być 
-    wielki – może to być prosty chatbot, API do analizy sentymentu tweetów, czy klasyfikator obrazów. Ważne, żeby był TWÓJ.
+    Dlaczego to działa? Zmusza Cię to do rozwiązywania problemów, których nie przewidziałem w kursie. Uczysz się adaptować wiedzę do nowego kontekstu, a nie tylko ją odtwarzać. 
+    Twój projekt nie musi być wielki – może to być prosty chatbot, API do analizy sentymentu tweetów, czy klasyfikator obrazów. Ważne, żeby był TWÓJ.
 
 4. Strategia 3: Technika Feynmana i Uczenie Innych
 
@@ -52,18 +53,19 @@ Moduł 1, Punkt 6: Jak uczyć się efektywnie w kursie?
 
         Wejdź na nasze forum lub grupę dyskusyjną i spróbuj odpowiedzieć na pytanie innego kursanta. Tłumaczenie komuś innemu zmusza do ugruntowania własnej wiedzy.
 
-    Dlaczego to działa? Proces upraszczania i tłumaczenia odsłania luki we własnym zrozumieniu. Jeśli masz problem z wyjaśnieniem, wiesz dokładnie, do którego fragmentu lekcji musisz wrócić.
+    Dlaczego to działa? Proces upraszczania i tłumaczenia odsłania luki we własnym zrozumieniu. Jeśli masz problem z wyjaśnieniem, wiesz dokładnie, do którego fragmentu lekcji musisz 
+    wrócić.
 
 5. Strategia 4: Zarządzanie Czasem i Energią
 
-    Unikaj maratonów: Lepsze jest 45-60 minut skupionej nauki każdego dnia, niż 8-godzinny maraton w weekend. Mózg potrzebuje czasu na "przetrawienie" i utrwalenie informacji (proces konsolidacji pamięci 
-    zachodzi głównie podczas snu).
+    Unikaj maratonów: Lepsze jest 45-60 minut skupionej nauki każdego dnia, niż 8-godzinny maraton w weekend. Mózg potrzebuje czasu na "przetrawienie" i utrwalenie informacji 
+    (proces konsolidacji pamięci zachodzi głównie podczas snu).
 
-    Zasada 20 minut: Jeśli utkniesz na jakimś problemie i po 20 minutach intensywnego myślenia nie masz postępu – zrób sobie przerwę. Odejdź od komputera, zrób coś innego. Często rozwiązanie przychodzi 
-    samo, gdy przestajemy o nim myśleć na siłę.
+    Zasada 20 minut: Jeśli utkniesz na jakimś problemie i po 20 minutach intensywnego myślenia nie masz postępu – zrób sobie przerwę. Odejdź od komputera, zrób coś innego. Często 
+    rozwiązanie przychodzi samo, gdy przestajemy o nim myśleć na siłę.
 
-    Notuj, ale mądrze: Nie przepisuj wszystkiego. Zapisuj kluczowe koncepty, fragmenty kodu, które sprawiły Ci trudność, i własne przemyślenia. Twórz mapy myśli lub notatki w systemie, który Ci odpowiada 
-    (np. Notion, Obsidian).
+    Notuj, ale mądrze: Nie przepisuj wszystkiego. Zapisuj kluczowe koncepty, fragmenty kodu, które sprawiły Ci trudność, i własne przemyślenia. Twórz mapy myśli lub notatki w systemie, 
+    który Ci odpowiada (np. Notion, Obsidian).
 
 6. Podsumowanie – Jak czerpać maksimum z kursu?
 
@@ -77,5 +79,5 @@ Moduł 1, Punkt 6: Jak uczyć się efektywnie w kursie?
 
     Nie bój się prosić o pomoc: Skorzystaj z naszej społeczności. Utknięcie w martwym punkcie jest normalne, a zadanie pytania to oznaka siły, a nie słabości.
 
-Pamiętajcie, ten kurs to nie wyścig. To podróż, której celem jest zbudowanie solidnych, praktycznych umiejętności. Wasze zaangażowanie i podejście do nauki zadecydują o tym, jak wiele z tej podróży wyniesiecie. 
-Powodzenia
+Pamiętajcie, ten kurs to nie wyścig. To podróż, której celem jest zbudowanie solidnych, praktycznych umiejętności. Wasze zaangażowanie i podejście do nauki zadecydują o tym, jak wiele 
+z tej podróży wyniesiecie. Powodzenia

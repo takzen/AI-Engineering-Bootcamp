@@ -19,8 +19,7 @@ Moduł 1, Punkt 1: Kim jest AI Engineer?
     Projektowanie i Budowanie Potoków Danych (Data Pipelines):
 
         Modele AI potrzebują danych. Inżynier AI tworzy zautomatyzowane procesy (pipeline) do zbierania, czyszczenia (np. usuwanie duplikatów, uzupełnianie braków), 
-        transformacji (np. normalizacja, skalowanie) 
-        i ładowania danych.
+        transformacji (np. normalizacja, skalowanie) i ładowania danych.
 
         Technologie: Apache Spark, Airflow, DVC, praca z bazami danych (SQL, NoSQL).
 
@@ -73,12 +72,10 @@ Moduł 1, Punkt 1: Kim jest AI Engineer?
     AI Engineer vs. Data Scientist:
 
         Data Scientist: Skupia się na eksploracji, badaniach i prototypowaniu. Analizuje dane, aby znaleźć wzorce, buduje i testuje hipotezy, tworzy prototypowe modele. 
-        Jego głównym celem jest odpowiedź na 
-        pytanie "Czy to jest możliwe?".
+        Jego głównym celem jest odpowiedź na pytanie "Czy to jest możliwe?".
 
         AI Engineer: Skupia się na produkcji, skalowalności i niezawodności. Bierze sprawdzony prototyp i buduje wokół niego solidny system. Jego głównym celem jest odpowiedź 
-        na pytanie "Jak sprawić, by to 
-        działało dla milionów użytkowników 24/7?".
+        na pytanie "Jak sprawić, by to działało dla milionów użytkowników 24/7?".
 
     AI Engineer vs. Data Analyst:
 

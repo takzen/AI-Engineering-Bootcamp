@@ -2,12 +2,13 @@ Moduł 1, Punkt 2: Jakie umiejętności są potrzebne w AI Engineering?
 
 1. Wprowadzenie – Inżynier AI jako „Full-Stack” Specjalista od AI
 
-    AI Engineer to nie jest rola skupiona na jednej, wąskiej dziedzinie. To specjalista, który musi posiadać szeroki wachlarz kompetencji, łącząc umiejętności programisty, analityka danych i inżyniera 
-    systemów (DevOps).
+    AI Engineer to nie jest rola skupiona na jednej, wąskiej dziedzinie. To specjalista, który musi posiadać szeroki wachlarz kompetencji, łącząc umiejętności programisty, analityka 
+    danych i inżyniera systemów (DevOps).
 
     Można go postrzegać jako "Full-Stack Developer" świata sztucznej inteligencji – musi rozumieć cały proces, od surowych danych aż po działającą aplikację, z której korzysta użytkownik.
 
-    Zestaw umiejętności można podzielić na kilka kluczowych filarów: Fundamenty Programistyczne, Uczenie Maszynowe, Inżynieria Danych, Inżynieria Oprogramowania i MLOps, oraz Umiejętności Miękkie.
+    Zestaw umiejętności można podzielić na kilka kluczowych filarów: Fundamenty Programistyczne, Uczenie Maszynowe, Inżynieria Danych, Inżynieria Oprogramowania i MLOps, oraz Umiejętności 
+    Miękkie.
 
 2. Filar 1: Solidne Fundamenty Programistyczne
 
@@ -43,7 +44,8 @@ Moduł 1, Punkt 2: Jakie umiejętności są potrzebne w AI Engineering?
 
         Scikit-learn: Biblioteka do "klasycznego" uczenia maszynowego. Niezastąpiona do prostszych zadań, preprocessingu danych i ewaluacji modeli.
 
-        LangChain / LlamaIndex: Frameworki do orkiestracji i budowania aplikacji opartych na dużych modelach językowych (LLM). Umożliwiają łączenie modeli z zewnętrznymi źródłami danych i narzędziami.
+        LangChain / LlamaIndex: Frameworki do orkiestracji i budowania aplikacji opartych na dużych modelach językowych (LLM). Umożliwiają łączenie modeli z zewnętrznymi źródłami 
+        danych i narzędziami.
 
         Hugging Face Transformers: Biblioteka, która daje dostęp do tysięcy gotowych, wytrenowanych modeli i narzędzi do ich fine-tuningu.
 
@@ -96,7 +98,8 @@ Moduł 1, Punkt 2: Jakie umiejętności są potrzebne w AI Engineering?
 
     Komunikacja:
 
-        Musi umieć rozmawiać zarówno z ludźmi technicznymi (inni programiści, devopsi), jak i z ludźmi biznesu (product managerowie, analitycy), aby zrozumieć wymagania i wytłumaczyć ograniczenia techniczne.
+        Musi umieć rozmawiać zarówno z ludźmi technicznymi (inni programiści, devopsi), jak i z ludźmi biznesu (product managerowie, analitycy), aby zrozumieć wymagania i wytłumaczyć 
+        ograniczenia techniczne.
 
     Ciągła Nauka:
 

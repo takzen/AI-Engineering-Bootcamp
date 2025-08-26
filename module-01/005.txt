@@ -4,11 +4,11 @@ Moduł 1, Punkt 5: Jak wygląda proces tworzenia aplikacji AI?
 
     Wiele osób myśli, że tworzenie AI to głównie proces trenowania modelu. W rzeczywistości trening to często jeden z najkrótszych etapów.
 
-    Profesjonalne tworzenie aplikacji AI to cykliczny i iteracyjny proces inżynierski, który obejmuje znacznie więcej niż tylko uczenie maszynowe. Można go podzielić na kilka kluczowych, następujących 
-    po sobie faz.
+    Profesjonalne tworzenie aplikacji AI to cykliczny i iteracyjny proces inżynierski, który obejmuje znacznie więcej niż tylko uczenie maszynowe. Można go podzielić na kilka kluczowych, 
+    następujących po sobie faz.
 
-    Proces ten jest często opisywany przez metodologie takie jak CRISP-DM (dla analizy danych) czy bardziej nowoczesne podejścia MLOps. Niezależnie od nazwy, podstawowe kroki pozostają podobne. 
-    Omówimy dziś uproszczony, ale praktyczny model tego procesu.
+    Proces ten jest często opisywany przez metodologie takie jak CRISP-DM (dla analizy danych) czy bardziej nowoczesne podejścia MLOps. Niezależnie od nazwy, podstawowe kroki pozostają 
+    podobne. Omówimy dziś uproszczony, ale praktyczny model tego procesu.
 
 2. Faza 1: Zrozumienie Problemu i Definicja Celu (Business Understanding)
 
@@ -28,7 +28,8 @@ Moduł 1, Punkt 5: Jak wygląda proces tworzenia aplikacji AI?
 
 3. Faza 2: Gromadzenie i Przygotowanie Danych (Data Acquisition & Preparation)
 
-    Cel: Zebranie wszystkich niezbędnych danych i doprowadzenie ich do formy, na której model będzie mógł się uczyć. To najbardziej czasochłonna faza, często zajmująca 60-80% czasu projektu.
+    Cel: Zebranie wszystkich niezbędnych danych i doprowadzenie ich do formy, na której model będzie mógł się uczyć. To najbardziej czasochłonna faza, często zajmująca 60-80% czasu 
+    projektu.
 
     Kroki:
 
@@ -83,15 +84,15 @@ Moduł 1, Punkt 5: Jak wygląda proces tworzenia aplikacji AI?
 
         Monitorowanie Techniczne: Śledzenie wskaźników systemowych, takich jak czas odpowiedzi API, zużycie CPU/RAM, liczba błędów.
 
-        Monitorowanie Modelu: Śledzenie jakości predykcji na "żywych" danych. Wykrywanie dryfu modelu (model drift), czyli sytuacji, gdy charakter danych produkcyjnych zaczyna odbiegać od danych 
-        treningowych, co pogarsza jakość modelu.
+        Monitorowanie Modelu: Śledzenie jakości predykcji na "żywych" danych. Wykrywanie dryfu modelu (model drift), czyli sytuacji, gdy charakter danych produkcyjnych zaczyna odbiegać 
+        od danych treningowych, co pogarsza jakość modelu.
 
         Logowanie i Alertowanie: Zbieranie logów z aplikacji i ustawianie alertów, które informują o problemach (np. nagły wzrost liczby błędów, spadek dokładności predykcji).
 
         Ponowny Trening (Retraining): Na podstawie zebranych danych i wyników monitoringu, okresowo uruchamia się proces ponownego treningu modelu na nowszych, bardziej aktualnych danych.
 
-    Wynik tej fazy: Niezawodny system, który nie tylko działa, ale jest też odporny na zmiany i którego jakość jest stale nadzorowana. To prowadzi z powrotem do Fazy 2 (nowe dane) i Fazy 3 (nowy model), 
-    zamykając cykl.
+    Wynik tej fazy: Niezawodny system, który nie tylko działa, ale jest też odporny na zmiany i którego jakość jest stale nadzorowana. To prowadzi z powrotem do Fazy 2 (nowe dane) i 
+    Fazy 3 (nowy model), zamykając cykl.
 
 Podsumowanie – Cykliczna Natura Procesu
 
@@ -99,5 +100,5 @@ Podsumowanie – Cykliczna Natura Procesu
 
     Wyniki z fazy monitorowania stają się danymi wejściowymi do kolejnej iteracji projektu, co pozwala na ciągłe doskonalenie aplikacji.
 
-    Każda z technologii, które poznaliśmy – Python, Pandas, Pydantic, FastAPI, Docker, bazy danych – odgrywa kluczową rolę w co najmniej jednej z tych faz, tworząc razem kompletny, profesjonalny 
-    proces inżynierii AI.
+    Każda z technologii, które poznaliśmy – Python, Pandas, Pydantic, FastAPI, Docker, bazy danych – odgrywa kluczową rolę w co najmniej jednej z tych faz, tworząc razem kompletny, 
+    profesjonalny proces inżynierii AI.
