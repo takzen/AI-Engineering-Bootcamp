@@ -32,7 +32,8 @@
 #     Operacja blokująca: Zatrzymuje cały proces, aż do jej zakończenia. W tym czasie serwer nie może obsłużyć żadnych innych żądań.
 #     Przykład: `time.sleep()`, długa, synchroniczna operacja na pliku lub w bazie danych.
 #
-#     Operacja nieblokująca: Pozwala serwerowi zająć się innymi zadaniami, podczas gdy czeka na zakończenie operacji (np. na odpowiedź z bazy danych lub innego API).
+#     Operacja nieblokująca: Pozwala serwerowi zająć się innymi zadaniami, podczas gdy czeka na zakończenie operacji (np. na odpowiedź z bazy 
+#     danych lub innego API).
 #     Przykład: `await asyncio.sleep()`, użycie asynchronicznej biblioteki do obsługi bazy (np. `databases`, `tortoise-orm`).
 
 # ZŁY PRZYKŁAD: Blokowanie serwera
@@ -133,7 +134,8 @@ async def send_notification(email: str, background_tasks: BackgroundTasks):
     return {"message": "Notification sent in the background"}
 
 #     Zaawansowane zadania w tle – Kolejki zadań (Task Queues):
-#     Do bardziej złożonych i niezawodnych systemów zadań w tle używa się dedykowanych narzędzi, takich jak Celery z brokerem wiadomości (np. Redis lub RabbitMQ).
+#     Do bardziej złożonych i niezawodnych systemów zadań w tle używa się dedykowanych narzędzi, takich jak Celery z brokerem wiadomości (np. 
+#     Redis lub RabbitMQ).
 #     Aplikacja FastAPI jedynie dodaje zadanie do kolejki, a osobne procesy robocze Celery je pobierają i wykonują.
 #     To znacznie bardziej skalowalne i odporne na błędy rozwiązanie.
 #
@@ -160,14 +162,14 @@ async def send_notification(email: str, background_tasks: BackgroundTasks):
 #
 # 6. Inne ważne aspekty skalowania
 #
-#     Baza danych: Często to baza danych staje się "wąskim gardłem". Skalowanie aplikacji musi iść w parze ze skalowaniem bazy (np. przez replikację, sharding, 
-# użycie wydajniejszych instancji).
+#     Baza danych: Często to baza danych staje się "wąskim gardłem". Skalowanie aplikacji musi iść w parze ze skalowaniem bazy (np. przez replikację, 
+#     sharding, użycie wydajniejszych instancji).
 #
-#     Caching: Przechowywanie często odpytywanych, rzadko zmieniających się danych w szybkiej pamięci podręcznej (np. Redis) może drastycznie zmniejszyć obciążenie 
-# bazy danych i przyspieszyć odpowiedzi API.
+#     Caching: Przechowywanie często odpytywanych, rzadko zmieniających się danych w szybkiej pamięci podręcznej (np. Redis) może drastycznie 
+#     zmniejszyć obciążenie bazy danych i przyspieszyć odpowiedzi API.
 #
-#     Monitoring i Logowanie: Nie można skalować czegoś, czego się nie mierzy. Należy wdrożyć monitoring kluczowych metryk (czas odpowiedzi, użycie CPU/RAM, liczba błędów) 
-# i centralne logowanie, aby móc podejmować świadome decyzje o skalowaniu.
+#     Monitoring i Logowanie: Nie można skalować czegoś, czego się nie mierzy. Należy wdrożyć monitoring kluczowych metryk (czas odpowiedzi, 
+#     użycie CPU/RAM, liczba błędów) i centralne logowanie, aby móc podejmować świadome decyzje o skalowaniu.
 #
 #
 # Podsumowanie
@@ -176,8 +178,8 @@ async def send_notification(email: str, background_tasks: BackgroundTasks):
 #
 #     Krok 1: Pisz asynchroniczny kod (`async def`) i używaj nieblokujących bibliotek, aby maksymalnie wykorzystać potencjał jednego procesu.
 #
-#     Krok 2: Użyj serwera produkcyjnego jak Gunicorn z workerami Uvicorna (`gunicorn -k uvicorn.workers.UvicornWorker`), aby w pełni wykorzystać moc wielordzeniowych 
-# procesorów na jednej maszynie.
+#     Krok 2: Użyj serwera produkcyjnego jak Gunicorn z workerami Uvicorna (`gunicorn -k uvicorn.workers.UvicornWorker`), aby w pełni wykorzystać 
+#     moc wielordzeniowych procesorów na jednej maszynie.
 #
 #     Krok 3: Długotrwałe operacje przenieś do zadań w tle (`BackgroundTasks` lub Celery), aby nie blokować odpowiedzi dla użytkownika.
 #

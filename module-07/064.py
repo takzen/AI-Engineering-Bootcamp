@@ -2,9 +2,9 @@
 #
 #
 #
-# Gratulacje! Dotarłeś do ostatniej lekcji tego kursu. Opanowałeś sztukę budowania niezwykle
-# potężnych, dynamicznych i inteligentnych systemów za pomocą LangGraph. Twój graf działa
-# perfekcyjnie... ale na razie tylko jako skrypt Pythona uruchamiany w terminalu.
+# Opanowałeś sztukę budowania niezwykle potężnych, dynamicznych i inteligentnych systemów za 
+# pomocą LangGraph. Twój graf działa perfekcyjnie... ale na razie tylko jako skrypt Pythona 
+# uruchamiany w terminalu.
 #
 # Jak udostępnić tę niesamowitą moc światu? Jak pozwolić użytkownikom na interakcję
 # z Twoim wieloagentowym systemem przez stronę internetową? Jak zintegrować go z innymi
