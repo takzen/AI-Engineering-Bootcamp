@@ -106,6 +106,7 @@ finally:
 # są technicznie poprawne (np. to liczba), ale logicznie błędne dla naszego programu (np. wiek ujemny).
 # Używamy do tego słowa kluczowego `raise`.
 
+
 def ustaw_wiek_uzytkownika(wiek):
     if not isinstance(wiek, int):
         raise TypeError("Wiek musi być liczbą całkowitą.")
@@ -118,8 +119,8 @@ def ustaw_wiek_uzytkownika(wiek):
 
 try:
     # ustaw_wiek_uzytkownika(25)      # Poprawne
-    # ustaw_wiek_uzytkownika("abc")   # Spowoduje TypeError
-    ustaw_wiek_uzytkownika(-5)      # Spowoduje ValueError
+    ustaw_wiek_uzytkownika("abc")   # Spowoduje TypeError
+    # ustaw_wiek_uzytkownika(-5)      # Spowoduje ValueError
     # ustaw_wiek_uzytkownika(200)     # Spowoduje ValueError
 except (TypeError, ValueError) as e:
     print(f"Nie udało się ustawić wieku. Powód: {e}")

@@ -1,7 +1,6 @@
 # Moduł 2, Lekcja 14: Praca z bibliotekami NumPy i Pandas
 #
 #
-#
 # Witaj w jednej z najważniejszych lekcji kursu! Poznamy dwie biblioteki, które są
 # absolutnym fundamentem analizy danych i uczenia maszynowego w Pythonie.
 #
@@ -88,6 +87,7 @@ print("\n\n--- Pandas ---")
 print("Nasz pierwszy DataFrame:")
 print(ramka_danych)
 
+
 # 2.2 Wczytywanie danych z pliku – najważniejsza funkcja
 # Najczęściej będziemy wczytywać dane z plików, np. CSV.
 # Stwórzmy najpierw przykładowy plik.
@@ -96,7 +96,7 @@ csv_data = """id,produkt,cena
 2,banan,4.99
 3,chleb,3.20
 """
-with open("produkty.csv", "w") as f:
+with open("produkty.csv", "w", encoding='utf-8') as f:
     f.write(csv_data)
 
 # Teraz wczytajmy go za pomocą jednej komendy!
