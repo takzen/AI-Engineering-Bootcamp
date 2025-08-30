@@ -122,6 +122,7 @@ class Uzytkownik(BaseModel):
 
 json_data_z_api = '{"id": 101, "nazwa": "AI_User", "email": "user@example.com"}'
 
+
 print("\n--- 4. Deserializacja z Pydantic ---")
 # Pydantic może przyjąć słownik lub bezpośrednio sparsowany JSON
 uzytkownik_obj = Uzytkownik.model_validate_json(json_data_z_api)

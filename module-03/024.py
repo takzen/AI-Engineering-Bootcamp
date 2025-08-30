@@ -22,11 +22,13 @@ def symuluj_odpowiedz_llm_bez_struktury(recenzja):
     """Symuluje odpowiedź LLM-a bez narzuconej struktury."""
     print(f"\nAnalizuję recenzję: '{recenzja}'")
     # Za każdym razem odpowiedź może mieć inny format
-    return "Cóż, wydaje się, że główne plusy to: świetna bateria i dobry aparat. Jeśli chodzi o wady, użytkownik wspomina o tym, że urządzenie jest trochę za ciężkie."
+    return "Cóż, wydaje się, że główne plusy to: świetna bateria i dobry aparat. " \
+    "Jeśli chodzi o wady, użytkownik wspomina o tym, że urządzenie jest trochę za ciężkie."
 
 # Próba parsowania takiej odpowiedzi jest koszmarem – wymaga skomplikowanych
 # wyrażeń regularnych i jest bardzo podatna na błędy.
-recenzja_produktu = "Bateria trzyma wieki, aparat robi świetne zdjęcia, ale telefon jest ciężki jak cegła."
+recenzja_produktu = "Bateria trzyma wieki, aparat robi świetne zdjęcia, ale telefon jest ciężki " \
+"jak cegła."
 odpowiedz_llm = symuluj_odpowiedz_llm_bez_struktury(recenzja_produktu)
 
 print("\n--- 1. Próba ręcznego parsowania niestrukturalnej odpowiedzi ---")

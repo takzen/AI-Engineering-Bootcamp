@@ -86,11 +86,22 @@ class AgentState(TypedDict):
 
 # Krok 2: Zdefiniuj węzły jako funkcje Pythona
 # Każdy węzeł przyjmuje stan i zwraca słownik z aktualizacjami do stanu.
+# Zmieniona funkcja call_agent
 def call_agent(state: AgentState):
     print("--- WĘZEŁ: Agent decyduje ---")
-    # W tym miejscu normalnie wywoływalibyśmy LLM, aby podjął decyzję.
-    # Na potrzeby przykładu symulujemy, że agent chce użyć narzędzia.
-    return {"agent_outcome": {"action": "call_tool", "tool_input": "pogoda w Warszawie"}}
+    
+    # SPRAWDŹ STAN: Czy mamy już jakieś wyniki od narzędzi?
+    if state.get("intermediate_steps") and len(state["intermediate_steps"]) > 0:
+        # Jeśli tak, to znaczy, że narzędzie już zadziałało.
+        # Agent powinien teraz wygenerować ostateczną odpowiedź i zakończyć pracę.
+        print("Agent ma już wyniki, kończy pracę.")
+        # Symulujemy ostateczną odpowiedź. Zwracamy sam tekst, a nie słownik akcji.
+        final_answer = state["intermediate_steps"][-1][1] # Bierzemy ostatni wynik
+        return {"agent_outcome": f"Ostateczna odpowiedź to: {final_answer}"}
+    else:
+        # Jeśli nie ma wyników, agent musi użyć narzędzia.
+        print("Agent nie ma wyników, decyduje o użyciu narzędzia.")
+        return {"agent_outcome": {"action": "call_tool", "tool_input": "pogoda w Warszawie"}}
 
 def call_tool(state: AgentState):
     print("--- WĘZEŁ: Wykonanie narzędzia ---")
@@ -138,9 +149,9 @@ workflow.add_edge('action', 'agent')
 app = workflow.compile()
 
 # Można teraz uruchomić graf, przekazując początkowy stan
-# initial_state = {"question": "Jaka jest pogoda w Warszawie?", "intermediate_steps": []}
-# result = app.invoke(initial_state)
-# print(result)
+initial_state = {"question": "Jaka jest pogoda w Warszawie?", "intermediate_steps": []}
+result = app.invoke(initial_state)
+print(result)
 
 #
 # 6. Podsumowanie
